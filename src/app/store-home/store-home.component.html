@@ -1,15 +1,35 @@
+
+
   <div class="container-fuild" style="margin-left: -8px; margin-top: -10px;">
     <div class="sidebar">
-      <h2 style="padding:15px; background-color: #3a493b; margin-top: -10px;">STORE REPORTS</h2>
+      <h2 style="padding:20px; background-image: linear-gradient(to right, #011f06, #024b2c); margin-top: -5px;">STORE REPORTS</h2>
       <ul>
-        <li style="border-top: #1a471c 2px solid; margin-top: -30px;" routerLink="/store-generate-reports">Generate Report</li>
-        <li routerLink="/store-view-reports">View Reports</li>
+      <li style="border-top: #1a471c 2px solid; margin-top: -30px;">
+        <a routerLink="store-generate-reports" style="text-decoration: none; color: inherit;">Generate Report</a>
+      </li>
+      <li>
+        <a routerLink="store-view-reports" style="text-decoration: none; color: inherit;">View Reports</a>
+      </li>
+    </ul>
+    </div>    
+  <div class="main-content" style="overflow-y: auto;">    
+    <div class="header d-flex align-items-center " style="background-color: #01291d; background-image: linear-gradient(to right, #01291d, #059c5d); padding:28px; margin-left: -10px; margin-right: -10px;">  
+      <button class="btn btn-dark me-2 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <i class="fas fa-bars"></i>
+      </button>  
+    <!-- <div class="dropdown">
+      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-user"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
       </ul>
-    </div>
-    
-    <div class="main-content">
-      <router-outlet></router-outlet>
-    </div>
+    </div> -->
+      
+    </div>  
+      <div style="flex-grow: 1; overflow-y: auto;">
+        <router-outlet></router-outlet>
+      </div>
   </div>
-
+  </div>
 

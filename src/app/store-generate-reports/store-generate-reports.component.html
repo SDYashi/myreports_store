@@ -1,1 +1,512 @@
-<p>store-generate-reports works!</p>
+<div id="printContainer" style="margin: auto;">
+  <div class="container-fluid">
+    <form #testReportForm="ngForm">
+  <!-- Step 1 -->
+  <div *ngIf="step === 1">
+          <h2>Part 1: Test Report</h2>
+      <div class="container-fluid page">
+        <!-- Header -->
+        <div class="row">
+          <div class="col-md-12">
+            <table class="header-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+              <tr>
+                <td style="width: 50px;">
+                  <img src="assets/images/logo/wzlogo.png" alt="testing-lab-logo" class="img-fluid" width="50" height="50" />
+                </td>
+                <td style="text-align: center;">
+                  <h1 style="margin: 0; font-size: 1.5rem;">Madhya Pradesh Pashchim Kshetra Vidyut Vitaran Company Ltd</h1>
+                  <h2 style="margin: 0; font-size: 1.2rem;">TESTING LABORATORY INDORE</h2>
+                </td>
+                <td style="width: 50px;">
+                  <img src="assets/images/logo/wzlogo.png" alt="testing-lab-logo" class="img-fluid" width="50" height="50" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: center; font-size: 0.9rem; padding-top: 5px;">
+                  MPPKVVCL NEAR AREA STORE, POLOGROUND, PIN-452003 INDORE, (MP).<br />
+                  <a href="mailto:testinglabwzind@gmail.com">testinglabwzind@gmail.com</a> Ph. No. 0731-2997802
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- Test Report Details -->
+        <div class="row">
+          <div class="col">
+            <table class="table table-striped" style="font-size: 0.9rem;">
+              <tbody>
+                <tr>
+                  <th scope="row" style="width: 200px;">Sample Code:</th>
+                  <td>
+                    <input id="sample_code" name="sample_code" [(ngModel)]="testReport.sample_code" required type="text" class="form-control" placeholder="TLI/RDTR/25/03/49" style="width: 450px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Serial No:</th>
+                  <td>
+                    <input id="serial_no" name="serial_no" [(ngModel)]="testReport.serial_no" required type="text" class="form-control" placeholder="17-142-0102-2716" style="width: 450px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Manufacturer:</th>
+                  <td>
+                    <input id="manufacturer" name="manufacturer" [(ngModel)]="testReport.manufacturer" required type="text" class="form-control" placeholder="M/S ADHI ELECTRICALS" style="width: 450px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Job Rating (KVA):</th>
+                  <td>
+                    <select id="job_rating" name="job_rating" [(ngModel)]="testReport.job_rating" required class="form-select" style="width: 450px;">
+                      <option value="" disabled selected>Select Job Rating</option>
+                      <option value="25">25 KVA</option>
+                      <option value="100">100 KVA</option>
+                      <option value="200">200 KVA</option>
+                      <option value="500">500 KVA</option>
+                      <option value="1000">1000 KVA</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Reference Standard:</th>
+                  <td>
+                    <select id="reference_standard" name="reference_standard" [(ngModel)]="testReport.reference_standard" required class="form-select" style="width: 450px;">
+                      <option value="" disabled selected>Select Reference Standard</option>
+                      <option value="1180 Part-1">1180 Part-1</option>
+                      <option value="1180 Part-2">1180 Part-2</option>
+                      <option value="1180 Part-3">1180 Part-3</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Date of Receipt:</th>
+                  <td>
+                    <input id="date_of_receipt" name="date_of_receipt" [(ngModel)]="testReport.date_of_receipt" required type="date" class="form-control" placeholder="11-03-2025" style="width: 450px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Date of Testing:</th>
+                  <td>
+                    <input id="date_of_testing" name="date_of_testing" [(ngModel)]="testReport.date_of_testing" required type="date" class="form-control" placeholder="12-03-2025" style="width: 450px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Date of Issue:</th>
+                  <td>
+                    <input id="date_of_issue" name="date_of_issue" [(ngModel)]="testReport.date_of_issue" required type="date" class="form-control" placeholder="13-03-2025" style="width: 450px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Customer Name and Address:</th>
+                  <td>
+                    <select id="customer_name_and_address" name="customer_name_and_address" [(ngModel)]="testReport.customer_name_and_address" required class="form-select" style="width: 450px;">
+                      <option value="" disabled selected>Select Customer Name and Address</option>
+                      <option value="Area Store Barwaha">Area Store Barwaha</option>
+                      <option value="Area Store Depalpur">Area Store Depalpur</option>
+                      <option value="Area Store Indore">Area Store Indore</option>
+                      <option value="Area Store Khandwa">Area Store Khandwa</option>
+                      <option value="Area Store Khargone">Area Store Khargone</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Note -->
+        <div class="row mt-3">
+          <div class="col">
+            <div class="note" style="font-size: 0.85rem; line-height: 1.4;">
+              <p><strong>Note:</strong></p>
+              <ol>
+                <li>Testing Laboratory Indore is responsible for all information provided in the test report, except for information supplied by the customer, and this report relates only to the specific sample(s) received in satisfactory condition at the Testing Laboratory, MPPKVVCL, Indore.</li>
+                <li>This report cannot be reproduced in part under any circumstances; publication of this report requires prior permission from Testing Laboratory, MPPKVVCL, Indore.</li>
+                <li>Only the test asked for by the customer have been carried out.</li>
+                <li>In case of dispute, Indore will be the exclusive jurisdiction &amp; shall be construed as where the cause has arisen.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <!-- Test Details -->
+        <div class="row mt-3">
+          <div class="col">
+            <table class="table table-striped" style="font-size: 0.85rem;">
+              <thead>
+                <tr>
+                  <th>SerialNo.</th>
+                  <th>Clause No. &amp; Test Specification</th>
+                  <th>Particular of Test</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>As per Cl. No. 21.2 a of IS: 1180 (Part-I): 2014</td><td>Measurement of Winding Resistance</td></tr>
+                <tr><td>2</td><td>As per Cl. No. 21.2 e of IS: 1180 (Part-I): 2014</td><td>Measurement of Insulation Resistance</td></tr>
+                <tr><td>3</td><td>As per Cl. No. 21.2 b of IS: 1180 (Part-I): 2014</td><td>Measurement of Voltage Ratio</td></tr>
+                <tr><td>4</td><td>As per Cl. No. 21.2 b of IS: 1180 (Part-I): 2014</td><td>Checking Vector Relationship</td></tr>
+                <tr><td>5</td><td>As per Cl. No. 21.2 d of IS: 1180 (Part-I): 2014</td><td>Measurement of No Load Loss &amp; No Load Current</td></tr>
+                <tr><td>6</td><td>As per Cl. No. 21.2 c of IS: 1180 (Part-I): 2014</td><td>Measurement of Load Loss and Impedance Voltage</td></tr>
+                <tr><td>7</td><td>As per Cl. No. 6.8 of IS: 1180 (Part-I): 2014</td><td>Total Loss At 50 % Load</td></tr>
+                <tr><td>8</td><td>As per Cl. No. 6.8 of IS: 1180 (Part-I): 2014</td><td>Total Loss At 100 % Load</td></tr>
+                <tr><td>9</td><td>As per Cl. No. 21.2 f of IS: 1180 (Part-I): 2014</td><td>Induced Overvoltage Withstand Test</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Sample Remarks -->
+        <div class="row mt-3">
+          <div class="col">
+            <div style="font-size: 0.85rem; font-weight: bold;" class="d-flex align-items-center form-control">
+              <p class="mb-0">The samples conform to the guarantee requirement as per the above-mentioned tests except for serial numbers</p>
+              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width: 250px; border: none; box-shadow: none;" />
+            </div>
+          </div>
+        </div>
+        <!-- Signatures -->
+        <div class="signatures-container mt-3 d-flex justify-content-between">
+          <div class="signature-block" style="text-align:center; width: 48%;">
+            <p>TESTED BY</p>
+            <p style="margin: 0; font-weight: bold;">Navin Nigam</p>
+            <span class="signature-title" style="font-size: 0.8rem;">Testing Assistant</span>
+          </div>
+          <div class="signature-block" style="text-align:center; width: 48%;">
+            <p>Reviewed and Authorised by</p>
+            <p style="margin: 0; font-weight: bold;">Tarun Chouhan</p>
+            <span class="signature-title" style="font-size: 0.8rem;">Technical Manager</span>
+          </div>
+        </div>
+      </div>
+      <br>
+    <button type="button" (click)="nextStep()"  class="btn btn-primary" [disabled]="!testReportForm.form.valid">Next</button>
+  </div>
+
+  <!-- Step 2 -->
+  <div *ngIf="step === 2">
+          <h2 class="mt-4">Part 2: Test Report</h2>
+      <div class="container-fluid page mt-2">
+        <!-- Header -->
+        <div class="row">
+          <div class="col-md-12">
+            <table class="header-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+              <tr>
+                <td style="width: 50px;">
+                  <img src="assets/images/logo/wzlogo.png" alt="testing-lab-logo" class="img-fluid" width="50" height="50" />
+                </td>
+                <td style="text-align:center;">
+                  <h1 style="margin: 0; font-size: 1.5rem;">Madhya Pradesh Pashchim Kshetra Vidyut Vitaran Company Ltd</h1>
+                  <h2 style="margin: 0; font-size: 1.2rem;">TESTING LABORATORY INDORE</h2>
+                </td>
+                <td style="width: 50px;">
+                  <img src="assets/images/logo/wzlogo.png" alt="testing-lab-logo" class="img-fluid" width="50" height="50" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: center; font-size: 0.9rem; padding-top: 5px;">
+                  MPPKVVCL NEAR AREA STORE, POLOGROUND, PIN-452003 INDORE, (MP).<br />
+                  <a href="mailto:testinglabwzind@gmail.com">testinglabwzind@gmail.com</a> Ph. No. 0731-2997802
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- Test Report Continuation -->
+        <div class="row">
+          <div class="col-md-12">
+            <table style="font-size: 0.9rem; width: 100%;">
+              <tbody>
+                <tr>
+                  <th>Vector Group:</th>
+                  <td>
+                    <input id="vector_group" name="vector_group" [(ngModel)]="testReport.vector_group" required type="text" class="form-control" style="width: 450px;" placeholder="DYn11" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Rated Voltage &amp; Rated Current:</th>
+                  <td>
+                    <table style="width: 100%;">
+                      <tr>
+                        <th style="width: 100px;">HV(kV):</th>
+                        <td>
+                          <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control" (keyup.enter)="calculateHV()" placeholder="11" />
+                        </td>
+                        <th style="width: 100px;">LV(V):</th>
+                        <td>
+                          <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control" (keyup.enter)="calculateLV()" placeholder="0.433" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>HV:</th>
+                        <td>
+                          <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail" placeholder="1.312198194" />
+                        </td>
+                        <th>LV:</th>
+                        <td>
+                          <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail" placeholder="33.335289" />
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Voltage Ratio and Vector Group -->
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">1) MEASUREMENT OF VOLTAGE RATIO AND VECTOR GROUP &amp; POLARITY</h3>
+            <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Value</th>
+                  <th>Acceptance Limit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>a)1U-1V/2U-2N</th>
+                  <td><input id="value_1" name="value_1" [(ngModel)]="testReport.value_1" required type="text" class="form-control" style="width: 120px;" placeholder="44.092" /></td>
+                  <td rowspan="3"><input id="limit_1" name="limit_1" [(ngModel)]="testReport.limit_1" type="text" class="form-control" style="width: 130px; height: 130px;" placeholder="@0.5% limit" /></td>
+                </tr>
+                <tr>
+                  <th>b)1C-1W/2V2N</th>
+                  <td><input id="value_2" name="value_2" [(ngModel)]="testReport.value_2" required type="text" class="form-control" style="width: 120px;" placeholder="43.949" /></td>
+                </tr>
+                <tr>
+                  <th>c)1W-1U/2W-2N</th>
+                  <td><input id="value_3" name="value_3" [(ngModel)]="testReport.value_3" required type="text" class="form-control" style="width: 120px;" placeholder="43.951" /></td>
+                </tr>
+                <tr>
+                  <th><strong>Remarks:-</strong></th>
+                  <td colspan="2">
+                    <input id="sample_remarks2" name="sample_remarks2" [(ngModel)]="testReport.sample_remarks2" required type="text" class="form-control" placeholder="Complied and Vector group Dyn11 Found &amp; Confirmed." />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Winding Resistance Test -->
+        <div class="col-md-12 mt-3">
+          <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">2) Winding Resistance Test</h3>
+          <h4 style="font-size: 0.9rem; font-weight: bold; text-align: left;">HV (11000V) Winding Resistance in Ohms</h4>
+          <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Avg. Oil Temp. (°C)</th>
+                <th>1U-1V</th>
+                <th>1V-1W</th>
+                <th>1W-1U</th>
+                <th>Average Resist.</th>
+                <th>Phase Resist. @ 75°C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input id="avg_temp_hv" name="avg_temp_hv" [(ngModel)]="testReport.avg_temp_hv" required type="text" class="form-control" style="width: 120px;" placeholder="35.30" /></td>
+                <td><input id="resist_1" name="resist_1" [(ngModel)]="testReport.resist_1" required type="text" class="form-control" style="width: 120px;" placeholder="108.42" /></td>
+                <td><input id="resist_2" name="resist_2" [(ngModel)]="testReport.resist_2" required type="text" class="form-control" style="width: 120px;" placeholder="109.59" /></td>
+                <td><input id="resist_3" name="resist_3" [(ngModel)]="testReport.resist_3" required type="text" class="form-control" style="width: 120px;" placeholder="109.04" /></td>
+                <td><input id="avg_resist" name="avg_resist" [(ngModel)]="testReport.avg_resist" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="109.02" (keyup.enter)="calculateAvgResist()" /></td>
+                <td><input id="phase_resist_hv" name="phase_resist_hv" [(ngModel)]="testReport.phase_resist_hv" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="125.64" (keyup.enter)="calculatePhaseResist1()" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- LV Winding Resistance -->
+        <div class="col-md-12 mt-3">
+          <h4 style="font-size: 0.9rem; font-weight: bold; text-align: left;">LV (433V) Winding Resistance in milliOhms</h4>
+          <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Avg. Oil Temp. (°C)</th>
+                <th>1U-1V</th>
+                <th>1V-1W</th>
+                <th>1W-1U</th>
+                <th>Average Resist.</th>
+                <th>Phase Resist. @ 75°C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input id="avg_temp_lv" name="avg_temp_lv" [(ngModel)]="testReport.avg_temp_lv" required type="text" class="form-control" style="width: 120px;" placeholder="35.30" /></td>
+                <td><input id="resist_lv_1" name="resist_lv_1" [(ngModel)]="testReport.resist_lv_1" required type="text" class="form-control" style="width: 120px;" placeholder="112.52" /></td>
+                <td><input id="resist_lv_2" name="resist_lv_2" [(ngModel)]="testReport.resist_lv_2" required type="text" class="form-control" style="width: 120px;" placeholder="114.28" /></td>
+                <td><input id="resist_lv_3" name="resist_lv_3" [(ngModel)]="testReport.resist_lv_3" required type="text" class="form-control" style="width: 120px;" placeholder="114.83" /></td>
+                <td><input id="avg_resist_lv" name="avg_resist_lv" [(ngModel)]="testReport.avg_resist_lv" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="113.88" (keyup.enter)="calculateAvgResistLv()" /></td>
+                <td><input id="phase_resist_lv" name="phase_resist_lv" [(ngModel)]="testReport.phase_resist_lv" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="131.24" (keyup.enter)="calculatePhaseResistLv2()" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Insulation Resistance Test -->
+        <div class="col-md-12 mt-3">
+          <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">3) Measurement of Insulation Resistance Test</h3>
+          <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time (Sec.)</th>
+                <th>Temp. (°C)</th>
+                <th>HV/E (MΩ) 1kV</th>
+                <th>LV/E (MΩ) 0.5kV</th>
+                <th>HV/LV (MΩ) 1kV</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input id="time" name="time" [(ngModel)]="testReport.time" required type="text" class="form-control" style="width: 120px;" placeholder="60 sec" /></td>
+                <td><input id="temp_ir" name="temp_ir" [(ngModel)]="testReport.temp_ir" required type="text" class="form-control" style="width: 120px;" placeholder="35.3" /></td>
+                <td><input id="hv_e" name="hv_e" [(ngModel)]="testReport.hv_e" required type="text" class="form-control" style="width: 120px;" placeholder="3000" /></td>
+                <td><input id="lv_e" name="lv_e" [(ngModel)]="testReport.lv_e" required type="text" class="form-control" style="width: 120px;" placeholder="2670" /></td>
+                <td><input id="hv_lv" name="hv_lv" [(ngModel)]="testReport.hv_lv" required type="text" class="form-control" style="width: 120px;" placeholder="4598" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- No Load Test -->
+        <div class="col-md-12 mt-3">
+          <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">4) No Load Test</h3>
+          <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Voltage (V)</th>
+                <th>Freq (Hz)</th>
+                <th>Current (amp)</th>
+                <th>Pm (w)</th>
+                <th>Pc (w)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input id="voltage_nl" name="voltage_nl" [(ngModel)]="testReport.voltage_nl" required type="text" class="form-control" style="width: 120px;" placeholder="433.02" /></td>
+                <td><input id="freq_nl" name="freq_nl" [(ngModel)]="testReport.freq_nl" required type="text" class="form-control" style="width: 120px;" placeholder="50.02" /></td>
+                <td><input id="current_nl" name="current_nl" [(ngModel)]="testReport.current_nl" required type="text" class="form-control" style="width: 120px;" placeholder="0.79" /></td>
+                <td><input id="pm_nl" name="pm_nl" [(ngModel)]="testReport.pm_nl" required type="text" class="form-control" style="width: 120px;" placeholder="113.39" /></td>
+                <td><input id="pc_nl" name="pc_nl" [(ngModel)]="testReport.pc_nl" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="113.39" (keyup.enter)="calculatenoload_testPCW()" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Load Loss Test -->
+        <div class="col-md-12 mt-3 mb-3">
+          <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">5) Load Loss Test</h3>
+          <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Load</th>
+                <th>Temp (°C)</th>
+                <th>Test Freq.</th>
+                <th>Meas. Volt [V]</th>
+                <th>Meas. Curr [A]</th>
+                <th>Pm [W]</th>
+                <th>Load Loss at 75°C [W]</th>
+                <th>% Z at 75°C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">50%</th>
+                <td><input id="temp_50" name="temp_50" [(ngModel)]="testReport.temp_50" required type="text" class="form-control" style="width: 120px;" placeholder="35.3" /></td>
+                <td><input id="freq_50" name="freq_50" [(ngModel)]="testReport.freq_50" required type="text" class="form-control" style="width: 120px;" placeholder="50.03" /></td>
+                <td><input id="volt_50" name="volt_50" [(ngModel)]="testReport.volt_50" required type="text" class="form-control" style="width: 120px;" placeholder="274.35" /></td>
+                <td><input id="curr_50" name="curr_50" [(ngModel)]="testReport.curr_50" required type="text" class="form-control" style="width: 120px;" placeholder="0.667" /></td>
+                <td><input id="pm_50" name="pm_50" [(ngModel)]="testReport.pm_50" required type="text" class="form-control" style="width: 120px;" placeholder="124.95" /></td>
+                <td><input id="load_loss_50" name="load_loss_50" [(ngModel)]="testReport.load_loss_50" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="138.05" (keyup.enter)="calculate_loadloss_test()" /></td>
+                <td><input id="percent_z_50" name="percent_z_50" [(ngModel)]="testReport.percent_z_50" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="2.46" (keyup.enter)="calculate_loadloss_test()" /></td>
+              </tr>
+              <tr>
+                <th scope="row">100%</th>
+                <td><input id="temp_100" name="temp_100" [(ngModel)]="testReport.temp_100" required type="text" class="form-control" style="width: 120px;" placeholder="35.3" /></td>
+                <td><input id="freq_100" name="freq_100" [(ngModel)]="testReport.freq_100" required type="text" class="form-control" style="width: 120px;" placeholder="50.05" /></td>
+                <td><input id="volt_100" name="volt_100" [(ngModel)]="testReport.volt_100" required type="text" class="form-control" style="width: 120px;" placeholder="541.77" /></td>
+                <td><input id="curr_100" name="curr_100" [(ngModel)]="testReport.curr_100" required type="text" class="form-control" style="width: 120px;" placeholder="1.31" /></td>
+                <td><input id="pm_100" name="pm_100" [(ngModel)]="testReport.pm_100" required type="text" class="form-control" style="width: 120px;" placeholder="486.63" /></td>
+                <td><input id="load_loss_100" name="load_loss_100" [(ngModel)]="testReport.load_loss_100" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="556.23" (keyup.enter)="calculate_loadloss_test()" /></td>
+                <td><input id="percent_z_100" name="percent_z_100" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="5.4" (keyup.enter)="calculate_loadloss_test()" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Test Results -->
+        <div class="col-md-12 mt-3">
+          <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Particulars of Test</th>
+                <th>Required</th>
+                <th>Obtained Values</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Impedance Voltage (%)</th>
+                <td>Values in ranges:- <strong>4.5 +/- 10%</strong></td>
+                <td><input id="obtained_1" name="obtained_1" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control" style="width: 250px;" placeholder="5.4" /></td>
+                <td><input id="remark_1" name="remark_1" [(ngModel)]="testReport.remark_1" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Not Complied" /></td>
+              </tr>
+              <tr>
+                <th>Total loss at 50%(W)</th>
+                <td><strong>218.5</strong></td>
+                <td><input id="obtained_2" name="obtained_2" [(ngModel)]="testReport.obtained_2" required type="text" class="form-control" style="width: 250px;" placeholder="541.77" /></td>
+                <td><input id="remark_2" name="remark_2" [(ngModel)]="testReport.remark_2" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Complied" /></td>
+              </tr>
+              <tr>
+                <th>Total loss at 100%(W)</th>
+                <td><strong>730</strong></td>
+                <td><input id="obtained_3" name="obtained_3" [(ngModel)]="testReport.obtained_3" required type="text" class="form-control" style="width: 250px;" placeholder="1082.54" /></td>
+                <td><input id="remark_3" name="remark_3" [(ngModel)]="testReport.remark_3" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Complied" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Induced Over Voltage and High Voltage Tests -->
+        <div class="col-md-12 mt-3 mb-4">
+          <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">6) Induced Over Voltage Test</h3>
+          <p>Applied 866 volts at 150 Hz on LV side, keeping HV side open for 40 seconds.</p>
+          <select id="remark_4" name="remark_4" [(ngModel)]="testReport.remark_4" required class="form-select" style="width: 250px;">
+            <option value="" disabled selected>Select Remarks</option>
+            <option value="Withstood">Withstood</option>
+            <option value="Not Withstood">Not Withstood</option>
+          </select>
+          <h3 style="font-size: 1rem; font-weight: bold; text-align: left; margin-top: 15px;">7) High Voltage Separate Source Withstand Test</h3>
+          <p>a) 28 kV was applied on HV side, keeping LV side shorted and earthed for 60 seconds.</p>
+          <p>b) 3 kV was applied on LV side, keeping HV side shorted and earthed for 60 seconds.</p>
+          <select id="remark_5" name="remark_5" [(ngModel)]="testReport.remark_5" required class="form-select" style="width: 250px;">
+            <option value="" disabled selected>Select Remarks</option>
+            <option value="Withstood">Withstood</option>
+            <option value="Not Withstood">Not Withstood</option>
+          </select>
+          <p style="margin-top: 10px;"><strong>Remark:</strong> As per RCA (MD/WZ/06/PUR/1620), a 15% tolerance is considered in the Load Loss Test for Level-1 (Old) and Level-2 (Old). For Non-Star (New Design), the %Z value is not considered in the decision rule, as per the meeting held with ACE Store, O/o MD, on 27.02.2023.</p>
+          <p><strong>Humidity (%):</strong> 34</p>
+          <p><strong>Ambient Temp (°C):</strong> 35.3</p>
+          <h6 style="font-size: 1rem; font-weight: bold; text-align: center; margin-top: 20px;">End of Report</h6>
+        </div>
+        <!-- Signatures -->
+        <div class="signatures-container d-flex justify-content-between mb-3">
+          <div class="signature-block" style="text-align:center; width: 48%;">
+            <p>TESTED BY</p>
+            <p style="margin: 0; font-weight: bold;">Navin Nigam</p>
+            <span class="signature-title" style="font-size: 0.8rem;">Testing Assistant</span>
+          </div>
+          <div class="signature-block" style="text-align:center; width: 48%;">
+            <p>Reviewed and Authorised by</p>
+            <p style="margin: 0; font-weight: bold;">Tarun Chouhan</p>
+            <span class="signature-title" style="font-size: 0.8rem;">Technical Manager</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <button type="submit" class="btn btn-primary" [disabled]="testReportForm.invalid" style="margin-left: 25px;">Submit</button>
+          </div>
+        </div>
+      </div>
+    <button type="button" (click)="previousStep()" class="btn btn-primary">Previous</button>
+    <!-- <button type="button" (click)="nextStep()" class="btn btn-danger" [disabled]="!testReportForm.form.valid">Next</button> -->
+  </div>
+
+    </form>
+  </div>
+</div>
+
+
+

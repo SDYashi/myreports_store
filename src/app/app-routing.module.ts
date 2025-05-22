@@ -8,11 +8,16 @@ import { StoreViewReportsComponent } from './store-view-reports/store-view-repor
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: StoreLoginComponent },
-  { path: 'store-home', component: StoreHomeComponent },
-  { path: 'store-generate-reports', component: StoreGenerateReportsComponent },
-  { path: 'store-view-reports', component: StoreViewReportsComponent },
-
-
+  {
+    path: 'store-home',
+    component: StoreHomeComponent,
+    children: [
+      { path: '', redirectTo: 'store-generate-reports', pathMatch: 'full' },
+      { path: 'store-generate-reports', component: StoreGenerateReportsComponent },
+      { path: 'store-view-reports', component: StoreViewReportsComponent }
+    ]
+  },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

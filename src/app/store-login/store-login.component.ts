@@ -18,11 +18,10 @@ export class StoreLoginComponent {
 
   onSubmit(form: any) {
     if (form.valid) {
-      alert(this.userinfor.username + ' ' + this.userinfor.password);
+      this.respose_msg = 'Processing...';
       this.storeService.getverifylogin(this.userinfor).subscribe({
         next: (response) => {                    
-             this.respose_msg = response.msg;
-             alert('Login successful');
+            this.respose_msg = response.msg;
             this.router.navigate(['/store-home']);
         },
         error: (error) => {

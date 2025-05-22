@@ -16,7 +16,8 @@
 
   .sidebar {
     width: 280px;
-    background-color: #0e3331;
+    /* background-color: #0e3331; */
+    background-image: linear-gradient(to right, #011f06, #024b2c);
     color: white;
     padding-top: 10px;
     height: 100vh; /* Full viewport height */
@@ -53,7 +54,7 @@
 
   .main-content {
     flex: 1; /* Fill remaining width */
-    padding: 40px;
+    padding: 10px;
     background-color: #fdfdfd;
     height: 100vh; /* Full height */
     overflow-y: auto; /* Scroll vertically within main-content */

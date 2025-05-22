@@ -1,1 +1,55 @@
-<p>store-view-reports works!</p>
+<div class="container-fluid mt-2">
+  <div class="card shadow">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h5 class="mb-0"> Search Reports by Date Range Filter</h5>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
+        <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
+      <!-- Date Range Filter Form -->
+      <h3></h3>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="startDate" class="form-label">Start Date:</label>
+          <input id="startDate" name="startDate" [(ngModel)]="dateRange.startDate" type="date" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+          <label for="endDate" class="form-label">End Date:</label>
+          <input id="endDate" name="endDate" [(ngModel)]="dateRange.endDate" type="date" class="form-control" required />
+        </div>
+        <div class="col-md-4 align-self-end">
+          <button type="button" class="btn btn-primary" (click)="filterReports()">Search Reports</button>
+        </div>
+      </div>
+    <hr>
+      <!-- Reports List -->
+      <table class="table table-bordered" *ngIf="filteredReports && filteredReports.length > 0">
+        <thead>
+          <tr>
+            <th>Sample Code</th>
+            <th>Serial No</th>
+            <th>Manufacturer</th>
+            <th>Date of Receipt</th>
+            <th>Date of Testing</th>
+            <th>Date of Issue</th>
+            <th>Customer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let report of filteredReports">
+            <td>{{ report.sample_code }}</td>
+            <td>{{ report.serial_no }}</td>
+            <td>{{ report.manufacturer }}</td>
+            <td>{{ report.date_of_receipt }}</td>
+            <td>{{ report.date_of_testing }}</td>
+            <td>{{ report.date_of_issue }}</td>
+            <td>{{ report.customer_name_and_address }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!filteredReports || filteredReports.length === 0">No reports found for the selected date range.</p>
+    </form>
+    </div>
+  </div>
+  <!-- <div *ngIf="msg" class="alert alert-info mt-3">{{ msg }}</div> -->
+</div>
+
