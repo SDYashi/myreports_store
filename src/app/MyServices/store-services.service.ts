@@ -25,7 +25,7 @@ export class StoreServicesService {
   addcustomername(customer_name_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_customer_name`, { customer_name_formdata}, this.httpOptions);
   }
-  getdtrcapacity(): Observable<any> {
+  getjobrating(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_dtr_capacity`, this.httpOptions);
   }
   gettestreport(): Observable<any> {
@@ -36,6 +36,10 @@ export class StoreServicesService {
   }
   getcustomername(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_customer_name`, this.httpOptions);
+  }
+  
+  getrefstandard(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_refstatandard`, this.httpOptions);
   }
 
 }

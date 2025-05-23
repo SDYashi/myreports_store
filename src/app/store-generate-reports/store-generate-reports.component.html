@@ -1,9 +1,18 @@
 <div id="printContainer" style="margin: auto;">
-  <div class="container-fluid">
-    <form #testReportForm="ngForm">
+  <div class="text-center">
+    <div class="spinner-border text-success" role="status" *ngIf="processing_tags">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="container-fluid" *ngIf="!processing_tags">
+  <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
   <!-- Step 1 -->
   <div *ngIf="step === 1">
-          <h2>Part 1: Test Report</h2>
+      <div class="card shadow mt-1">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h5 class="mb-0"> Part 1: Test Report</h5>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
       <div class="container-fluid page">
         <!-- Header -->
         <div class="row">
@@ -36,12 +45,6 @@
             <table class="table table-striped" style="font-size: 0.9rem;">
               <tbody>
                 <tr>
-                  <th scope="row" style="width: 200px;">Sample Code:</th>
-                  <td>
-                    <input id="sample_code" name="sample_code" [(ngModel)]="testReport.sample_code" required type="text" class="form-control" placeholder="TLI/RDTR/25/03/49" style="width: 450px;" />
-                  </td>
-                </tr>
-                <tr>
                   <th scope="row">Serial No:</th>
                   <td>
                     <input id="serial_no" name="serial_no" [(ngModel)]="testReport.serial_no" required type="text" class="form-control" placeholder="17-142-0102-2716" style="width: 450px;" />
@@ -58,22 +61,17 @@
                   <td>
                     <select id="job_rating" name="job_rating" [(ngModel)]="testReport.job_rating" required class="form-select" style="width: 450px;">
                       <option value="" disabled selected>Select Job Rating</option>
-                      <option value="25">25 KVA</option>
-                      <option value="100">100 KVA</option>
-                      <option value="200">200 KVA</option>
-                      <option value="500">500 KVA</option>
-                      <option value="1000">1000 KVA</option>
+                      <option *ngFor="let capacity of dtrCapacities" [value]="capacity.dtr_capacity">{{ capacity.dtr_capacity }} KVA</option>
                     </select>
                   </td>
+
                 </tr>
                 <tr>
                   <th scope="row">Reference Standard:</th>
                   <td>
                     <select id="reference_standard" name="reference_standard" [(ngModel)]="testReport.reference_standard" required class="form-select" style="width: 450px;">
                       <option value="" disabled selected>Select Reference Standard</option>
-                      <option value="1180 Part-1">1180 Part-1</option>
-                      <option value="1180 Part-2">1180 Part-2</option>
-                      <option value="1180 Part-3">1180 Part-3</option>
+                      <option *ngFor="let refstand of refStandards" [value]="refstand.ref_statandard">{{ refstand.ref_statandard }}</option>
                     </select>
                   </td>
                 </tr>
@@ -100,12 +98,8 @@
                   <td>
                     <select id="customer_name_and_address" name="customer_name_and_address" [(ngModel)]="testReport.customer_name_and_address" required class="form-select" style="width: 450px;">
                       <option value="" disabled selected>Select Customer Name and Address</option>
-                      <option value="Area Store Barwaha">Area Store Barwaha</option>
-                      <option value="Area Store Depalpur">Area Store Depalpur</option>
-                      <option value="Area Store Indore">Area Store Indore</option>
-                      <option value="Area Store Khandwa">Area Store Khandwa</option>
-                      <option value="Area Store Khargone">Area Store Khargone</option>
-                    </select>
+                       <option *ngFor="let customername of customerList" [value]="customername.customer_name">{{ customername.customer_name }}</option> 
+                      </select>
                   </td>
                 </tr>
               </tbody>
@@ -156,7 +150,7 @@
           <div class="col">
             <div style="font-size: 0.85rem; font-weight: bold;" class="d-flex align-items-center form-control">
               <p class="mb-0">The samples conform to the guarantee requirement as per the above-mentioned tests except for serial numbers</p>
-              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width: 250px; border: none; box-shadow: none;" />
+              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width: 350px;  box-shadow: none;" />
             </div>
           </div>
         </div>
@@ -177,10 +171,16 @@
       <br>
     <button type="button" (click)="nextStep()"  class="btn btn-primary" [disabled]="!testReportForm.form.valid">Next</button>
   </div>
+  </div>
+  </div>
 
   <!-- Step 2 -->
-  <div *ngIf="step === 2">
-          <h2 class="mt-4">Part 2: Test Report</h2>
+  <div *ngIf="step === 2">   
+       <div class="card shadow mt-1">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h5 class="mb-0"> Part 2: Test Report</h5>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
       <div class="container-fluid page mt-2">
         <!-- Header -->
         <div class="row">
@@ -225,21 +225,21 @@
                       <tr>
                         <th style="width: 100px;">HV(kV):</th>
                         <td>
-                          <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control" (keyup.enter)="calculateHV()" placeholder="11" />
+                          <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control"  placeholder="11" />
                         </td>
                         <th style="width: 100px;">LV(V):</th>
                         <td>
-                          <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control" (keyup.enter)="calculateLV()" placeholder="0.433" />
+                          <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control" placeholder="0.433" />
                         </td>
                       </tr>
                       <tr>
                         <th>HV:</th>
                         <td>
-                          <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail" placeholder="1.312198194" />
+                          <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail" (keyup.enter)="calculateHV()" placeholder="1.312198194" />
                         </td>
                         <th>LV:</th>
                         <td>
-                          <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail" placeholder="33.335289" />
+                          <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail"  (keyup.enter)="calculateLV()" placeholder="33.335289" />
                         </td>
                       </tr>
                     </table>
@@ -496,14 +496,15 @@
         </div>
         <div class="row mt-3">
           <div class="col">
-            <button type="submit" class="btn btn-primary" [disabled]="testReportForm.invalid" style="margin-left: 25px;">Submit</button>
+            <button type="submit" class="btn btn-primary"  style="margin-left: 25px;">Submit</button>
           </div>
         </div>
       </div>
-    <button type="button" (click)="previousStep()" class="btn btn-primary">Previous</button>
+    <button type="button" (click)="previousStep()" class="btn btn-danger">Previous</button>
     <!-- <button type="button" (click)="nextStep()" class="btn btn-danger" [disabled]="!testReportForm.form.valid">Next</button> -->
+     </div>
+     </div>
   </div>
-
     </form>
   </div>
 </div>

@@ -4,7 +4,7 @@
       <h5 class="mb-0"> Search Reports by Date Range Filter</h5>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
-        <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
+    <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
       <!-- Date Range Filter Form -->
       <h3></h3>
       <div class="row mb-3">
@@ -24,7 +24,8 @@
       <!-- Reports List -->
       <table class="table table-bordered" *ngIf="filteredReports && filteredReports.length > 0">
         <thead>
-          <tr>
+          <tr class="text-center table-primary">
+            <th>S.No.</th>
             <th>Sample Code</th>
             <th>Serial No</th>
             <th>Manufacturer</th>
@@ -35,7 +36,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let report of filteredReports">
+          <tr *ngFor="let report of filteredReports; let i = index">
+            <td>{{ i + 1 }}</td>
             <td>{{ report.sample_code }}</td>
             <td>{{ report.serial_no }}</td>
             <td>{{ report.manufacturer }}</td>

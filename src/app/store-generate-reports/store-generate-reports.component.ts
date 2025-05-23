@@ -7,10 +7,9 @@ import { StoreServicesService } from '../MyServices/store-services.service';
   styleUrls: ['./store-generate-reports.component.css']
 })
 export class StoreGenerateReportsComponent {
-
+processing_tags=false; 
 
   testReport = {
-    sample_code: '',
     serial_no: '',
     manufacturer: '',
     job_rating: '',
@@ -78,9 +77,66 @@ export class StoreGenerateReportsComponent {
     remark_4: '',
     remark_5: ''
   };
+  dtrCapacities: any[] = [];
+  refStandards: any[] = [];
+  customerList: any[] = [];
+
+  ngOnInit(): void {
+    // this.getsamplecodelist();
+    this.getjobrating();
+    this.getrefrestandardlist();
+    this.getregisteredcustomer();
+  }
+  getregisteredcustomer(){
+    this.storeServices.getcustomername().subscribe({
+      next: (data) => {
+        this.customerList = data;
+      },
+      error: (err) => {
+        this.testReport.customer_name_and_address = err;
+        console.log(err);
+      }
+    });
+  }
+  getrefrestandardlist(){
+    this.storeServices.getrefstandard().subscribe({
+      next: (data) => {
+        this.refStandards = data;
+      },
+      error: (err) => {
+        this.testReport.reference_standard = err;
+        console.log(err);
+      }
+    });
+  }
+  getjobrating(){
+    this.storeServices.getjobrating().subscribe({
+      next: (data) => {
+        this.dtrCapacities = data;
+      },
+      error: (err) => {
+        this.testReport.job_rating = err;
+        console.log(err);
+      }
+    });
+  }
+ 
+  // getsamplecodelist() {
+  //   this.storeServices.getsamplecode().subscribe({
+  //     next: (data) => {
+  //       this.testReport.sample_code = data.samplecode;
+  //     },
+  //     error: (err) => {
+  //       this.testReport.sample_code = err;
+  //       console.log(err);
+  //     }
+  //   });
+  // }
+
+
 
   constructor(private storeServices: StoreServicesService) { }
- step = 1;
+  step = 1;
 
   nextStep() {
     if (this.step < 2) this.step++;
@@ -92,12 +148,91 @@ export class StoreGenerateReportsComponent {
 
   onSubmit(form: any) {
     if (form.valid) {
+      this.processing_tags = true;  
+      this.storeServices.adddtestreportdata(this.testReport).subscribe({
+        next: (response) => {
+             this.processing_tags = false;      
+          alert(response.msg);
+          this.formreset();
+        },
+        error: (error) => {
+          alert(error.error);
+          this.processing_tags = false;  
+        }
+      });
+   
       this.step = 1;
-      console.log('Form Submitted:', this.testReport);
-      // Add your submission logic here
-    } else {
-      console.log('Form is invalid');
-    }
+    } 
+  }
+  formreset() {
+    this.testReport = {
+    serial_no: '',
+    manufacturer: '',
+    job_rating: '',
+    reference_standard: '',
+    date_of_receipt: '',
+    date_of_testing: '',
+    date_of_issue: '',
+    customer_name_and_address: '',
+    sample_remarks1: '',
+    vector_group: '',
+    hv_kv: '',
+    lv_v: '',
+    hv: '',
+    lv: '',
+    value_1: '',
+    value_2: '',
+    value_3: '',
+    limit_1: '',
+    sample_remarks2: '',
+    avg_temp_hv: '',
+    resist_1: '',
+    resist_2: '',
+    resist_3: '',
+    avg_resist: '',
+    phase_resist_hv: '',
+    avg_temp_lv: '',
+    resist_lv_1: '',
+    resist_lv_2: '',
+    resist_lv_3: '',
+    avg_resist_lv: '',
+    phase_resist_lv: '',
+    time: '',
+    temp_ir: '',
+    hv_e: '',
+    lv_e: '',
+    hv_lv: '',
+    voltage_nl: '',
+    freq_nl: '',
+    current_nl: '',
+    pm_nl: '',
+    pc_nl: '',
+    temp_50: '',
+    freq_50: '',
+    volt_50: '',
+    curr_50: '',
+    pm_50: '',
+    load_loss_50: '',
+    percent_z_50: '',
+    temp_100: '',
+    freq_100: '',
+    volt_100: '',
+    curr_100: '',
+    pm_100: '',
+    load_loss_100: '',
+    percent_z_100: '',
+    required_1: '',
+    obtained_1: '',
+    remark_1: '',
+    required_2: '',
+    obtained_2: '',
+    remark_2: '',
+    required_3: '',
+    obtained_3: '',
+    remark_3: '',
+    remark_4: '',
+    remark_5: ''
+  };
   }
 
   calculateHV() {
@@ -288,7 +423,7 @@ export class StoreGenerateReportsComponent {
     const obtained3 = Number(this.testReport.obtained_3);
 
     if (!isNaN(percentZ100)) {
-      if (percentZ100 > 4.05 && percentZ100 < 4.95) { // 4.5 ± 10%
+      if (percentZ100 > 4.05 && percentZ100 < 4.95) { 
         this.testReport.remark_1 = "Complied";
       } else {
         this.testReport.remark_1 = "Not Complied";
@@ -304,17 +439,6 @@ export class StoreGenerateReportsComponent {
     }
   }
 
-  getsamplecodelist() {
-    this.storeServices.getsamplecode().subscribe({
-      next: (data) => {
-        this.testReport.sample_code = data;
-      },
-      error: (err) => {
-        this.testReport.sample_code = err;
-        console.log(err);
-      }
-    });
-  }
 
 }
 
