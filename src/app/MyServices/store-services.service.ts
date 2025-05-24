@@ -9,37 +9,43 @@ export class StoreServicesService {
   private readonly baseUrl = '/apis';
   constructor(private http: HttpClient) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+  //   })
+  // };
 
   getverifylogin(userinfor: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/login`, { userinfor }, this.httpOptions);
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/login`, { userinfor });
   }
   adddtestreportdata(test_report_formdata: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_testreport`, { test_report_formdata}, this.httpOptions);
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_testreport`, { test_report_formdata});
   }
   adddtrcapacity(dtr_capacity_formdata: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_dtr_capacity`, { dtr_capacity_formdata}, this.httpOptions);
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_dtr_capacity`, { dtr_capacity_formdata});
   }
   addcustomername(customer_name_formdata: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_customer_name`, { customer_name_formdata}, this.httpOptions);
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_customer_name`, { customer_name_formdata});
   }
   getjobrating(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_dtr_capacity`, this.httpOptions);
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_dtr_capacity`);
   }
   gettestreport(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_testreport`, this.httpOptions);
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_testreport`);
   }
   getsamplecode(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_samplecode`, this.httpOptions);
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_samplecode`);
   }
   getcustomername(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_customer_name`, this.httpOptions);
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_customer_name`);
   }
   
   getrefstandard(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_refstatandard`, this.httpOptions);
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_refstatandard`);
+  }
+  getuserprofile(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_tester_reviewer_name`);
   }
 
 }

@@ -3,7 +3,11 @@
     <div class="spinner-border text-success" role="status" *ngIf="processing_tags">
       <span class="sr-only">Loading...</span>
     </div>
+    <div class="text-center" *ngIf="processing_tags">
+    <p>{{ processing_msgs }}</p>
   </div>
+  </div>
+
   <div class="container-fluid" *ngIf="!processing_tags">
   <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
   <!-- Step 1 -->
@@ -158,12 +162,12 @@
         <div class="signatures-container mt-3 d-flex justify-content-between">
           <div class="signature-block" style="text-align:center; width: 48%;">
             <p>TESTED BY</p>
-            <p style="margin: 0; font-weight: bold;">Navin Nigam</p>
+            <p style="margin: 0; font-weight: bold;">{{tester_reviewer.tester}}</p>
             <span class="signature-title" style="font-size: 0.8rem;">Testing Assistant</span>
           </div>
           <div class="signature-block" style="text-align:center; width: 48%;">
             <p>Reviewed and Authorised by</p>
-            <p style="margin: 0; font-weight: bold;">Tarun Chouhan</p>
+            <p style="margin: 0; font-weight: bold;">{{tester_reviewer.reviewer}}</p>
             <span class="signature-title" style="font-size: 0.8rem;">Technical Manager</span>
           </div>
         </div>

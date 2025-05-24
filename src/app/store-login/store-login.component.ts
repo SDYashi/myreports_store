@@ -20,13 +20,13 @@ export class StoreLoginComponent {
     if (form.valid) {
       this.respose_msg = 'Processing...';
       this.storeService.getverifylogin(this.userinfor).subscribe({
-        next: (response) => {                    
-            this.respose_msg = response.msg;
+        next: (response) => { 
+            localStorage.setItem('access_token', response.access_token);
             this.router.navigate(['/store-home']);
         },
         error: (error) => {
-            this.respose_msg = error.msg;
-          alert('Error: ' + error);
+            this.respose_msg = error?.msg || 'Internal Server Error,          Please try again';
+          // alert('Error: ' + this.respose_msg);
         }
       });      
     

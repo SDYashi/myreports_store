@@ -9,8 +9,9 @@ import { StoreViewReportsComponent } from './store-view-reports/store-view-repor
 import { StoreHomeComponent } from './store-home/store-home.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MyinterceptorInterceptor } from './MyServices/myinterceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,14 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyinterceptorInterceptor,
+      multi: true
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

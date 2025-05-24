@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { StoreServicesService } from '../MyServices/store-services.service';
-
+interface UserProfile {
+     reviewer: string;
+     tester: string;
+   }
+   
 @Component({
   selector: 'app-store-generate-reports',
   templateUrl: './store-generate-reports.component.html',
@@ -80,13 +84,29 @@ processing_tags=false;
   dtrCapacities: any[] = [];
   refStandards: any[] = [];
   customerList: any[] = [];
+  tester_reviewer!: UserProfile;
+  processing_msgs='';
 
   ngOnInit(): void {
     // this.getsamplecodelist();
     this.getjobrating();
     this.getrefrestandardlist();
     this.getregisteredcustomer();
+    this.getprofiles();
   }
+  
+  getprofiles(){
+    this.storeServices.getuserprofile().subscribe({
+      next: (data: UserProfile) => {
+        this.tester_reviewer = data;
+      },
+      error: (err) => {
+         this.tester_reviewer = err.error;
+        console.log(err);
+      }
+    });
+  }
+
   getregisteredcustomer(){
     this.storeServices.getcustomername().subscribe({
       next: (data) => {
@@ -151,12 +171,14 @@ processing_tags=false;
       this.processing_tags = true;  
       this.storeServices.adddtestreportdata(this.testReport).subscribe({
         next: (response) => {
-             this.processing_tags = false;      
-          alert(response.msg);
+          this.processing_tags = false;      
+          this.processing_msgs = response.msg + 'Sample Code:' + response.samplecode;  
+          alert(this.processing_msgs);
           this.formreset();
         },
         error: (error) => {
-          alert(error.error);
+           this.processing_msgs = error.error;  
+            alert(this.processing_msgs);
           this.processing_tags = false;  
         }
       });

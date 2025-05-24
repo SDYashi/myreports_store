@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreServicesService } from '../MyServices/store-services.service';
 interface TestReport {
-  sample_code: string;
+  samplecode: string;
   serial_no: string;
   manufacturer: string;
   date_of_receipt: string; // Dates stored as string 'YYYY-MM-DD'
