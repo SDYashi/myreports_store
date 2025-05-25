@@ -13,6 +13,8 @@ logout(){
   this.router.navigate(['/login']);
 }
 
+
+
 toggleSidebar(): void {
     const sidebar = document.getElementById('sidebar') as HTMLElement | null;
     const mainContent = document.getElementById('main-content') as HTMLElement | null;

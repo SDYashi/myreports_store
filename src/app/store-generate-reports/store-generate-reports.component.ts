@@ -280,7 +280,7 @@ processing_tags=false;
     const avgResist = Number(this.testReport.avg_resist);
     const avgTempHV = Number(this.testReport.avg_temp_hv);
     if (!isNaN(avgResist) && !isNaN(avgTempHV)) {
-      this.testReport.phase_resist_hv = String(avgResist * ((225 + 75) / (225 + avgTempHV)));
+      this.testReport.phase_resist_hv = String((avgResist * ((225 + 75) / (225 + avgTempHV))).toFixed(2));
     }
   }
 
@@ -289,14 +289,14 @@ processing_tags=false;
     const r2 = Number(this.testReport.resist_lv_2);
     const r3 = Number(this.testReport.resist_lv_3);
     if (!isNaN(r1) && !isNaN(r2) && !isNaN(r3)) {
-      this.testReport.avg_resist_lv = String((r1 + r2 + r3) / 3);
+      this.testReport.avg_resist_lv = String(((r1 + r2 + r3) / 3).toFixed(2));
     }
   }
   calculatePhaseResistLv2() {
     const avgResistLv = Number(this.testReport.avg_resist_lv);
     const avgTempLV = Number(this.testReport.avg_temp_lv);
     if (!isNaN(avgResistLv) && !isNaN(avgTempLV)) {
-      this.testReport.phase_resist_lv = String(avgResistLv * ((225 + 75) / (225 + avgTempLV)));
+      this.testReport.phase_resist_lv = String((avgResistLv * ((225 + 75) / (225 + avgTempLV))).toFixed(2));
     }
   }
 
@@ -304,7 +304,7 @@ processing_tags=false;
     const voltageNL = Number(this.testReport.voltage_nl);
     const pmNL = Number(this.testReport.pm_nl);
     if (!isNaN(voltageNL) && !isNaN(pmNL)) {
-      this.testReport.pc_nl = String(Math.sqrt(voltageNL ** 2 + pmNL ** 2));
+      this.testReport.pc_nl = String((Math.sqrt(voltageNL ** 2 + pmNL ** 2)).toFixed(2));
     }
   }
 

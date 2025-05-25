@@ -31,8 +31,8 @@ export class StoreServicesService {
   getjobrating(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_dtr_capacity`);
   }
-  gettestreport(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_testreport`);
+  gettestreport(start_date: string, end_date: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_testreport?start_date=${start_date}&end_date=${end_date}`);
   }
   getsamplecode(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_samplecode`);
@@ -46,6 +46,10 @@ export class StoreServicesService {
   }
   getuserprofile(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_tester_reviewer_name`);
+  }
+
+  generatePdf(sampleCode: string): Observable<Blob> {
+       return this.http.post(`${this.baseUrl}/ngbreports_api/v1/api/get_sample_code_pdf`, { samplecode: sampleCode }, { responseType: 'blob' });
   }
 
 }

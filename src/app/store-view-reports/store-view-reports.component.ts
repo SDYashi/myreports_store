@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreServicesService } from '../MyServices/store-services.service';
+import { HttpClient } from '@angular/common/http';
 interface TestReport {
   samplecode: string;
   serial_no: string;
@@ -22,57 +23,89 @@ export class StoreViewReportsComponent implements OnInit {
     startDate: '',
     endDate: ''
   };
-
+  testReport: any = {}; // Initialize your test report object
+  processing_tags: boolean = false; // For loading spinner
+  processing_msgs: string = ''; // For loading messages
+  step: number = 1; // For form steps
   allReports: TestReport[] = []; 
   filteredReports: TestReport[] = []; 
+  sampleCode: string = '';
 
-  constructor(private storeServices: StoreServicesService) { }
+  constructor(private storeServices: StoreServicesService, private http: HttpClient) { }
 
   ngOnInit(): void {
     // Fetch all reports data on component init
     this.fetchAllReports();
   }
 
-  fetchAllReports(): void {
-    // Replace with real service call to get all reports
-    this.storeServices.gettestreport().subscribe({
-      next: (data: TestReport[]) => {
-        this.allReports = data; 
-        this.filteredReports = this.allReports; 
-      },
-      error: (err) => {
-        console.error('Error fetching reports:', err);
-      }
-    });
-  }
-
-  filterReports(): void {
-    if (!this.dateRange.startDate || !this.dateRange.endDate) {
-      alert('Please select both start and end dates');
-      return;
-    }
-
-    const start = new Date(this.dateRange.startDate);
-    const end = new Date(this.dateRange.endDate);
-
-    if (start > end) {
-      alert('Start date cannot be after end date');
-      return;
-    }
-
-    this.filteredReports = this.allReports.filter(report => {
-      const receiptDate = new Date(report.date_of_receipt);
-      return receiptDate >= start && receiptDate <= end;
-    });
-  }
-
   onSubmit(form: any) {
     if (form.valid) {
-      console.log('Form Submitted:', this.dateRange);
-      // Add your submission logic here
+      this.filterReports();   
     } else {
       console.log('Form is invalid');
     }
   }
+
+fetchAllReports(): void {
+  // Fetch reports for the current month by default
+  const currentMonthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+  const currentMonthEnd = new Date();
+
+  this.storeServices.gettestreport(currentMonthStart.toISOString().split('T')[0], currentMonthEnd.toISOString().split('T')[0]).subscribe({
+    next: (data: TestReport[]) => {
+      this.allReports = data; 
+      this.filteredReports = this.allReports; 
+    },
+    error: (err) => {
+      console.error('Error fetching reports:', err);
+    }
+  });
+}
+
+filterReports(): void {
+  if (!this.dateRange.startDate || !this.dateRange.endDate) {
+    alert('Please select both start and end dates');
+    return;
+  }
+
+  const start = new Date(this.dateRange.startDate);
+  const end = new Date(this.dateRange.endDate);
+
+  if (start > end) {
+    alert('Start date cannot be after end date');
+    return;
+  }
+
+  // Call the API with the selected date range
+  this.storeServices.gettestreport(this.dateRange.startDate, this.dateRange.endDate).subscribe({
+    next: (data: TestReport[]) => {
+      this.filteredReports = data;
+    },
+    error: (err) => {
+      console.error('Error fetching filtered reports:', err);
+    }
+  });
+}
+
+  downloadPdf(sampleCode: string): void {
+    this.storeServices.generatePdf(sampleCode).subscribe({
+      next: (response: Blob) => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `TestReport-${sampleCode}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Error downloading PDF:', err);
+        alert('Failed to download PDF. Please try again.');
+      }
+    });
+  }
+
 }
 

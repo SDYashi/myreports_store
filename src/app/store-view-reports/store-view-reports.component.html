@@ -35,18 +35,23 @@
             <th>Customer</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let report of filteredReports; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ report.samplecode }}</td>
-            <td>{{ report.serial_no }}</td>
-            <td>{{ report.manufacturer }}</td>
-            <td>{{ report.date_of_receipt }}</td>
-            <td>{{ report.date_of_testing }}</td>
-            <td>{{ report.date_of_issue }}</td>
-            <td>{{ report.customer_name_and_address }}</td>
-          </tr>
-        </tbody>
+            <tbody>
+                <tr *ngFor="let report of filteredReports; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <a href="javascript:void(0)" (click)="downloadPdf(report.samplecode)">
+                      {{ report.samplecode }}
+                    </a>
+                  </td>
+                  <td>{{ report.serial_no }}</td>
+                  <td>{{ report.manufacturer }}</td>
+                  <td>{{ report.date_of_receipt }}</td>
+                  <td>{{ report.date_of_testing }}</td>
+                  <td>{{ report.date_of_issue }}</td>
+                  <td>{{ report.customer_name_and_address }}</td>
+                </tr>
+              </tbody>
+
       </table>
       <p *ngIf="!filteredReports || filteredReports.length === 0">No reports found for the selected date range.</p>
     </form>
