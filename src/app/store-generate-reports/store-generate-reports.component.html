@@ -16,35 +16,17 @@
     <div class="card-body" style="background-color: whitesmoke;">
       <div class="container-fluid page">
         <!-- Header -->
-        <div class="row">
-          <div class="col-md-12">
-            <table class="header-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-              <tr>
-                <td style="width: 50px;">
-                  <img src="assets/images/logo/wzlogo.png" alt="testing-lab-logo" class="img-fluid" width="50" height="50" />
-                </td>
-                <td style="text-align: center;">
-                  <h1 style="margin: 0; font-size: 1.5rem;">Madhya Pradesh Pashchim Kshetra Vidyut Vitaran Company Ltd</h1>
-                  <h2 style="margin: 0; font-size: 1.2rem;">TESTING LABORATORY INDORE</h2>
-                </td>
-                <td style="width: 50px;">
-                  <img src="assets/images/logo/wzlogo.png" alt="testing-lab-logo" class="img-fluid" width="50" height="50" />
-                </td>
-              </tr>
-              <tr>
-                <td colspan="3" style="text-align: center; font-size: 0.9rem; padding-top: 5px;">
-                  MPPKVVCL NEAR AREA STORE, POLOGROUND, PIN-452003 INDORE, (MP).<br />
-                  <a href="mailto:testinglabwzind@gmail.com">testinglabwzind@gmail.com</a> Ph. No. 0731-2997802
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
         <!-- Test Report Details -->
         <div class="row">
           <div class="col">
             <table class="table table-striped" style="font-size: 0.9rem;">
               <tbody>
+                <tr>
+                  <th scope="row">Template Version:</th>
+                  <td>
+                    <input id="template_version" name="template_version" [(ngModel)]="testReport.template_version" required type="text" class="form-control" placeholder="1.0" style="width: 450px;" readonly />
+                  </td>
+                </tr>
                 <tr>
                   <th scope="row">Serial No:</th>
                   <td>
@@ -150,24 +132,12 @@
         <div class="row mt-3">
           <div class="col">
             <div style="font-size: 0.85rem; font-weight: bold;" class="d-flex align-items-center form-control">
-              <p class="mb-0">The samples conform to the guarantee requirement as per the above-mentioned tests except for serial numbers</p>
-              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width: 350px;  box-shadow: none;" />
+              <p class="mb-0">The samples conform to the guarantee requirement as per the above-mentioned tests</p>
+              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width: 550px;  box-shadow: none;" />
             </div>
           </div>
         </div>
         <!-- Signatures -->
-        <div class="signatures-container mt-3 d-flex justify-content-between">
-          <div class="signature-block" style="text-align:center; width: 48%;">
-            <p>TESTED BY</p>
-            <p style="margin: 0; font-weight: bold;">{{tester_reviewer.tester}}</p>
-            <span class="signature-title" style="font-size: 0.8rem;">Testing Assistant</span>
-          </div>
-          <div class="signature-block" style="text-align:center; width: 48%;">
-            <p>Reviewed and Authorised by</p>
-            <p style="margin: 0; font-weight: bold;">{{tester_reviewer.reviewer}}</p>
-            <span class="signature-title" style="font-size: 0.8rem;">Technical Manager</span>
-          </div>
-        </div>
       </div>
       <br>
     <button type="button" (click)="nextStep()"  class="btn btn-primary" [disabled]="!testReportForm.form.valid">Next</button>
@@ -176,7 +146,7 @@
   </div>
 
   <!-- Step 2 -->
-  <div *ngIf="step === 2">   
+  <div *ngIf="step === 1">   
        <div class="card shadow mt-1">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
       <h5 class="mb-0"> Part 2: Test Report</h5>
@@ -184,7 +154,7 @@
     <div class="card-body" style="background-color: whitesmoke;">
       <div class="container-fluid page mt-2">
         <!-- Header -->
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-12">
             <table class="header-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
               <tr>
@@ -207,7 +177,7 @@
               </tr>
             </table>
           </div>
-        </div>
+        </div> -->
         <!-- Test Report Continuation -->
         <div class="row">
           <div class="col-md-12">
@@ -462,36 +432,51 @@
         </div>
         <!-- Induced Over Voltage and High Voltage Tests -->
         <div class="col-md-12 mt-3 mb-4">
-          <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">6) Induced Over Voltage Test</h3>
-          <p>Applied 866 volts at 150 Hz on LV side, keeping HV side open for 40 seconds.</p>
-          <select id="remark_4" name="remark_4" [(ngModel)]="testReport.remark_4" required class="form-select" style="width: 250px;">
-            <option value="" disabled selected>Select Remarks</option>
-            <option value="Withstood">Withstood</option>
-            <option value="Not Withstood">Not Withstood</option>
-          </select>
-          <h3 style="font-size: 1rem; font-weight: bold; text-align: left; margin-top: 15px;">7) High Voltage Separate Source Withstand Test</h3>
-          <p>a) 28 kV was applied on HV side, keeping LV side shorted and earthed for 60 seconds.</p>
-          <p>b) 3 kV was applied on LV side, keeping HV side shorted and earthed for 60 seconds.</p>
-          <select id="remark_5" name="remark_5" [(ngModel)]="testReport.remark_5" required class="form-select" style="width: 250px;">
-            <option value="" disabled selected>Select Remarks</option>
-            <option value="Withstood">Withstood</option>
-            <option value="Not Withstood">Not Withstood</option>
-          </select>
+          <div class="row">
+            <div class="col-md-6">
+            <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">6) Induced Over Voltage Test</h3>
+            <p>Applied 866 volts at 150 Hz on LV side, keeping HV side open for 40 seconds.</p>
+            <p>.</p>
+            <select id="remark_4" name="remark_4" [(ngModel)]="testReport.remark_4" required class="form-select" style="width: 250px;">
+              <option value="" disabled selected>Select Remarks</option>
+              <option value="Withstood">Withstood</option>
+              <option value="Not Withstood">Not Withstood</option>
+            </select>
+            </div>
+            <div class="col-md-6">
+              <h3 style="font-size: 1rem; font-weight: bold; text-align: left; margin-top: 15px;">7) High Voltage Separate Source Withstand Test</h3>
+              <p>a) 28 kV was applied on HV side, keeping LV side shorted and earthed for 60 seconds.</p>
+              <p>b) 3 kV was applied on LV side, keeping HV side shorted and earthed for 60 seconds.</p>
+              <select id="remark_5" name="remark_5" [(ngModel)]="testReport.remark_5" required class="form-select" style="width: 250px;">
+                <option value="" disabled selected>Select Remarks</option>
+                <option value="Withstood">Withstood</option>
+                <option value="Not Withstood">Not Withstood</option>
+              </select>
+            </div>
+          </div>
+          
+  
           <p style="margin-top: 10px;"><strong>Remark:</strong> As per RCA (MD/WZ/06/PUR/1620), a 15% tolerance is considered in the Load Loss Test for Level-1 (Old) and Level-2 (Old). For Non-Star (New Design), the %Z value is not considered in the decision rule, as per the meeting held with ACE Store, O/o MD, on 27.02.2023.</p>
-          <p><strong>Humidity (%):</strong> 34</p>
-          <p><strong>Ambient Temp (°C):</strong> 35.3</p>
-          <h6 style="font-size: 1rem; font-weight: bold; text-align: center; margin-top: 20px;">End of Report</h6>
+           <div class="row">
+            <div class="col-md-6">
+              <p><strong>Humidity (%):</strong> <input type="text" id="humidity" name="humidity" [(ngModel)]="testReport.humidity" required class="form-control" style="width: 120px;" placeholder="34" /></p>
+            </div>
+            <div class="col-md-6">
+             <p><strong>Ambient Temp (°C):</strong> <input type="text" id="ambient_temp" name="ambient_temp" [(ngModel)]="testReport.ambient_temp" required class="form-control" style="width: 120px;" placeholder="35.3" /></p>
+          </div>
+           </div>
+           <h6 style="font-size: 1rem; font-weight: bold; text-align: center; margin-top: 20px;">End of Report</h6>
         </div>
         <!-- Signatures -->
-        <div class="signatures-container d-flex justify-content-between mb-3">
-          <div class="signature-block" style="text-align:center; width: 48%;">
-            <p>TESTED BY</p>
-            <p style="margin: 0; font-weight: bold;">Navin Nigam</p>
+          <div class="signatures-container mt-3 d-flex justify-content-between">
+          <div class="signature-block">
+            <label>TESTED BY</label>
+            <input type="text" id="tester" name="tester" [(ngModel)]="testReport.tester" required class="form-control" style="width: 250px; margin-left: 30%;" readonly/>
             <span class="signature-title" style="font-size: 0.8rem;">Testing Assistant</span>
           </div>
           <div class="signature-block" style="text-align:center; width: 48%;">
             <p>Reviewed and Authorised by</p>
-            <p style="margin: 0; font-weight: bold;">Tarun Chouhan</p>
+            <input type="text" id="reviewer" name="reviewer" [(ngModel)]="testReport.reviewer" required class="form-control" style="width: 250px;margin-left: 32%;" readonly/>
             <span class="signature-title" style="font-size: 0.8rem;">Technical Manager</span>
           </div>
         </div>
@@ -501,6 +486,7 @@
           </div>
         </div>
       </div>
+      <br>
     <button type="button" (click)="previousStep()" class="btn btn-danger">Previous</button>
     <!-- <button type="button" (click)="nextStep()" class="btn btn-danger" [disabled]="!testReportForm.form.valid">Next</button> -->
      </div>

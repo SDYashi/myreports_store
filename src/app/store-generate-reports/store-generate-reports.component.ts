@@ -14,6 +14,7 @@ export class StoreGenerateReportsComponent {
 processing_tags=false; 
 
   testReport = {
+    template_version: 'V1',
     serial_no: '',
     manufacturer: '',
     job_rating: '',
@@ -79,7 +80,11 @@ processing_tags=false;
     obtained_3: '',
     remark_3: '',
     remark_4: '',
-    remark_5: ''
+    remark_5: '',
+    tester: '',
+    reviewer: '',
+    humidity: '',
+    ambient_temp: '',
   };
   dtrCapacities: any[] = [];
   refStandards: any[] = [];
@@ -98,7 +103,8 @@ processing_tags=false;
   getprofiles(){
     this.storeServices.getuserprofile().subscribe({
       next: (data: UserProfile) => {
-        this.tester_reviewer = data;
+        this.testReport.tester = data.tester;
+        this.testReport.reviewer = data.reviewer;
       },
       error: (err) => {
          this.tester_reviewer = err.error;
@@ -141,19 +147,6 @@ processing_tags=false;
     });
   }
  
-  // getsamplecodelist() {
-  //   this.storeServices.getsamplecode().subscribe({
-  //     next: (data) => {
-  //       this.testReport.sample_code = data.samplecode;
-  //     },
-  //     error: (err) => {
-  //       this.testReport.sample_code = err;
-  //       console.log(err);
-  //     }
-  //   });
-  // }
-
-
 
   constructor(private storeServices: StoreServicesService) { }
   step = 1;
@@ -188,6 +181,7 @@ processing_tags=false;
   }
   formreset() {
     this.testReport = {
+    template_version: 'V1',
     serial_no: '',
     manufacturer: '',
     job_rating: '',
@@ -253,7 +247,11 @@ processing_tags=false;
     obtained_3: '',
     remark_3: '',
     remark_4: '',
-    remark_5: ''
+    remark_5: '',
+    tester: '',
+    reviewer: '',
+    humidity: '',
+    ambient_temp: '',
   };
   }
 

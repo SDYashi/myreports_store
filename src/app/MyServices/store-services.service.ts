@@ -28,6 +28,12 @@ export class StoreServicesService {
   addcustomername(customer_name_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_customer_name`, { customer_name_formdata});
   }
+  addrefstandard(ref_standard_formdata: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_ref_statandard`, { ref_standard_formdata});
+  }
+  addjobrating(job_rating_formdata: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_dtr_capacity`, { job_rating_formdata});
+  }
   getjobrating(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_dtr_capacity`);
   }
@@ -47,9 +53,16 @@ export class StoreServicesService {
   getuserprofile(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_tester_reviewer_name`);
   }
+  getloginuserprofile(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_userprofile`);
+  }
 
   generatePdf(sampleCode: string): Observable<Blob> {
        return this.http.post(`${this.baseUrl}/ngbreports_api/v1/api/get_sample_code_pdf`, { samplecode: sampleCode }, { responseType: 'blob' });
+  }
+
+  edituserprofile(user_profile_formdata: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/edit_userprofile`, { user_profile_formdata});
   }
 
 }
