@@ -14,9 +14,9 @@ import { CommonModule } from '@angular/common';
 import { MyinterceptorInterceptor } from './MyServices/myinterceptor.interceptor';
 import { StoreEditReportsComponent } from './store-edit-reports/store-edit-reports.component';
 import { StoreEditUserProfileComponent } from './store-edit-user-profile/store-edit-user-profile.component';
-import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 import { StoreAddCustomerNameAddrsComponent } from './store-add-customer-name-addrs/store-add-customer-name-addrs.component';
 import { StoreAddJobRatingComponent } from './store-add-job-rating/store-add-job-rating.component';
+import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { StoreAddJobRatingComponent } from './store-add-job-rating/store-add-job
     StoreHomeComponent,
     StoreEditReportsComponent,
     StoreEditUserProfileComponent,
-    StoreAddRefStandaredsComponent,
     StoreAddCustomerNameAddrsComponent,
-    StoreAddJobRatingComponent
+    StoreAddJobRatingComponent,
+    StoreAddRefStandaredsComponent
   ],
   imports: [
     BrowserModule,

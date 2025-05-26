@@ -271,7 +271,7 @@ processing_tags=false;
     const r2 = Number(this.testReport.resist_2);
     const r3 = Number(this.testReport.resist_3);
     if (!isNaN(r1) && !isNaN(r2) && !isNaN(r3)) {
-      this.testReport.avg_resist = String((r1 + r2 + r3) / 3);
+      this.testReport.avg_resist = String(((r1 + r2 + r3) / 3).toFixed(2));
     }
   }
   calculatePhaseResist1() {

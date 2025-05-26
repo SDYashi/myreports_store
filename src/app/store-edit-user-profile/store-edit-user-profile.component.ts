@@ -20,6 +20,7 @@ export class StoreEditUserProfileComponent implements OnInit {
     this.storeServices.getloginuserprofile().subscribe({
       next: (response) => {
         this.userProfile = response;
+           
       },
       error: (error) => {
         this.responseMessage = error.error;

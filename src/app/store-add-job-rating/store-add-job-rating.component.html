@@ -4,21 +4,20 @@
       <h5 class="mb-0"> Add Job Rating</h5>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
-
-  <div class="row justify-content-center">
-    <div class=" col-md-6">
-      <form (ngSubmit)="addDtrCapacity()" style="background-color: #f8f9fa; border-radius: 5px;">
-        <div class="form-group">
-          <label for="dtr_capacity" class="form-label"><strong>DTR Capacity:</strong></label>
-          <input type="text" class="form-control" [(ngModel)]="dtr_capacity" name="dtr_capacity" required>
-        </div>
-      </form>
-    </div>
-     <div class="col-md-6">
-      <label for="" class="form-label">.</label>
-        <button type="submit" class="btn btn-primary w-100">Add DTR Capacity</button></div>
-  </div>
+          <form #dtrcapacityForm="ngForm" (ngSubmit)="onSubmit(dtrcapacityForm)">
+            <div class="row">
+              <div class="col-6">
+            <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="dtrcapacity.dtr_capacity" name="dtr_capacity" placeholder="Enter DTR Capacity" required>
+            </div>
+              </div>
+              <div class="col-4">
+           <div class="form-group">
+            <button type="submit" class="btn btn-primary w-100">Add Reference Capacity</button>
+           </div>                
+              </div>
+            </div>
+          </form>
     </div>
   </div>
 </div>
-

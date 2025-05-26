@@ -7,20 +7,25 @@ import { StoreServicesService } from '../MyServices/store-services.service';
   templateUrl: './store-add-job-rating.component.html',
   styleUrls: ['./store-add-job-rating.component.css']
 })
-export class StoreAddJobRatingComponent {
-  dtr_capacity: string ='';
-  responseMessage: string='';
+export class StoreAddJobRatingComponent { 
+  responseMessage: string = '';
+  dtrcapacity:any = { dtr_capacity: '' } ;
   constructor(private http: HttpClient, private storeServices: StoreServicesService) { }
-  addDtrCapacity(): void {
-     this.storeServices.adddtrcapacity(this.dtr_capacity).subscribe({
-       next: (response) => {
-         this.responseMessage = response.msg;
-         alert(this.responseMessage);
-       },
-       error: (error) => {
-         this.responseMessage = error.error;
-         alert(this.responseMessage);
-       }
-     })
+  onSubmit(form: any): void {
+    if (form.valid) {
+      this.storeServices.adddtrcapacity(this.dtrcapacity).subscribe({
+        next: (response) => {
+          this.responseMessage = response.msg;
+          alert(this.responseMessage);
+          this.dtrcapacity='';
+        },
+        error: (error) => {
+          this.responseMessage = error.error;
+          alert(this.responseMessage);
+        }
+      });
+    } else {
+      alert('Please fill in the required fields.');
+    }
   }
 }

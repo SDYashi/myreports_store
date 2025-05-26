@@ -8,22 +8,26 @@ import { StoreServicesService } from '../MyServices/store-services.service';
   styleUrls: ['./store-add-customer-name-addrs.component.css']
 })
 export class StoreAddCustomerNameAddrsComponent {
-
-customer_name: string = '';
+  customer_name: string = '';
   responseMessage: string = '';
+
   constructor(private http: HttpClient, private storeServices: StoreServicesService) { }
+
   ngOnInit(): void {
+    // Any initialization logic can go here
   }
+
   addCustomerName(): void {
     this.storeServices.addcustomername(this.customer_name).subscribe({
       next: (response) => {
         this.responseMessage = response.msg;
         alert(this.responseMessage);
+        this.customer_name = ''; 
       },
       error: (error) => {
         this.responseMessage = error.error;
-        alert(this.responseMessage);
+        console.error('Error occurred:', error); 
       }
-    })
+    });
   }
 }

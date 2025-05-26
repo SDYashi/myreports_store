@@ -5,10 +5,10 @@ import { StoreHomeComponent } from './store-home/store-home.component';
 import { StoreGenerateReportsComponent } from './store-generate-reports/store-generate-reports.component';
 import { StoreViewReportsComponent } from './store-view-reports/store-view-reports.component';
 import { StoreEditReportsComponent } from './store-edit-reports/store-edit-reports.component';
-import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 import { StoreAddCustomerNameAddrsComponent } from './store-add-customer-name-addrs/store-add-customer-name-addrs.component';
 import { StoreAddJobRatingComponent } from './store-add-job-rating/store-add-job-rating.component';
 import { StoreEditUserProfileComponent } from './store-edit-user-profile/store-edit-user-profile.component';
+import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
