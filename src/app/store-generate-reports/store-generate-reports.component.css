@@ -158,3 +158,6 @@ a:hover {
   .highlight-fail, .highlight-fail1, .highlight-fail2 {
     background-color: #f8d7da;
   }
+  .highlight-readonly{
+    background-color: #bef5d3;
+  }

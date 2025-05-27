@@ -24,7 +24,7 @@
                 <tr>
                   <th scope="row">Template Version:</th>
                   <td>
-                    <input id="template_version" name="template_version" [(ngModel)]="testReport.template_version" required type="text" class="form-control" placeholder="1.0" style="width: 450px;" readonly />
+                    <input id="template_version" name="template_version" [(ngModel)]="testReport.template_version" required type="text" class="form-control highlight-readonly" placeholder="1.0" style="width: 450px;" readonly />
                   </td>
                 </tr>
                 <tr>
@@ -186,7 +186,7 @@
                 <tr>
                   <th>Vector Group:</th>
                   <td>
-                    <input id="vector_group" name="vector_group" [(ngModel)]="testReport.vector_group" required type="text" class="form-control" style="width: 450px;" placeholder="DYn11" />
+                    <input id="vector_group" name="vector_group" [(ngModel)]="testReport.vector_group" type="text" class="form-control highlight-readonly" style="width: 450px;" readonly />
                   </td>
                 </tr>
                 <tr>
@@ -196,11 +196,11 @@
                       <tr>
                         <th style="width: 100px;">HV(kV):</th>
                         <td>
-                          <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control"  placeholder="11" />
+                          <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control highlight-readonly"  placeholder="11" readonly />
                         </td>
                         <th style="width: 100px;">LV(V):</th>
                         <td>
-                          <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control" placeholder="0.433" />
+                          <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control highlight-readonly" placeholder="0.433" readonly />
                         </td>
                       </tr>
                       <tr>
@@ -236,7 +236,7 @@
                 <tr>
                   <th>a)1U-1V/2U-2N</th>
                   <td><input id="value_1" name="value_1" [(ngModel)]="testReport.value_1" required type="text" class="form-control" style="width: 120px;" placeholder="44.092" /></td>
-                  <td rowspan="3"><input id="limit_1" name="limit_1" [(ngModel)]="testReport.limit_1" type="text" class="form-control" style="width: 130px; height: 130px;" placeholder="@0.5% limit" /></td>
+                  <td rowspan="3" style="word-break: break-all; white-space: pre-wrap;">{{testReport.limit_1}}</td>
                 </tr>
                 <tr>
                   <th>b)1C-1W/2V2N</th>
