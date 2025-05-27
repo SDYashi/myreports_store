@@ -8,12 +8,12 @@
             <div class="row">
               <div class="col-6">
             <div class="form-group">
-              <input type="text" class="form-control" [(ngModel)]="dtrcapacity.dtr_capacity" name="dtr_capacity" placeholder="Enter DTR Capacity" required>
+              <input type="text" class="form-control" [(ngModel)]="dtrcapacity.dtr_capacity" name="dtr_capacity" placeholder="Enter Job Rating Capacity" required>
             </div>
               </div>
-              <div class="col-4">
+              <div class="col-2">
            <div class="form-group">
-            <button type="submit" class="btn btn-primary w-100">Add Reference Capacity</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!dtrcapacityForm.valid">Add Reference Capacity</button>
            </div>                
               </div>
             </div>

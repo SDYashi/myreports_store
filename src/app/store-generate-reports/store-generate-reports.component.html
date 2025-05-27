@@ -146,7 +146,7 @@
   </div>
 
   <!-- Step 2 -->
-  <div *ngIf="step === 2">   
+  <div *ngIf="step === 1">   
        <div class="card shadow mt-1">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
       <h5 class="mb-0"> Part 2: Test Report</h5>
@@ -339,7 +339,9 @@
           <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
             <thead>
               <tr>
-                <th>Voltage (V)</th>
+                <!-- <th>Voltage (V)</th> -->
+                 <th>Voltage (Vrms)</th>
+                 <th>Voltage (Means)</th>
                 <th>Freq (Hz)</th>
                 <th>Current (amp)</th>
                 <th>Pm (w)</th>
@@ -348,11 +350,13 @@
             </thead>
             <tbody>
               <tr>
-                <td><input id="voltage_nl" name="voltage_nl" [(ngModel)]="testReport.voltage_nl" required type="text" class="form-control" style="width: 120px;" placeholder="433.02" /></td>
-                <td><input id="freq_nl" name="freq_nl" [(ngModel)]="testReport.freq_nl" required type="text" class="form-control" style="width: 120px;" placeholder="50.02" /></td>
-                <td><input id="current_nl" name="current_nl" [(ngModel)]="testReport.current_nl" required type="text" class="form-control" style="width: 120px;" placeholder="0.79" /></td>
-                <td><input id="pm_nl" name="pm_nl" [(ngModel)]="testReport.pm_nl" required type="text" class="form-control" style="width: 120px;" placeholder="113.39" /></td>
-                <td><input id="pc_nl" name="pc_nl" [(ngModel)]="testReport.pc_nl" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="113.39" (keyup.enter)="calculatenoload_testPCW()" /></td>
+                <!-- <td><input id="voltage_nl" name="voltage_nl" [(ngModel)]="testReport.voltage_nl" required type="text" class="form-control" style="width: 80px;" placeholder="433.02" /></td> -->
+                <td><input id="voltage_vrms" name="voltage_vrms" [(ngModel)]="testReport.voltage_vrms" required type="text" class="form-control" style="width: 80px;" placeholder="433.02" /></td>
+                <td><input id="voltage_mean" name="voltage_mean" [(ngModel)]="testReport.voltage_mean" required type="text" class="form-control" style="width: 80px;" placeholder="433.02" /></td>
+                <td><input id="freq_nl" name="freq_nl" [(ngModel)]="testReport.freq_nl" required type="text" class="form-control" style="width: 80px;" placeholder="50.02" /></td>
+                <td><input id="current_nl" name="current_nl" [(ngModel)]="testReport.current_nl" required type="text" class="form-control" style="width: 80px;" placeholder="0.79" /></td>
+                <td><input id="pm_nl" name="pm_nl" [(ngModel)]="testReport.pm_nl" required type="text" class="form-control" style="width: 80px;" placeholder="113.39" /></td>
+                <td><input id="pc_nl" name="pc_nl" [(ngModel)]="testReport.pc_nl" required type="text" class="form-control highlight-fail2" style="width: 80px;" placeholder="113.39" (keyup.enter)="calculatenoload_testPCW()" /></td>
               </tr>
             </tbody>
           </table>
@@ -411,7 +415,7 @@
             <tbody>
               <tr>
                 <th>Impedance Voltage (%)</th>
-                <td>Values in ranges:- <strong>4.5 +/- 10%</strong></td>
+                <td><strong>4.5 +/- 10%</strong></td>
                 <td><input id="obtained_1" name="obtained_1" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control" style="width: 250px;" placeholder="5.4" /></td>
                 <td><input id="remark_1" name="remark_1" [(ngModel)]="testReport.remark_1" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Not Complied" /></td>
               </tr>

@@ -51,7 +51,9 @@ processing_tags=false;
     hv_e: '',
     lv_e: '',
     hv_lv: '',
-    voltage_nl: '',
+    // voltage_nl: '',
+    voltage_vrms: '',
+    voltage_mean: '',
     freq_nl: '',
     current_nl: '',
     pm_nl: '',
@@ -218,7 +220,9 @@ processing_tags=false;
     hv_e: '',
     lv_e: '',
     hv_lv: '',
-    voltage_nl: '',
+    // voltage_nl: '',
+    voltage_vrms: '',
+    voltage_mean: '',
     freq_nl: '',
     current_nl: '',
     pm_nl: '',
@@ -257,12 +261,12 @@ processing_tags=false;
 
   calculateHV() {
     if (this.testReport.hv_kv && this.testReport.job_rating) {
-      this.testReport.hv = String(Number(this.testReport.hv_kv) * Number(this.testReport.job_rating));
+      this.testReport.hv = String((Number(this.testReport.job_rating) / (1.732 * (Number(this.testReport.hv_kv)))).toFixed(2));
     }
   }
   calculateLV() {
     if (this.testReport.lv_v && this.testReport.job_rating) {
-      this.testReport.lv = String(Number(this.testReport.lv_v) * Number(this.testReport.job_rating));
+      this.testReport.lv = String((Number(this.testReport.job_rating) / (1.732 * Number(this.testReport.lv_v))).toFixed(2));
     }
   }
 
@@ -299,10 +303,11 @@ processing_tags=false;
   }
 
   calculatenoload_testPCW() {
-    const voltageNL = Number(this.testReport.voltage_nl);
+    const voltagerms = Number(this.testReport.voltage_vrms);
+    const voltagemeans = Number(this.testReport.voltage_mean);
     const pmNL = Number(this.testReport.pm_nl);
-    if (!isNaN(voltageNL) && !isNaN(pmNL)) {
-      this.testReport.pc_nl = String((Math.sqrt(voltageNL ** 2 + pmNL ** 2)).toFixed(2));
+    if (!isNaN(voltagerms) && !isNaN(voltagemeans) && !isNaN(pmNL)) {
+      this.testReport.pc_nl = String((pmNL /(0.5+(0.5*(Math.sqrt((voltagerms/voltagemeans)))))).toFixed(2)); 
     }
   }
 
@@ -443,7 +448,7 @@ processing_tags=false;
     const obtained3 = Number(this.testReport.obtained_3);
 
     if (!isNaN(percentZ100)) {
-      if (percentZ100 > 4.05 && percentZ100 < 4.95) { 
+      if (percentZ100 >= 4.05 && percentZ100 <= 4.95) { 
         this.testReport.remark_1 = "Complied";
       } else {
         this.testReport.remark_1 = "Not Complied";
