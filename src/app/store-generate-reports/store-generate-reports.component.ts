@@ -24,7 +24,7 @@ processing_tags=false;
     date_of_issue: '',
     customer_name_and_address: '',
     sample_remarks1: '',
-    vector_group: 'DYn11',
+    vector_group: 'Dyn11',
     hv_kv: '11',
     lv_v: '0.433',
     hv: '',
@@ -46,12 +46,11 @@ processing_tags=false;
     resist_lv_3: '',
     avg_resist_lv: '',
     phase_resist_lv: '',
-    time: '',
+    time: '60 Sec',
     temp_ir: '',
     hv_e: '',
     lv_e: '',
     hv_lv: '',
-    // voltage_nl: '',
     voltage_vrms: '',
     voltage_mean: '',
     freq_nl: '',
@@ -83,16 +82,20 @@ processing_tags=false;
     remark_3: '',
     remark_4: '',
     remark_5: '',
+    remark_6: ' As per RCA (MD/WZ/06/PUR/1620), a 15% tolerance is considered in the Load Loss Test for Level-1 (Old) and Level-2 (Old). For Non-Star (New Design), the %Z value is not considered in the decision rule, as per the meeting held with ACE Store, O/o MD, on 27.02.2023.',
     tester: '',
     reviewer: '',
     humidity: '',
     ambient_temp: '',
+    tester_designation: '',
+    reviewer_designation: ''
   };
   dtrCapacities: any[] = [];
   refStandards: any[] = [];
   customerList: any[] = [];
   tester_reviewer!: UserProfile;
   processing_msgs='';
+  designations: string[] = ['Tester', 'Supervisor', 'Manager'];
 
   ngOnInit(): void {
     // this.getsamplecodelist();
@@ -251,22 +254,34 @@ processing_tags=false;
     remark_3: '',
     remark_4: '',
     remark_5: '',
+    remark_6: '',
     tester: '',
     reviewer: '',
     humidity: '',
     ambient_temp: '',
+    tester_designation: '',
+    reviewer_designation: ''
   };
   }
 
+  
+
   createsample_remarks2() {
-    if( (Number(this.testReport.value_1) > 43.78 && Number(this.testReport.value_1) < 44.22)&&
-        (Number(this.testReport.value_2) > 43.78 && Number(this.testReport.value_2) < 44.22)&&
-        (Number(this.testReport.value_3) > 43.78 && Number(this.testReport.value_3) < 44.22))
-        {
-      this.testReport.sample_remarks2 = 'Complied and Vector group Dyn11 Found';
-    }
-    else{
-      this.testReport.sample_remarks2 = 'Not Complied and Vector group Dyn11 Found';
+    const value_1 = Number(this.testReport.value_1);
+    const value_2 = Number(this.testReport.value_2);
+    const value_3 = Number(this.testReport.value_3);
+    if ((value_1 > 43.78 && value_1 < 44.22) && (value_2 > 43.78 && value_2 < 44.22) && (value_3 > 43.78 && value_3 < 44.22)) {
+      this.testReport.sample_remarks2 = 'Complied and Vector group Dyn11 Found & Confirmed.';
+    } else {
+      this.testReport.sample_remarks2 = 'Not Complied and Vector group Dyn11 Found & Confirmed.';
+      const inputElements = document.querySelectorAll<HTMLInputElement>('#value_1, #value_2, #value_3');
+      inputElements.forEach(element => {
+        if ((element.id === 'value_1' && (value_1 < 43.78 || value_1 > 44.22)) ||
+          (element.id === 'value_2' && (value_2 < 43.78 || value_2 > 44.22)) ||
+          (element.id === 'value_3' && (value_3 < 43.78 || value_3 > 44.22))) {
+          element.style.backgroundColor = 'red';
+        }
+      });
     }
   }
 
@@ -355,6 +370,7 @@ processing_tags=false;
     if (!isNaN(obtained3)) {
       this.testReport.remark_3 = obtained3 < 730.25 ? "Complied" : "Not Complied";
     }
+    this.testReport.ambient_temp = this.testReport.avg_temp_hv;
   }
 
   calculate_loadloss_test() {
