@@ -26,14 +26,16 @@
                   <td>
                     <input id="template_version" name="template_version" [(ngModel)]="testReport.template_version" required type="text" class="form-control highlight-readonly" placeholder="1.0" style="width: 450px;" readonly />
                   </td>
+                   <th scope="row">ULR Number:</th>
+                  <td>
+                    <input id="ULR_No" name="ULR_No" [(ngModel)]="testReport.ULR_No" required type="text" class="form-control highlight-readonly" placeholder="Enter ULR_No" style="width: 450px;" readonly />
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Serial No:</th>
                   <td>
                     <input id="serial_no" name="serial_no" [(ngModel)]="testReport.serial_no" required type="text" class="form-control" placeholder="17-142-0102-2716" style="width: 450px;" />
                   </td>
-                </tr>
-                <tr>
                   <th scope="row">Manufacturer:</th>
                   <td>
                     <input id="manufacturer" name="manufacturer" [(ngModel)]="testReport.manufacturer" required type="text" class="form-control" placeholder="M/S ADHI ELECTRICALS" style="width: 450px;" />
@@ -47,9 +49,6 @@
                       <option *ngFor="let capacity of dtrCapacities" [value]="capacity.dtr_capacity">{{ capacity.dtr_capacity }} KVA</option>
                     </select>
                   </td>
-
-                </tr>
-                <tr>
                   <th scope="row">Reference Standard:</th>
                   <td>
                     <select id="reference_standard" name="reference_standard" [(ngModel)]="testReport.reference_standard" required class="form-select" style="width: 450px;">
@@ -63,8 +62,6 @@
                   <td>
                     <input id="date_of_receipt" name="date_of_receipt" [(ngModel)]="testReport.date_of_receipt" required type="date" class="form-control" placeholder="11-03-2025" style="width: 450px;" />
                   </td>
-                </tr>
-                <tr>
                   <th scope="row">Date of Testing:</th>
                   <td>
                     <input id="date_of_testing" name="date_of_testing" [(ngModel)]="testReport.date_of_testing" required type="date" class="form-control" placeholder="12-03-2025" style="width: 450px;" />
@@ -75,8 +72,6 @@
                   <td>
                     <input id="date_of_issue" name="date_of_issue" [(ngModel)]="testReport.date_of_issue" required type="date" class="form-control" placeholder="13-03-2025" style="width: 450px;" />
                   </td>
-                </tr>
-                <tr>
                   <th scope="row">Customer Name and Address:</th>
                   <td>
                     <select id="customer_name_and_address" name="customer_name_and_address" [(ngModel)]="testReport.customer_name_and_address" required class="form-select" style="width: 450px;">
@@ -140,7 +135,7 @@
         <!-- Signatures -->
       </div>
       <br>
-    <button type="button" (click)="nextStep()"  class="btn btn-primary" [disabled]="!testReportForm.form.valid">Next</button>
+    <button type="button" (click)="nextStep()"  class="btn btn-danger" [disabled]="!testReportForm.form.valid">Next</button>
   </div>
   </div>
   </div>
@@ -493,39 +488,31 @@
       </div>
         <!-- Signatures -->
         <table style="width: 100%; font-size: 0.85rem;" class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Signatory</th>
-              <th>Designation</th>
-              <th>Signature</th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
-              <td>Tested By:</td>
+              <th>Tested By:</th>
               <td>
-                <select id="tester_designation" name="tester_designation" [(ngModel)]="testReport.tester_designation" required class="form-select" style="width: 250px;">
+                <select id="tester_designation" name="tester_designation" [(ngModel)]="testReport.tester_designation" required class="form-select" >
                   <option value="" disabled selected>Select Designation</option>
                   <option *ngFor="let designation of designations" [value]="designation">{{ designation }}</option>
                 </select>
               </td>
-              <td><input type="text" id="tester" name="tester" [(ngModel)]="testReport.tester" required class="form-control" style="width: 250px;" readonly/></td>
-            </tr>
-            <tr>
-              <td>Reviewed and Authorised by:</td>
+              <th>Reviewed and Authorised by:</th>
               <td>
-                <select id="reviewer_designation" name="reviewer_designation" [(ngModel)]="testReport.reviewer_designation" required class="form-select" style="width: 250px;">
+                <select id="reviewer_designation" name="reviewer_designation" [(ngModel)]="testReport.reviewer_designation" required class="form-select">
                   <option value="" disabled selected>Select Designation</option>
                   <option *ngFor="let designation of designations" [value]="designation">{{ designation }}</option>
                 </select>
               </td>
-              <td><input type="text" id="reviewer" name="reviewer" [(ngModel)]="testReport.reviewer" required class="form-control" style="width: 250px;" readonly/></td>
-            </tr>
+               </tr>
           </tbody>
         </table>
         <div class="row mt-3">
           <div class="col">
-            <button type="submit" class="btn btn-primary"  style="margin-left: 25px;">Submit</button>
+            <button type="submit" class="btn btn-primary"  style="margin-left: 15px; width: 250px;">Validate & Submit</button>
+            <button type="button" (click)="formreset()" class="btn btn-secondary" style="margin-left: 10px;">Reset</button>
+
+
           </div>
         </div>
       </div>

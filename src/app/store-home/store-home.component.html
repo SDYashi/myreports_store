@@ -14,9 +14,6 @@
             <a routerLink="store-generate-reports" style="text-decoration: none; color: inherit;">Generate Report</a>
           </li>
           <li>
-            <a routerLink="store-edit-reports" style="text-decoration: none; color: inherit;">Edit Reports</a>
-          </li>
-          <li>
             <a routerLink="store-view-reports" style="text-decoration: none; color: inherit;">View Reports</a>
           </li>
           </ul>
@@ -39,7 +36,10 @@
             <a routerLink="store-add-customer-name-addrs" style="text-decoration: none; color: inherit;">Add Customers Info</a>
           </li>
           <li>
-            <a routerLink="store-edit-userprofiles" style="text-decoration: none; color: inherit;">Edit User Profiles</a>
+            <a routerLink="store-upload-wz-logo" style="text-decoration: none; color: inherit;">Upload WZ Logo</a>
+          </li>
+          <li>
+            <a routerLink="store-upload-lab-qr" style="text-decoration: none; color: inherit;">Upload LAB QR Code</a>
           </li>
           </ul>
         </div>
@@ -50,11 +50,14 @@
       <button class="btn btn-dark me-3" style="margin-left: 15px;" type="button" (click)="toggleSidebar()">
           <i class="fas fa-bars"></i>
       </button> 
-      <div class="d-flex ms-auto">
-        <button class="btn btn-dark" style="padding: 5px;" type="button" (click)="logout()">
-          <i class="fas fa-user-circle me-1"></i>
-          Logout
+      <div class="dropdown ms-auto">
+        <button class="btn btn-dark dropdown-toggle" style="padding: 5px;background-color: #047e59; background-image: linear-gradient(to right, #01140e, #05f390);" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle me-1"></i>          
         </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"  style="padding: 5px;background-color: #047e59; background-image: linear-gradient(to right, #03573c, #08b96f); color: white; padding-top: 5px; padding-left: 15px; margin-top: 15px;">
+          <li ><a class="dropdown-item white" (click)="viewprofile()"><strong style="color: white;">My Profile</strong></a></li>
+          <li><a class="dropdown-item white" (click)="logout()"><strong style="color: white;">Logout</strong></a></li>
+        </ul>
       </div>
 
     </div>  

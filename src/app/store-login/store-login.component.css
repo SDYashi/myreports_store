@@ -1,4 +1,3 @@
-
 .background-split {
   display: flex;
   height: 100%;
@@ -19,7 +18,7 @@
 
 .right-side {
   flex: 1;
-  background-color: #c8facc;
+  background-image: linear-gradient(to right, #0e5e1d, #078f56);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }

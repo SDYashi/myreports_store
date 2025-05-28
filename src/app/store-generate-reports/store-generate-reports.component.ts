@@ -15,6 +15,7 @@ processing_tags=false;
 
   testReport = {
     template_version: 'V1',
+    ULR_No:'',
     serial_no: '',
     manufacturer: '',
     job_rating: '',
@@ -187,6 +188,7 @@ processing_tags=false;
   formreset() {
     this.testReport = {
     template_version: 'V1',
+    ULR_No:'',
     serial_no: '',
     manufacturer: '',
     job_rating: '',

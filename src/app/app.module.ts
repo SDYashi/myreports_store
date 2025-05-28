@@ -17,6 +17,8 @@ import { StoreEditUserProfileComponent } from './store-edit-user-profile/store-e
 import { StoreAddCustomerNameAddrsComponent } from './store-add-customer-name-addrs/store-add-customer-name-addrs.component';
 import { StoreAddJobRatingComponent } from './store-add-job-rating/store-add-job-rating.component';
 import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
+import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
+import { UploadlabWzlogoComponent } from './uploadlab-wzlogo/uploadlab-wzlogo.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store
     StoreEditUserProfileComponent,
     StoreAddCustomerNameAddrsComponent,
     StoreAddJobRatingComponent,
-    StoreAddRefStandaredsComponent
+    StoreAddRefStandaredsComponent,
+    UploadlabQrComponent,
+    UploadlabWzlogoComponent
   ],
   imports: [
     BrowserModule,

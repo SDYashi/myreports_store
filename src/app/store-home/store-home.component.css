@@ -95,3 +95,14 @@ input[type="color"] {
 .save-button:hover {
     background-color: #45a049;
 }
+
+.white {
+  color: white;
+}
+.dropdown-menu li a {
+  color: white;
+}
+.dropdown-menu li a:hover {
+  background-color: #65ac67;
+}
+

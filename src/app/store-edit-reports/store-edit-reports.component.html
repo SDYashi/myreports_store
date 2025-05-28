@@ -1,28 +1,4 @@
-
-<div class="container-fluid mt-1" *ngIf="!searchflag">
-  <div class="card shadow">
-    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold; background-image: linear-gradient(to right, #011f06, #059c5d);">
-      <h5 class="mb-0">Search Test Report for Edit</h5>
-    </div>
-  <div class="card-body" style="background-color: whitesmoke;">
-  <form (ngSubmit)="loadReports()" #searchForm="ngForm">
-    <div class="row">
-      <div class="col-6">
-                <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Enter Test Report No" aria-label="Username" [(ngModel)]="templateviw.searchText" name="searchText" required />
-                </div>
-      </div>
-      <div class="col-6">
-          <button class="btn btn-primary" type="submit">Search Reports</button>
-      </div>
-    </div>
-
-  </form>
-    </div>
-  </div>
-</div>
-<hr>
-<div id="printContainer" *ngIf="searchflag">
+<div id="printContainer" *ngIf="!searchflag">
   <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
   <!-- Step 1 -->
   <div *ngIf="step === 1">

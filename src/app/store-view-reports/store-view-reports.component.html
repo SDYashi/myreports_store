@@ -33,22 +33,36 @@
             <th>Date of Testing</th>
             <th>Date of Issue</th>
             <th>Customer</th>
+            <th>Download <br> for Customer</th>            
+            <th>Download <br> for NABL Lab</th>
+            <th>Reports <br> Edit</th>
           </tr>
         </thead>
             <tbody>
                 <tr *ngFor="let report of filteredReports; let i = index">
                   <td>{{ i + 1 }}</td>
-                  <td>
-                    <a href="javascript:void(0)" (click)="downloadPdf(report.samplecode)">
-                      {{ report.samplecode }}
-                    </a>
-                  </td>
+                  <td>{{ report.samplecode }}</td>
                   <td>{{ report.serial_no }}</td>
                   <td>{{ report.manufacturer }}</td>
                   <td>{{ report.date_of_receipt }}</td>
                   <td>{{ report.date_of_testing }}</td>
                   <td>{{ report.date_of_issue }}</td>
                   <td>{{ report.customer_name_and_address }}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary" (click)="downloadPdf(report.samplecode)">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success" (click)="downloadPdf(report.samplecode)">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger" (click)="downloadPdf(report.samplecode)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
 

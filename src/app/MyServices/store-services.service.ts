@@ -72,6 +72,12 @@ export class StoreServicesService {
   updatetestreport(test_report_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/update_testreport`, { test_report_formdata});
   }
+  uploadqrimage(image: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_qr_image`, { image});
+  }
+  uploadwzimage(image: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_wz_logo`, { image});
+  }
 
 }
 

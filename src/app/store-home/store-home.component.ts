@@ -13,6 +13,10 @@ logout(){
   this.router.navigate(['/login']);
 }
 
+viewprofile(){
+  this.router.navigate(['store-home/store-edit-userprofiles']);
+}
+
 
 
 toggleSidebar(): void {
