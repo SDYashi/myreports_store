@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StoreServicesService } from '../MyServices/store-services.service';
 
 @Component({
   selector: 'app-uploadlab-wzlogo',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./uploadlab-wzlogo.component.css']
 })
 export class UploadlabWzlogoComponent {
-
+  responseMessage: any;
+ constructor(private storeServices: StoreServicesService) { }
  selectedFile: File | null = null;
   handleFileInput(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -19,11 +21,16 @@ export class UploadlabWzlogoComponent {
   }
   onSubmit(): void {
     if (!this.selectedFile) {
-      alert('Please select a file before submitting.');
-      return;
+       this.storeServices.uploadwzimage(this.selectedFile).subscribe({
+         next: (response) => {
+           this.responseMessage = response.msg;
+           alert(this.responseMessage);
+         },
+         error: (error) => {
+           this.responseMessage = error.error;
+           alert(this.responseMessage);
+         }
+       })
     }
-    // Process the file (upload or other logic)
-    console.log('Submitting file:', this.selectedFile.name);
-    alert('File submitted: ' + this.selectedFile.name);
   }
 }

@@ -5,7 +5,7 @@
       <h5 class="mb-0"> Upload Lab QR Code</h5>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
-<form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" #UploadQRCodeform="ngForm">
   <div class="mb-3">
     <label for="image" class="form-label">Upload QR Code Image</label>
     <input type="file" class="form-control" id="image" (change)="handleFileInput($event)">

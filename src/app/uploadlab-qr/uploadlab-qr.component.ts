@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StoreServicesService } from '../MyServices/store-services.service';
 
 @Component({
   selector: 'app-uploadlab-qr',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./uploadlab-qr.component.css']
 })
 export class UploadlabQrComponent {
+  responseMessage: any;
+  constructor(private storeServices: StoreServicesService) { }
 
 selectedFile: File | null = null;
   handleFileInput(event: Event): void {
@@ -19,12 +22,16 @@ selectedFile: File | null = null;
   }
   onSubmit(): void {
     if (!this.selectedFile) {
-      alert('Please select a file before submitting.');
-      return;
+      this.storeServices.uploadqrimage(this.selectedFile).subscribe({
+        next: (response) => {
+          this.responseMessage = response.msg;
+          alert(this.responseMessage);
+        },
+        error: (error) => {
+          this.responseMessage = error.error;
+          alert(this.responseMessage);
+        }
+      });
     }
-    // Process the file (e.g. upload to server or read locally)
-    console.log('Submitting file:', this.selectedFile.name);
-    // Example: You can add upload logic here or further processing
-    alert('File submitted: ' + this.selectedFile.name);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreServicesService } from '../MyServices/store-services.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 interface TestReport {
   samplecode: string;
   serial_no: string;
@@ -31,7 +32,7 @@ export class StoreViewReportsComponent implements OnInit {
   filteredReports: TestReport[] = []; 
   sampleCode: string = '';
 
-  constructor(private storeServices: StoreServicesService, private http: HttpClient) { }
+  constructor(private storeServices: StoreServicesService, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     // Fetch all reports data on component init
@@ -105,6 +106,11 @@ filterReports(): void {
         alert('Failed to download PDF. Please try again.');
       }
     });
+  }
+
+  redirectforedit(sampleCode: string): void {
+    this.sampleCode = sampleCode;
+     this.router.navigate(['store-home/store-edit-reports', this.sampleCode]);
   }
 
 }
