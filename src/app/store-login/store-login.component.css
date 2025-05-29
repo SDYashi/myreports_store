@@ -1,40 +1,37 @@
-.background-split {
-  display: flex;
-  height: 100%;
-  width: 100%;
+/* Full page background with brightness layer */
+.login-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.login-container::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.left-side {
-  flex: 1;
+  height: 100%;
+  width: 100%;
   background: url('../../assets/images/bg/login_page.jpg') no-repeat center center;
   background-size: cover;
   filter: brightness(0.6);
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  z-index: 0;
 }
 
-.right-side {
-  flex: 1;
-  background-image: linear-gradient(to right, #0e5e1d, #078f56);
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
+/* Login card */
 .login-card {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   padding: 40px;
-  background: rgb(59, 97, 65);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  text-align: center;
+  background-image: linear-gradient(to right, #011f06, #024b2c);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+  text-align: center;
+  z-index: 1;
 }
 
 .login-card h1 {
@@ -47,7 +44,7 @@
 .login-card form input[type="text"],
 .login-card form input[type="password"] {
   width: 100%;
-  padding: 8px 8px;
+  padding: 8px;
   margin-bottom: 15px;
   border-radius: 5px;
   border: none;
@@ -63,68 +60,6 @@
   margin-bottom: 25px;
   font-size: 12px;
   color: #555;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 36px;
-  height: 20px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 20px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-.switch input:checked + .slider {
-  background-color: #22bb33;
-}
-
-.switch input:checked + .slider:before {
-  transform: translateX(16px);
-}
-
-.remember-text {
-  margin-left: 8px;
-  font-weight: 600;
-  color: #555;
-}
-
-.forgot-password {
-  color: #22bb33;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
 }
 
 .sign-in-btn {
@@ -154,3 +89,15 @@
   text-align: center;
 }
 
+/* Footer text */
+.footer-text {
+  text-align: center;
+  font-size: 14px;
+  color: #0582f7;
+  padding-top: 15px;
+  margin-bottom: -30px;
+}
+
+.footer-text strong {
+  color: #eb7304;
+}
