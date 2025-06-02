@@ -19,6 +19,8 @@ import { StoreAddJobRatingComponent } from './store-add-job-rating/store-add-job
 import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
 import { UploadlabWzlogoComponent } from './uploadlab-wzlogo/uploadlab-wzlogo.component';
+import { StoreChangepasswordComponent } from './store-changepassword/store-changepassword.component';
+import { StoreAddReviewerEmployeeComponent } from './store-add-reviewer-employee/store-add-reviewer-employee.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { UploadlabWzlogoComponent } from './uploadlab-wzlogo/uploadlab-wzlogo.co
     StoreAddJobRatingComponent,
     StoreAddRefStandaredsComponent,
     UploadlabQrComponent,
-    UploadlabWzlogoComponent
+    UploadlabWzlogoComponent,
+    StoreChangepasswordComponent,
+    StoreAddReviewerEmployeeComponent
   ],
   imports: [
     BrowserModule,

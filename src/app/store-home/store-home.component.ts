@@ -16,6 +16,9 @@ logout(){
 viewprofile(){
   this.router.navigate(['store-home/store-edit-userprofiles']);
 }
+changepassword(){
+  this.router.navigate(['store-home/store-changepassword']);
+}
 
 
 

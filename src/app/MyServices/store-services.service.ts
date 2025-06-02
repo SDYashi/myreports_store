@@ -72,12 +72,28 @@ export class StoreServicesService {
   updatetestreport(test_report_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/update_testreport`, { test_report_formdata});
   }
-  uploadqrimage(image: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_qr_image`, { image});
-  }
-  uploadwzimage(image: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_wz_logo`, { image});
+  // uploadqrimage(image: any): Observable<any> {
+  //   return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_qr_image`, { image});
+  // }
+
+  uploadqrimage(formData: FormData): Observable<any> {
+  return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_lab_qr`, formData);
   }
 
+  uploadwzimage(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_wz_logo`,  formData);
+  }
+
+  addtesterreviewer(tester_reviewer_formdata: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_tester_reviewer`, { tester_reviewer_formdata});
+  }
+
+  gettesterreviewer(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_tester_reviewer_name`);
+  }
+
+ getalltesterreviewer(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_tester_reviewer`);
+  }
 }
 

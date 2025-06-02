@@ -1,0 +1,105 @@
+<div class="form-container">
+<div class="container-fluid mt-2">
+  <div class="card shadow">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h5 class="mb-0"> Add Tester Reviewer Employee informations</h5>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
+  <form (ngSubmit)="onSubmit()" #testerReviewerForm="ngForm">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="testerReviewer.name" name="name" required class="form-control" />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="designation">Designation:</label>
+          <select id="designation" [(ngModel)]="testerReviewer.designation" name="designation" required class="form-select">
+            <option value="" disabled selected>Select Designation</option>
+            <option value="ASSISTANT ENGINEER">ASSISTANT ENGINEER</option>
+            <option value="JUNIOR ENGINEER">JUNIOR ENGINEER</option>
+            <option value="TESTING ASSISTANT">TESTING ASSISTANT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="employee_no">Employee No:</label>
+          <input type="text" id="employee_no" [(ngModel)]="testerReviewer.employee_no" name="employee_no" required class="form-control" />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="place_of_posting">Place of Posting:</label>
+          <input type="text" id="place_of_posting" [(ngModel)]="testerReviewer.place_of_posting" name="place_of_posting" required class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="mobile_number">Mobile Number:</label>
+          <input type="text" id="mobile_number" [(ngModel)]="testerReviewer.mobile_number" name="mobile_number" required class="form-control" />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="employee_type">Employee Type:</label>
+          <select id="employee_type" [(ngModel)]="testerReviewer.employee_type" name="employee_type" required class="form-select">
+            <option value="" disabled selected>Select Employee Type</option>
+            <option value="TESTER">TESTER</option>
+            <option value="REVIEWER">REVIEWER</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="d-flex justify-content-end">
+      <button type="submit" [disabled]="!testerReviewerForm.form.valid" class="btn btn-success">Add Tester/Reviewer</button>
+      <button type="button" class="btn btn-danger ms-2" (click)="testerReviewerForm.reset()">Reset</button>
+    </div>
+  </form>
+  <div *ngIf="responseMessage" class="alert alert-info mt-2">
+    {{ responseMessage }}
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="card shadow">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h5 class="mb-0">List of Employees</h5>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Employee No.</th>
+            <th>Mobile Number</th>
+            <th>Place of Posting</th>
+            <th>Employee Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let testerReviewer of testerReviewers; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ testerReviewer.name }}</td>
+            <td>{{ testerReviewer.designation }}</td>
+            <td>{{ testerReviewer.employee_no }}</td>
+            <td>{{ testerReviewer.mobile_number }}</td>
+            <td>{{ testerReviewer.place_of_posting }}</td>
+            <td>{{ testerReviewer.employee_type }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

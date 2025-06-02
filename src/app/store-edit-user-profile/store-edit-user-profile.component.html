@@ -6,35 +6,51 @@
     <div class="card-body" style="background-color: whitesmoke;">
               <form #userProfileForm="ngForm" (ngSubmit)="onSubmit(userProfileForm)">
                 <div class="row">
-                  <div class="col-4">
+                <div class="col-6">                  
                 <div class="form-group">
-                  <label for="username"><strong>Username</strong></label>
-                  <input type="text" class="form-control" style="background-color: rgb(243, 208, 208);" id="username" name="username" [(ngModel)]="userProfile.username" required readonly>
+                  <label for="designation"><strong>Designation</strong></label>
+                  <input type="text" class="form-control" id="designation" name="designation" [(ngModel)]="userProfile.designation" required>
+                </div>
+                </div>
+                <div class="col-6">
+                <div class="form-group">
+                  <label for="employee_number"><strong>Employee Number</strong></label>
+                  <input type="text" class="form-control" id="employee_number" name="employee_number" [(ngModel)]="userProfile.employee_number" required>
+                </div>
                 </div>
 
-                  </div>
-                  <div class="col-4">
+                <div class="col-6">
                 <div class="form-group">
-                  <label for="tester"><strong>Tester</strong></label>
-                  <input type="text" class="form-control" id="tester" name="tester" [(ngModel)]="userProfile.tester" required>
+                  <label for="email"><strong>Email</strong></label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userProfile.email" required>
                 </div>
                 </div>
 
-                <div class="col-4">                  
+                <div class="col-6">
                 <div class="form-group">
-                  <label for="reviewer"><strong>Reviewer</strong></label>
-                  <input type="text" class="form-control" id="reviewer" name="reviewer" [(ngModel)]="userProfile.reviewer" required>
+                  <label for="mobile_number"><strong>Mobile Number</strong></label>
+                  <input type="text" class="form-control" id="mobile_number" name="mobile_number" [(ngModel)]="userProfile.mobile_number" required>
                 </div>
                 </div>
-                <br><br>
+
+                <div class="col-6">
+                <div class="form-group">
+                  <label for="place_of_posting"><strong>Place of Posting</strong></label>
+                  <input type="text" class="form-control" id="place_of_posting" name="place_of_posting" [(ngModel)]="userProfile.place_of_posting" required>
+                </div>
+                </div>
+                </div>
                 <div class="row">
                 <div class="col-md-12">
-                <button type="submit" class="btn btn-primary mt-3">Update</button>
-                </div>
+                <button type="submit" class="btn btn-success mt-3">Update Profile</button>
+                <button type="button" class="btn btn-danger mt-3 ms-2" (click)="userProfileForm.reset()">Reset</button>
 
                 </div>
+
                 </div>
               </form>
     </div>
   </div>
 </div>
+
+

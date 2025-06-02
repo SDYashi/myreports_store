@@ -20,10 +20,12 @@ export class MyinterceptorInterceptor implements HttpInterceptor {
     let clonedRequest = req.clone();
 
     // Set the content type
+    const httpOptions = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    };
     clonedRequest = clonedRequest.clone({
-      setHeaders: {
-        'Content-Type': 'application/json'
-      }
+      setHeaders: httpOptions
     });
 
     // Get the token from local storage or any other storage mechanism

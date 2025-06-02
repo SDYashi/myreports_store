@@ -53,7 +53,7 @@
                   <td>
                     <select id="reference_standard" name="reference_standard" [(ngModel)]="testReport.reference_standard" required class="form-select" style="width: 450px;">
                       <option value="" disabled selected>Select Reference Standard</option>
-                      <option *ngFor="let refstand of refStandards" [value]="refstand.ref_statandard">{{ refstand.ref_statandard }}</option>
+                      <option *ngFor="let refstand of refStandards" [value]="refstand.ref_standard_formdata">{{ refstand.ref_standard_formdata }}</option>
                     </select>
                   </td>
                 </tr>

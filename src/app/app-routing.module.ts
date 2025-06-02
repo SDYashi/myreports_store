@@ -11,6 +11,8 @@ import { StoreEditUserProfileComponent } from './store-edit-user-profile/store-e
 import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
 import { UploadlabWzlogoComponent } from './uploadlab-wzlogo/uploadlab-wzlogo.component';
+import { StoreChangepasswordComponent } from './store-changepassword/store-changepassword.component';
+import { StoreAddReviewerEmployeeComponent } from './store-add-reviewer-employee/store-add-reviewer-employee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,6 +31,8 @@ const routes: Routes = [
       { path: 'store-add-job-rating',component:StoreAddJobRatingComponent},
       { path: 'store-upload-lab-qr',component:UploadlabQrComponent},
       { path: 'store-upload-wz-logo',component:UploadlabWzlogoComponent},
+      {path:'store-changepassword',component:StoreChangepasswordComponent},
+      {path:'store-add-tester-employee',component:StoreAddReviewerEmployeeComponent},
 
 
     ]
