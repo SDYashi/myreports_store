@@ -72,6 +72,8 @@ processing_tags=false;
     pm_100: '',
     load_loss_100: '',
     percent_z_100: '',
+    Required_0_50: '218.5',
+    Required_0_100: '730',
     required_1: '',
     obtained_1: '',
     remark_1: '',
@@ -95,16 +97,72 @@ processing_tags=false;
   refStandards: any[] = [];
   customerList: any[] = [];
   tester_reviewer!: UserProfile;
+  tester_list: any[] = [];
+  reviewer_list: any[] = [];
+  tesertReviewersdata: any[] = [];
   processing_msgs='';
-  designations: string[] = ['Tester', 'Supervisor', 'Manager'];
-
   ngOnInit(): void {
     // this.getsamplecodelist();
     this.getjobrating();
     this.getrefrestandardlist();
     this.getregisteredcustomer();
-    this.getprofiles();
+    // this.getprofiles();
+    this.gettesterreviewer();
   }
+rowSelection: string = 'all';
+
+showRow1 = true;
+showRow2 = true;
+showRow3 = true;
+
+updateRows(): void {
+  if (this.rowSelection === 'all') {
+    this.showRow1 = true;
+    this.showRow2 = true;
+    this.showRow3 = true;
+  } else {
+    this.showRow1 = this.rowSelection === 'row1';
+    this.showRow2 = this.rowSelection === 'row2';
+    this.showRow3 = this.rowSelection === 'row3';
+  }
+}
+
+loadSelection: string = 'all'; 
+showLoad50: boolean = true; 
+showLoad100: boolean = true; 
+
+updateLoadRows(): void {
+  if (this.loadSelection === 'all') {
+    this.showLoad50 = true;
+    this.showLoad100 = true;
+  } else {
+    this.showLoad50 = this.loadSelection === '50';
+    this.showLoad100 = this.loadSelection === '100';
+  }
+}
+
+
+
+
+
+gettesterreviewer() {
+  this.storeServices.gettesterreviewer().subscribe({
+    next: (data) => {
+      if (Array.isArray(data)) {
+        this.tesertReviewersdata = data;
+        this.tester_list = this.tesertReviewersdata.filter(item => item.employee_type === 'TESTER');
+        this.reviewer_list = this.tesertReviewersdata.filter(item => item.employee_type === 'REVIEWER');
+        console.log(`Tester: ${this.tester_list}, Reviewer: ${this.reviewer_list}`);
+      } else {
+        console.warn('Received data is not an array:', data);
+      }
+    },
+    error: (err) => {
+      console.error('Error fetching tester/reviewer data:', err);
+    }
+  });
+}
+
   
   getprofiles(){
     this.storeServices.getuserprofile().subscribe({
@@ -245,6 +303,8 @@ processing_tags=false;
     pm_100: '',
     load_loss_100: '',
     percent_z_100: '',
+    Required_0_50: '',
+    Required_0_100: '',
     required_1: '',
     obtained_1: '',
     remark_1: '',
@@ -366,11 +426,11 @@ processing_tags=false;
     }
 
     if (!isNaN(obtained2)) {
-      this.testReport.remark_2 = obtained2 < 218.5 ? "Complied" : "Not Complied";
+      this.testReport.remark_2 = obtained2 < Number(this.testReport.Required_0_50) ? "Complied" : "Not Complied";
     }
 
     if (!isNaN(obtained3)) {
-      this.testReport.remark_3 = obtained3 < 730.25 ? "Complied" : "Not Complied";
+      this.testReport.remark_3 = obtained3 < Number(this.testReport.Required_0_100) ? "Complied" : "Not Complied";
     }
     this.testReport.ambient_temp = this.testReport.avg_temp_hv;
   }

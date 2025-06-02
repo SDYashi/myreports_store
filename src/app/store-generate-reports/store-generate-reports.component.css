@@ -155,9 +155,19 @@ a:hover {
     font-size: 12px;
   }
   
-  .highlight-fail, .highlight-fail1, .highlight-fail2 {
+   .highlight-fail1, .highlight-fail2 {
     background-color: #f8d7da;
+  }
+  .highlight-fail{
+    background-color: #f3e356;
   }
   .highlight-readonly{
     background-color: #bef5d3;
+  }
+  
+  .highlight-success {
+    background-color: #d4edda;
+  }
+  .highlight-header{
+    background-color: #bbbab7;
   }

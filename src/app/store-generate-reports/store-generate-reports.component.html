@@ -201,11 +201,11 @@
                       <tr>
                         <th>HV:</th>
                         <td>
-                          <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail" (keyup.enter)="calculateHV()" placeholder="1.312198194" />
+                          <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail2" (keyup.enter)="calculateHV()" placeholder="1.312198194" />
                         </td>
                         <th>LV:</th>
                         <td>
-                          <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail"  (keyup.enter)="calculateLV()" placeholder="33.335289" />
+                          <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail2"  (keyup.enter)="calculateLV()" placeholder="33.335289" />
                         </td>
                       </tr>
                     </table>
@@ -244,7 +244,7 @@
                 <tr>
                   <th><strong>Remarks:-</strong></th>
                   <td colspan="2">
-                    <input id="sample_remarks2" name="sample_remarks2" [(ngModel)]="testReport.sample_remarks2" required type="text" class="form-control highlight-fail" placeholder="Complied and Vector group Dyn11 Found &amp; Confirmed."  (keyup.enter)="createsample_remarks2()" />
+                    <input id="sample_remarks2" name="sample_remarks2" [(ngModel)]="testReport.sample_remarks2" required type="text" class="form-control highlight-fail2" placeholder="Complied and Vector group Dyn11 Found &amp; Confirmed."  (keyup.enter)="createsample_remarks2()" />
                   </td>
                 </tr>
               </tbody>
@@ -359,8 +359,25 @@
         <!-- Load Loss Test -->
         <div class="col-md-12 mt-3 mb-3">
           <h3 style="font-size: 1rem; font-weight: bold; text-align: left;">5) Load Loss Test</h3>
+          <!-- Table -->
           <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
             <thead>
+              <tr>
+            <th colspan="8">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="loadSelector" [(ngModel)]="loadSelection" value="all" (change)="updateLoadRows()" />
+              <label class="form-check-label">Show All</label>
+            </div>
+            <div class="form-check form-check-inline ms-3">
+              <input class="form-check-input" type="radio" name="loadSelector" [(ngModel)]="loadSelection" value="50" (change)="updateLoadRows()" />
+              <label class="form-check-label">50% Load</label>
+            </div>
+            <div class="form-check form-check-inline ms-3">
+              <input class="form-check-input" type="radio" name="loadSelector" [(ngModel)]="loadSelection" value="100" (change)="updateLoadRows()" />
+              <label class="form-check-label">100% Load </label>
+            </div>
+                </th>
+              </tr>
               <tr>
                 <th>Load</th>
                 <th>Temp (°C)</th>
@@ -373,7 +390,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngIf="showLoad50">
                 <th scope="row">50%</th>
                 <td><input id="temp_50" name="temp_50" [(ngModel)]="testReport.temp_50" required type="text" class="form-control" style="width: 120px;" placeholder="35.3" /></td>
                 <td><input id="freq_50" name="freq_50" [(ngModel)]="testReport.freq_50" required type="text" class="form-control" style="width: 120px;" placeholder="50.03" /></td>
@@ -383,7 +400,7 @@
                 <td><input id="load_loss_50" name="load_loss_50" [(ngModel)]="testReport.load_loss_50" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="138.05" (keyup.enter)="calculate_loadloss_test()" /></td>
                 <td><input id="percent_z_50" name="percent_z_50" [(ngModel)]="testReport.percent_z_50" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="2.46" (keyup.enter)="calculate_loadloss_test()" /></td>
               </tr>
-              <tr>
+              <tr *ngIf="showLoad100">
                 <th scope="row">100%</th>
                 <td><input id="temp_100" name="temp_100" [(ngModel)]="testReport.temp_100" required type="text" class="form-control" style="width: 120px;" placeholder="35.3" /></td>
                 <td><input id="freq_100" name="freq_100" [(ngModel)]="testReport.freq_100" required type="text" class="form-control" style="width: 120px;" placeholder="50.05" /></td>
@@ -394,12 +411,33 @@
                 <td><input id="percent_z_100" name="percent_z_100" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control highlight-fail2" style="width: 120px;" placeholder="5.4" (keyup.enter)="calculate_loadloss_test()" /></td>
               </tr>
             </tbody>
-          </table>
+          </table>       
         </div>
         <!-- Test Results -->
-        <div class="col-md-12 mt-3">
+        <div class="col-md-12 mt-3">       
+          <!-- Table -->
           <table style="font-size: 0.85rem; width: 100%;" class="table table-bordered">
             <thead>
+              <tr>
+                <th colspan="4">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="rowSelector" [(ngModel)]="rowSelection" value="all" (change)="updateRows()" />
+              <label class="form-check-label">Show All</label>
+            </div>
+            <div class="form-check form-check-inline ms-3">
+              <input class="form-check-input" type="radio" name="rowSelector" [(ngModel)]="rowSelection" value="row1" (change)="updateRows()" />
+              <label class="form-check-label">Impedance Voltage (%)</label>
+            </div>
+            <div class="form-check form-check-inline ms-3">
+              <input class="form-check-input" type="radio" name="rowSelector" [(ngModel)]="rowSelection" value="row2" (change)="updateRows()" />
+              <label class="form-check-label">Total loss at 50%</label>
+            </div>
+            <div class="form-check form-check-inline ms-3">
+              <input class="form-check-input" type="radio" name="rowSelector" [(ngModel)]="rowSelection" value="row3" (change)="updateRows()" />
+              <label class="form-check-label">Total loss at 100%</label>
+            </div>
+                </th>
+              </tr>
               <tr>
                 <th>Particulars of Test</th>
                 <th>Required</th>
@@ -408,23 +446,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngIf="showRow1">
                 <th>Impedance Voltage (%)</th>
                 <td><strong>4.5 +/- 10%</strong></td>
-                <td><input id="obtained_1" name="obtained_1" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control" style="width: 250px;" placeholder="5.4" /></td>
-                <td><input id="remark_1" name="remark_1" [(ngModel)]="testReport.remark_1" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Not Complied" /></td>
+                <td><input [(ngModel)]="testReport.percent_z_100" type="text" class="form-control" style="width: 250px;" placeholder="5.4" /></td>
+                <td><input [(ngModel)]="testReport.remark_1" type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Not Complied" /></td>
               </tr>
-              <tr>
+
+              <tr *ngIf="showRow2">
                 <th>Total loss at 50%(W)</th>
-                <td><strong>218.5</strong></td>
-                <td><input id="obtained_2" name="obtained_2" [(ngModel)]="testReport.obtained_2" required type="text" class="form-control" style="width: 250px;" placeholder="541.77" /></td>
-                <td><input id="remark_2" name="remark_2" [(ngModel)]="testReport.remark_2" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Complied" /></td>
+                <td><input [(ngModel)]="testReport.Required_0_50" type="text" class="form-control highlight-fail" style="width: 120px;" value="218.5" /></td>
+                <td><input [(ngModel)]="testReport.obtained_2" type="text" class="form-control" style="width: 250px;" placeholder="541.77" /></td>
+                <td><input [(ngModel)]="testReport.remark_2" type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Complied" /></td>
               </tr>
-              <tr>
+
+              <tr *ngIf="showRow3">
                 <th>Total loss at 100%(W)</th>
-                <td><strong>730</strong></td>
-                <td><input id="obtained_3" name="obtained_3" [(ngModel)]="testReport.obtained_3" required type="text" class="form-control" style="width: 250px;" placeholder="1082.54" /></td>
-                <td><input id="remark_3" name="remark_3" [(ngModel)]="testReport.remark_3" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Complied" /></td>
+                <td><input [(ngModel)]="testReport.Required_0_100" type="text" class="form-control highlight-fail" style="width: 120px;" value="730" /></td>
+                <td><input [(ngModel)]="testReport.obtained_3" type="text" class="form-control" style="width: 250px;" placeholder="1082.54" /></td>
+                <td><input [(ngModel)]="testReport.remark_3" type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" placeholder="Complied" /></td>
               </tr>
             </tbody>
           </table>
@@ -494,14 +534,14 @@
               <td>
                 <select id="tester_designation" name="tester_designation" [(ngModel)]="testReport.tester_designation" required class="form-select" >
                   <option value="" disabled selected>Select Designation</option>
-                  <option *ngFor="let designation of designations" [value]="designation">{{ designation }}</option>
+                  <option *ngFor="let testers of tester_list" [value]="testers.name">{{ testers.name + "/" + testers.designation}}</option>
                 </select>
               </td>
               <th>Reviewed and Authorised by:</th>
               <td>
                 <select id="reviewer_designation" name="reviewer_designation" [(ngModel)]="testReport.reviewer_designation" required class="form-select">
                   <option value="" disabled selected>Select Designation</option>
-                  <option *ngFor="let designation of designations" [value]="designation">{{ designation }}</option>
+                  <option *ngFor="let reviewers of reviewer_list" [value]="reviewers.name">{{ reviewers.name + "/" + reviewers.designation }}</option>
                 </select>
               </td>
                </tr>
