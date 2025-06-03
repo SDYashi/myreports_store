@@ -72,6 +72,8 @@ processing_tags=false;
     pm_100: '',
     load_loss_100: '',
     percent_z_100: '',
+    particular_validate_0_50:'218.5',
+    particular_validate_0_100:'730',
     required_1: '',
     obtained_1: '',
     remark_1: '',
@@ -98,26 +100,30 @@ processing_tags=false;
   processing_msgs='';
   designations: string[] = ['Tester', 'Supervisor', 'Manager'];
 
+
   ngOnInit(): void {
     // this.getsamplecodelist();
     this.getjobrating();
     this.getrefrestandardlist();
     this.getregisteredcustomer();
-    this.getprofiles();
+    this.gettesterreviewer();
   }
-  
-  getprofiles(){
-    this.storeServices.getuserprofile().subscribe({
-      next: (data: UserProfile) => {
-        this.testReport.tester = data.tester;
-        this.testReport.reviewer = data.reviewer;
+  reviewer_list: any[] = [];
+  tester_list: any[] = [];
+  gettesterreviewer(){
+    this.storeServices.getalltesterreviewer().subscribe({
+      next: (data: { employee_type: string }[]) => {
+        this.reviewer_list = data.filter((item) => item.employee_type === 'REVIEWER');
+        this.tester_list = data.filter((item) => item.employee_type === 'TESTER');
       },
       error: (err) => {
-         this.tester_reviewer = err.error;
         console.log(err);
+        this.tester_reviewer = err.error;
       }
     });
   }
+
+
 
   getregisteredcustomer(){
     this.storeServices.getcustomername().subscribe({
@@ -245,6 +251,8 @@ processing_tags=false;
     pm_100: '',
     load_loss_100: '',
     percent_z_100: '',
+    particular_validate_0_50:' ',
+    particular_validate_0_100:' ',
     required_1: '',
     obtained_1: '',
     remark_1: '',
@@ -366,11 +374,11 @@ processing_tags=false;
     }
 
     if (!isNaN(obtained2)) {
-      this.testReport.remark_2 = obtained2 < 218.5 ? "Complied" : "Not Complied";
+      this.testReport.remark_2 = obtained2 < Number(this.testReport.particular_validate_0_50) ? "Complied" : "Not Complied";
     }
 
     if (!isNaN(obtained3)) {
-      this.testReport.remark_3 = obtained3 < 730.25 ? "Complied" : "Not Complied";
+      this.testReport.remark_3 = obtained3 <  Number(this.testReport.particular_validate_0_100) ? "Complied" : "Not Complied";
     }
     this.testReport.ambient_temp = this.testReport.avg_temp_hv;
   }
