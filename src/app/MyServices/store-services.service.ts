@@ -95,5 +95,6 @@ export class StoreServicesService {
  getalltesterreviewer(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_all_tester_reviewer`);
   }
+
 }
 

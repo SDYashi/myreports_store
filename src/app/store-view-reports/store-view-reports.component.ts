@@ -108,10 +108,14 @@ filterReports(): void {
     });
   }
 
+  // redirectforedit(sampleCode: string): void {
+  //   this.sampleCode = sampleCode;
+  //    this.router.navigate(['store-home/store-edit-reports', this.sampleCode]);
+  // }
   redirectforedit(sampleCode: string): void {
-    this.sampleCode = sampleCode;
-     this.router.navigate(['store-home/store-edit-reports', this.sampleCode]);
-  }
+  this.router.navigate(['store-home/store-edit-reports', sampleCode]);
+}
+
 
 }
 

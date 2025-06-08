@@ -33,6 +33,11 @@ const routes: Routes = [
       { path: 'store-upload-wz-logo',component:UploadlabWzlogoComponent},
       {path:'store-changepassword',component:StoreChangepasswordComponent},
       {path:'store-add-tester-employee',component:StoreAddReviewerEmployeeComponent},
+      {
+        path: 'store-home/store-edit-reports/:samplecode',
+        component: StoreEditReportsComponent
+      }
+
 
 
     ]

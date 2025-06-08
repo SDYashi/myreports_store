@@ -141,7 +141,7 @@
   </div>
 
   <!-- Step 2 -->
-  <div *ngIf="step === 2">   
+  <div *ngIf="step === 1">   
        <div class="card shadow mt-1">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
       <h5 class="mb-0"> Part 2: Test Report</h5>
@@ -492,16 +492,16 @@
             <tr>
               <th>Tested By:</th>
               <td>
-                <select id="tester_designation" name="tester_designation" [(ngModel)]="testReport.tester_designation" required class="form-select" >
+                <select id="tester_designation" name="tester_designation" [(ngModel)]="testReport.tester_designation" required class="form-select">
                   <option value="" disabled selected>Select Designation</option>
-                  <option *ngFor="let designation of tester_list" [value]="designation.name">{{ designation.name }} /{{designation.designation}}</option>
+                  <option *ngFor="let designation of tester_list" [value]="designation.name + ' (' + designation.designation + ')'">{{ designation.name }} /{{designation.designation}}</option>
                 </select>
               </td>
               <th>Reviewed and Authorised by:</th>
               <td>
                 <select id="reviewer_designation" name="reviewer_designation" [(ngModel)]="testReport.reviewer_designation" required class="form-select">
                   <option value="" disabled selected>Select Designation</option>
-                  <option *ngFor="let designation of reviewer_list" [value]="designation.name">{{ designation.name }}/ {{designation.designation}}</option>
+                  <option *ngFor="let designation of reviewer_list" [value]="designation.name + ' (' + designation.designation + ')'">{{ designation.name }} /{{designation.designation}}</option>
                 </select>
               </td>
                </tr>

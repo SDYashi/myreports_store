@@ -1,5 +1,5 @@
-<div id="printContainer" *ngIf="!searchflag">
-  <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
+<div id="printContainer" style="margin: auto;">
+  <form #testReportForm="ngForm" (ngSubmit)="editreports(testReportForm)">
   <!-- Step 1 -->
   <div *ngIf="step === 1">
       <div class="card shadow mt-1">
