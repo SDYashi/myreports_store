@@ -19,6 +19,11 @@ export class StoreServicesService {
   getverifylogin(userinfor: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/login`, { userinfor });
   }
+
+  changepassword(payload: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/changepassword`, payload);
+  }
+
   adddtestreportdata(test_report_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/add_testreport`, { test_report_formdata});
   }
@@ -60,6 +65,9 @@ export class StoreServicesService {
   generatePdf(sampleCode: string): Observable<Blob> {
        return this.http.post(`${this.baseUrl}/ngbreports_api/v1/api/get_sample_code_pdf`, { samplecode: sampleCode }, { responseType: 'blob' });
   }
+  generatePdf_forlab(sampleCode: string): Observable<Blob> {
+    return this.http.post(`${this.baseUrl}/ngbreports_api/v1/api/get_sample_code_pdf_forlab`, { samplecode: sampleCode }, { responseType: 'blob' });
+ }
 
   edituserprofile(user_profile_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/edit_userprofile`, { user_profile_formdata});
@@ -72,9 +80,7 @@ export class StoreServicesService {
   updatetestreport(test_report_formdata: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/update_testreport`, { test_report_formdata});
   }
-  // uploadqrimage(image: any): Observable<any> {
-  //   return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_qr_image`, { image});
-  // }
+
 
   uploadqrimage(formData: FormData): Observable<any> {
   return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_lab_qr`, formData);

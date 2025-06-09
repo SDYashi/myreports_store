@@ -33,8 +33,8 @@
             <th>Date of Testing</th>
             <th>Date of Issue</th>
             <th>Customer</th>
-            <th>Download </th>            
-            <!-- <th>Download <br> for NABL Lab</th> -->
+            <th>Download <br> for MPWZ</th>      
+            <th>Download <br> for NABL Lab</th>
             <th> Edit</th>
           </tr>
         </thead>
@@ -53,16 +53,15 @@
                       <i class="fas fa-download"></i>
                     </button>
                   </td>
-                  <!-- <td>
-                    <button type="button" class="btn btn-success" (click)="downloadPdf(report.samplecode)">
+                  <td>
+                    <button type="button" class="btn btn-success" (click)="downloadPdf_forlab(report.samplecode)">
                       <i class="fas fa-download"></i>
                     </button>
-                  </td> -->
+                  </td>
                   <td>
                   <button type="button" class="btn btn-danger" (click)="redirectforedit(report.samplecode)">
-                    <i class="fas fa-edit"></i>
+                      <i class="fas fa-edit"></i>
                   </button>
-
                   </td>
                 </tr>
               </tbody>

@@ -22,9 +22,9 @@
             <table class="table table-striped" style="font-size: 0.9rem;">
               <tbody>
                 <tr>
-                  <th scope="row">Template Version:</th>
+                  <th scope="row">Sample Code</th>
                   <td>
-                    <input id="template_version" name="template_version" [(ngModel)]="testReport.template_version" required type="text" class="form-control highlight-readonly" placeholder="1.0" style="width: 450px;" readonly />
+                    <input id="template_sample_id" name="template_sample_id" [(ngModel)]="testReport.template_sample_id" required type="text" class="form-control" placeholder="TLI/RDTR/25/06/35" style="width: 450px;" readonly />
                   </td>
                    <th scope="row">ULR Number:</th>
                   <td>
@@ -127,8 +127,8 @@
         <div class="row mt-3">
           <div class="col">
             <div style="font-size: 0.85rem; font-weight: bold;" class="d-flex align-items-center form-control">
-              <p class="mb-0">The samples conform to the guarantee requirement as per the above-mentioned tests</p>
-              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width: 550px;  box-shadow: none;" />
+              <p class="mb-0">Remarks:- </p> 
+              <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" placeholder="Enter Remarks here" style="width:100%;  box-shadow: none;" />
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
   </div>
 
   <!-- Step 2 -->
-  <div *ngIf="step === 1">   
+  <div *ngIf="step === 2">   
        <div class="card shadow mt-1">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
       <h5 class="mb-0"> Part 2: Test Report</h5>

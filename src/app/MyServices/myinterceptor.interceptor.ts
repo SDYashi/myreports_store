@@ -8,30 +8,24 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class MyinterceptorInterceptor implements HttpInterceptor {
 
-
-  constructor() { }
+  constructor(private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
-    let clonedRequest = req.clone();
 
-    // Set the content type
-    const httpOptions = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    };
-    clonedRequest = clonedRequest.clone({
-      setHeaders: httpOptions
+    let clonedRequest = req.clone({
+      setHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
     });
 
-    // Get the token from local storage or any other storage mechanism
-    const access_token = localStorage.getItem('access_token'); 
+    const access_token = localStorage.getItem('access_token');
 
-    // If the token exists, set the Authorization header
     if (access_token) {
       clonedRequest = clonedRequest.clone({
         setHeaders: {
@@ -40,7 +34,18 @@ export class MyinterceptorInterceptor implements HttpInterceptor {
       });
     }
 
-    // Pass the cloned request 
-    return next.handle(clonedRequest);
+    return next.handle(clonedRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          // Redirect to login page
+          this.router.navigate(['/login']);
+        }
+
+        // Optional: Show an alert for other errors
+        // alert(error.message);
+
+        return throwError(() => error);
+      })
+    );
   }
 }

@@ -15,6 +15,7 @@ processing_tags=false;
 
   testReport = {
     template_version: 'V1',
+    template_sample_id: '',
     ULR_No:'',
     serial_no: '',
     manufacturer: '',
@@ -24,7 +25,7 @@ processing_tags=false;
     date_of_testing: '',
     date_of_issue: '',
     customer_name_and_address: '',
-    sample_remarks1: '',
+    sample_remarks1: 'The samples conform to the guarantee requirement as per the above mentioned tests Specification',
     vector_group: 'Dyn11',
     hv_kv: '11',
     lv_v: '0.433',
@@ -122,9 +123,6 @@ processing_tags=false;
       }
     });
   }
-
-
-
   getregisteredcustomer(){
     this.storeServices.getcustomername().subscribe({
       next: (data) => {
@@ -194,6 +192,7 @@ processing_tags=false;
   formreset() {
     this.testReport = {
     template_version: 'V1',
+    template_sample_id: '',
     ULR_No:'',
     serial_no: '',
     manufacturer: '',
@@ -318,7 +317,7 @@ processing_tags=false;
     const avgResist = Number(this.testReport.avg_resist);
     const avgTempHV = Number(this.testReport.avg_temp_hv);
     if (!isNaN(avgResist) && !isNaN(avgTempHV)) {
-      this.testReport.phase_resist_hv = String((avgResist * ((225 + 75) / (225 + avgTempHV))).toFixed(2));
+      this.testReport.phase_resist_hv = String(((avgResist * ((225 + 75) / (225 + avgTempHV)))*1.5).toFixed(2));
     }
   }
 
@@ -334,7 +333,7 @@ processing_tags=false;
     const avgResistLv = Number(this.testReport.avg_resist_lv);
     const avgTempLV = Number(this.testReport.avg_temp_lv);
     if (!isNaN(avgResistLv) && !isNaN(avgTempLV)) {
-      this.testReport.phase_resist_lv = String((avgResistLv * ((225 + 75) / (225 + avgTempLV))).toFixed(2));
+      this.testReport.phase_resist_lv = String(((avgResistLv * ((225 + 75) / (225 + avgTempLV)))/2).toFixed(2));
     }
   }
 

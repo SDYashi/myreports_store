@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StoreServicesService } from '../MyServices/store-services.service';
 
 @Component({
   selector: 'app-store-changepassword',
@@ -7,4 +8,28 @@ import { Component } from '@angular/core';
 })
 export class StoreChangepasswordComponent {
 
+ message: string | null = null;
+  error: string | null = null;
+  constructor(private storeServices: StoreServicesService) {}
+  onSubmit(form: any) {
+    const { oldPassword, newPassword } = form.value;
+    const payload = {
+      changepassword_formdata: {
+        old_password: oldPassword,
+        new_password: newPassword
+      }
+    };
+
+    this.storeServices.changepassword(payload).subscribe(
+      (response) => {
+        this.message = response.message;
+        this.error = null;
+      },
+      (error) => {
+        this.message = null;
+        this.error = error.error.message;
+      }
+    );
+    
+  }
 }

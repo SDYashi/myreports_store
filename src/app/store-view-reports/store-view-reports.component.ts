@@ -108,13 +108,30 @@ filterReports(): void {
     });
   }
 
-  // redirectforedit(sampleCode: string): void {
-  //   this.sampleCode = sampleCode;
-  //    this.router.navigate(['store-home/store-edit-reports', this.sampleCode]);
-  // }
-  redirectforedit(sampleCode: string): void {
-  this.router.navigate(['store-home/store-edit-reports', sampleCode]);
+  downloadPdf_forlab(sampleCode: string): void {
+    this.storeServices.generatePdf_forlab(sampleCode).subscribe({
+      next: (response: Blob) => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `TestReport-${sampleCode}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Error downloading PDF:', err);
+        alert('Failed to download PDF. Please try again.');
+      }
+    });
+  }
+
+redirectforedit(sampleCode: string): void {
+   this.router.navigate(['store-home/store-edit-reports'],{queryParams:{sampleCode:sampleCode}});
 }
+
 
 
 }

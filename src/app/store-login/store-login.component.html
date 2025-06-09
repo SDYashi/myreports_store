@@ -1,5 +1,10 @@
-<div class="login-container">
+   <img src="../../assets/images/loader_image.gif" alt="loader" *ngIf="loading" class="loader" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100vh;"/>
+
+
+<div class="login-container" ngif="!loading">
+ 
   <div class="login-card">
+   
     <h1>LAB LOGIN</h1>
     <form #loginForm="ngForm" class="login-form" (ngSubmit)="onSubmit(loginForm)">
       <input
@@ -17,16 +22,16 @@
         required
       />
 
-      <div class="options-row">
-        <!-- Add options like remember me or forgot password here if needed -->
+      <div class="options-row">   
+       
       </div>
 
       <button type="submit" class="sign-in-btn">SIGN IN</button>
     </form>
-
+<!-- 
     <div *ngIf="respose_msg" class="response-msg">
       {{ respose_msg | json }}
-    </div>
+    </div> -->
 
     <br />
     <p class="footer-text">
@@ -34,4 +39,5 @@
       All Rights Reserved.
     </p>
   </div>
-</div>
+   </div>
+  

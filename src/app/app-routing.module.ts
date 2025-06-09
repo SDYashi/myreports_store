@@ -13,13 +13,14 @@ import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
 import { UploadlabWzlogoComponent } from './uploadlab-wzlogo/uploadlab-wzlogo.component';
 import { StoreChangepasswordComponent } from './store-changepassword/store-changepassword.component';
 import { StoreAddReviewerEmployeeComponent } from './store-add-reviewer-employee/store-add-reviewer-employee.component';
+import { AuthGuard } from './MyServices/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: StoreLoginComponent },
   {
     path: 'store-home',
-    component: StoreHomeComponent,
+    component: StoreHomeComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'store-generate-reports', pathMatch: 'full' },
       { path: 'store-generate-reports', component: StoreGenerateReportsComponent },
@@ -33,10 +34,8 @@ const routes: Routes = [
       { path: 'store-upload-wz-logo',component:UploadlabWzlogoComponent},
       {path:'store-changepassword',component:StoreChangepasswordComponent},
       {path:'store-add-tester-employee',component:StoreAddReviewerEmployeeComponent},
-      {
-        path: 'store-home/store-edit-reports/:samplecode',
-        component: StoreEditReportsComponent
-      }
+     { path: 'store-home/store-edit-reports/:samplecode', component: StoreEditReportsComponent }
+
 
 
 
