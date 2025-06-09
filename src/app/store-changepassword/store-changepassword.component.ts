@@ -23,6 +23,7 @@ export class StoreChangepasswordComponent {
     this.storeServices.changepassword(payload).subscribe(
       (response) => {
         this.message = response.message;
+        alert(this.message);
         this.error = null;
       },
       (error) => {

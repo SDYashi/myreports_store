@@ -21,7 +21,7 @@ export class StoreServicesService {
   }
 
   changepassword(payload: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/changepassword`, payload);
+    return this.http.put<any>(`${this.baseUrl}/ngbreports_api/v1/api/changepassword`, payload);
   }
 
   adddtestreportdata(test_report_formdata: any): Observable<any> {
