@@ -1,6 +1,9 @@
 <div class="container-fluid" style="margin-left: -8px; margin-top: -10px;">
   <div class="sidebar" id="sidebar">
-    <h2 style="padding:20px; background-image: linear-gradient(to right, #011f06, #024b2c); margin-top: -5px;">STORE REPORTS</h2>
+    <div>
+    <img src="../../assets/images/logo/mppkvvcl.png" alt="" width="40" height="40" style="margin: 10px;">
+    <h2 style="padding:20px; background-image: linear-gradient(to right, #011f06, #024b2c); margin-top: -60px; margin-bottom: -1px;">MPWZ LAB REPORTS</h2>
+    </div>
     <ul>
       <li  style="border-top: #024b2c 1px solid;" class="list-group-item" data-bs-toggle="collapse" data-bs-target="#User" aria-expanded="false" aria-controls="User">
           <a class="sidebar-link text-white d-flex justify-content-between align-items-center" style="text-decoration: none;">
@@ -63,6 +66,7 @@
 
     </div>  
     <div style="flex-grow: 1; overflow-y: auto;">
+      <app-loading-spinner></app-loading-spinner>
       <router-outlet></router-outlet>
     </div>
   </div>
