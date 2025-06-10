@@ -16,40 +16,40 @@
                                             <tr>
                                                 <th>System SampleId</th>
                                                 <td>
-                                                    <input id="samplecode" name="samplecode" [(ngModel)]="testReport.samplecode" required type="text" class="form-control highlight-readonly" style="width: 450px;" readonly />
+                                                    <input id="samplecode" name="samplecode" [(ngModel)]="testReport.samplecode" required type="text" style="background-color: #bef5d3;" class="form-control highlight-readonly" style="background-color: #bef5d3;"  readonly />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th>Sample Code</th>
                                                 <td>
-                                                    <input id="template_sample_id" name="template_sample_id" [(ngModel)]="testReport.template_sample_id" required type="text" class="form-control" style="width: 450px;" />
+                                                    <input id="template_sample_id" name="template_sample_id" [(ngModel)]="testReport.template_sample_id" required type="text" class="form-control"  />
                                                 </td>
                                                 <th scope="row">ULR Number:</th>
                                                 <td>
-                                                    <input id="ULR_No" name="ULR_No" [(ngModel)]="testReport.ULR_No" required type="text" class="form-control" style="width: 450px;" />
+                                                    <input id="ULR_No" name="ULR_No" [(ngModel)]="testReport.ULR_No" required type="text" class="form-control"  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Serial No:</th>
                                                 <td>
-                                                    <input id="serial_no" name="serial_no" [(ngModel)]="testReport.serial_no" required type="text" class="form-control" style="width: 450px;" />
+                                                    <input id="serial_no" name="serial_no" [(ngModel)]="testReport.serial_no" required type="text" class="form-control"  />
                                                 </td>
                                                 <th scope="row">Manufacturer:</th>
                                                 <td>
-                                                    <input id="manufacturer" name="manufacturer" [(ngModel)]="testReport.manufacturer" required type="text" class="form-control" style="width: 450px;" />
+                                                    <input id="manufacturer" name="manufacturer" [(ngModel)]="testReport.manufacturer" required type="text" class="form-control"  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Job Rating (KVA):</th>
                                                 <td>
-                                                    <select id="job_rating" name="job_rating" [(ngModel)]="testReport.job_rating" required class="form-select" style="width: 450px;">
+                                                    <select id="job_rating" name="job_rating" [(ngModel)]="testReport.job_rating" required class="form-select" >
                                                         <option value="" disabled selected>Select Job Rating</option>
                                                         <option *ngFor="let capacity of dtrCapacities" [value]="capacity.dtr_capacity">{{ capacity.dtr_capacity }} KVA</option>
                                                     </select>
                                                 </td>
                                                 <th scope="row">Reference Standard:</th>
                                                 <td>
-                                                    <select id="reference_standard" name="reference_standard" [(ngModel)]="testReport.reference_standard" required class="form-select" style="width: 450px;">
+                                                    <select id="reference_standard" name="reference_standard" [(ngModel)]="testReport.reference_standard" required class="form-select" >
                                                         <option value="" disabled selected>Select Reference Standard</option>
                                                         <option *ngFor="let refstand of refStandards" [value]="refstand.ref_standard_formdata">{{ refstand.ref_standard_formdata }}</option>
                                                     </select>
@@ -58,21 +58,21 @@
                                             <tr>
                                                 <th scope="row">Date of Receipt:</th>
                                                 <td>
-                                                    <input id="date_of_receipt" name="date_of_receipt" [(ngModel)]="testReport.date_of_receipt" required type="date" class="form-control" style="width: 450px;" />
+                                                    <input id="date_of_receipt" name="date_of_receipt" [(ngModel)]="testReport.date_of_receipt" required type="date" class="form-control"  />
                                                 </td>
                                                 <th scope="row">Date of Testing:</th>
                                                 <td>
-                                                    <input id="date_of_testing" name="date_of_testing" [(ngModel)]="testReport.date_of_testing" required type="date" class="form-control" style="width: 450px;" />
+                                                    <input id="date_of_testing" name="date_of_testing" [(ngModel)]="testReport.date_of_testing" required type="date" class="form-control"  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Date of Issue:</th>
                                                 <td>
-                                                    <input id="date_of_issue" name="date_of_issue" [(ngModel)]="testReport.date_of_issue" required type="date" class="form-control" style="width: 450px;" />
+                                                    <input id="date_of_issue" name="date_of_issue" [(ngModel)]="testReport.date_of_issue" required type="date" class="form-control"  />
                                                 </td>
                                                 <th scope="row">Customer Name and Address:</th>
                                                 <td>
-                                                    <select id="customer_name_and_address" name="customer_name_and_address" [(ngModel)]="testReport.customer_name_and_address" required class="form-select" style="width: 450px;">
+                                                    <select id="customer_name_and_address" name="customer_name_and_address" [(ngModel)]="testReport.customer_name_and_address" required class="form-select" >
                                                         <option value="" disabled selected>Select Customer Name and Address</option>
                                                         <option *ngFor="let customername of customerList" [value]="customername.customer_name">{{ customername.customer_name }}</option>
                                                     </select>
@@ -126,7 +126,7 @@
                                 <div class="col">
                                     <div style="font-size: 0.85rem; font-weight: bold;" class="d-flex align-items-center form-control">
                                         <p class="mb-0">Remarks:- </p>
-                                        <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2" style="width:100%; box-shadow: none;" />
+                                        <input type="text" id="sample_remarks1" name="sample_remarks1" [(ngModel)]="testReport.sample_remarks1" required class="form-control ms-2"  />
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                             <tr>
                                                 <th>Vector Group:</th>
                                                 <td>
-                                                    <input id="vector_group" name="vector_group" [(ngModel)]="testReport.vector_group" type="text" class="form-control highlight-readonly" style="width: 450px;" readonly />
+                                                    <input id="vector_group" name="vector_group" [(ngModel)]="testReport.vector_group" type="text" class="form-control highlight-readonly" style="background-color: #bef5d3;" readonly />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -165,21 +165,21 @@
                                                         <tr>
                                                             <th style="width: 100px;">HV(kV):</th>
                                                             <td>
-                                                                <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control highlight-readonly" readonly />
+                                                                <input id="hv_kv" name="hv_kv" [(ngModel)]="testReport.hv_kv" required type="text" class="form-control highlight-readonly" style="background-color: #bef5d3;" readonly />
                                                             </td>
                                                             <th style="width: 100px;">LV(V):</th>
                                                             <td>
-                                                                <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control highlight-readonly" readonly />
+                                                                <input id="lv_v" name="lv_v" [(ngModel)]="testReport.lv_v" required type="text" class="form-control highlight-readonly" style="background-color: #bef5d3;"  readonly />
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th>HV:</th>
                                                             <td>
-                                                                <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail" (keyup.enter)="calculateHV()" />
+                                                                <input id="hv" name="hv" [(ngModel)]="testReport.hv" required type="text" class="form-control highlight-fail" style="background-color: #f8d7da;" (keyup.enter)="calculateHV()" />
                                                             </td>
                                                             <th>LV:</th>
                                                             <td>
-                                                                <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail" (keyup.enter)="calculateLV()" />
+                                                                <input id="lv" name="lv" [(ngModel)]="testReport.lv" required type="text" class="form-control highlight-fail" style="background-color: #f8d7da;" (keyup.enter)="calculateLV()" />
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -204,21 +204,21 @@
                                         <tbody>
                                             <tr>
                                                 <th>a)1U-1V/2U-2N</th>
-                                                <td><input id="value_1" name="value_1" [(ngModel)]="testReport.value_1" required type="text" class="form-control" style="width: 120px;" /></td>
+                                                <td><input id="value_1" name="value_1" [(ngModel)]="testReport.value_1" required type="text" class="form-control"  /></td>
                                                 <td rowspan="3" style="word-break: break-all; white-space: pre-wrap;">{{testReport.limit_1}}</td>
                                             </tr>
                                             <tr>
                                                 <th>b)1C-1W/2V2N</th>
-                                                <td><input id="value_2" name="value_2" [(ngModel)]="testReport.value_2" required type="text" class="form-control" style="width: 120px;" /></td>
+                                                <td><input id="value_2" name="value_2" [(ngModel)]="testReport.value_2" required type="text" class="form-control"  /></td>
                                             </tr>
                                             <tr>
                                                 <th>c)1W-1U/2W-2N</th>
-                                                <td><input id="value_3" name="value_3" [(ngModel)]="testReport.value_3" required type="text" class="form-control" style="width: 120px;" /></td>
+                                                <td><input id="value_3" name="value_3" [(ngModel)]="testReport.value_3" required type="text" class="form-control"  /></td>
                                             </tr>
                                             <tr>
                                                 <th><strong>Remarks:-</strong></th>
                                                 <td colspan="2">
-                                                    <input id="sample_remarks2" name="sample_remarks2" [(ngModel)]="testReport.sample_remarks2" required type="text" class="form-control highlight-fail" (keyup.enter)="createsample_remarks2()" />
+                                                    <input id="sample_remarks2" name="sample_remarks2" [(ngModel)]="testReport.sample_remarks2" required type="text" class="form-control highlight-fail" style="background-color: #f8d7da;" (keyup.enter)="createsample_remarks2()" />
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -242,12 +242,12 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input id="avg_temp_hv" name="avg_temp_hv" [(ngModel)]="testReport.avg_temp_hv" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="resist_1" name="resist_1" [(ngModel)]="testReport.resist_1" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="resist_2" name="resist_2" [(ngModel)]="testReport.resist_2" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="resist_3" name="resist_3" [(ngModel)]="testReport.resist_3" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="avg_resist" name="avg_resist" [(ngModel)]="testReport.avg_resist" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculateAvgResist()" /></td>
-                                            <td><input id="phase_resist_hv" name="phase_resist_hv" [(ngModel)]="testReport.phase_resist_hv" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculatePhaseResist1()" /></td>
+                                            <td><input id="avg_temp_hv" name="avg_temp_hv" [(ngModel)]="testReport.avg_temp_hv" required type="text" class="form-control"  /></td>
+                                            <td><input id="resist_1" name="resist_1" [(ngModel)]="testReport.resist_1" required type="text" class="form-control"  /></td>
+                                            <td><input id="resist_2" name="resist_2" [(ngModel)]="testReport.resist_2" required type="text" class="form-control"  /></td>
+                                            <td><input id="resist_3" name="resist_3" [(ngModel)]="testReport.resist_3" required type="text" class="form-control"  /></td>
+                                            <td><input id="avg_resist" name="avg_resist" [(ngModel)]="testReport.avg_resist" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;"  (keyup.enter)="calculateAvgResist()" /></td>
+                                            <td><input id="phase_resist_hv" name="phase_resist_hv" [(ngModel)]="testReport.phase_resist_hv" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;"  (keyup.enter)="calculatePhaseResist1()" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -268,12 +268,12 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input id="avg_temp_lv" name="avg_temp_lv" [(ngModel)]="testReport.avg_temp_lv" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="resist_lv_1" name="resist_lv_1" [(ngModel)]="testReport.resist_lv_1" required type="text" class="form-control " style="width: 120px;" /></td>
-                                            <td><input id="resist_lv_2" name="resist_lv_2" [(ngModel)]="testReport.resist_lv_2" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="resist_lv_3" name="resist_lv_3" [(ngModel)]="testReport.resist_lv_3" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="avg_resist_lv" name="avg_resist_lv" [(ngModel)]="testReport.avg_resist_lv" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculateAvgResistLv()" /></td>
-                                            <td><input id="phase_resist_lv" name="phase_resist_lv" [(ngModel)]="testReport.phase_resist_lv" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculatePhaseResistLv2()" /></td>
+                                            <td><input id="avg_temp_lv" name="avg_temp_lv" [(ngModel)]="testReport.avg_temp_lv" required type="text" class="form-control"  /></td>
+                                            <td><input id="resist_lv_1" name="resist_lv_1" [(ngModel)]="testReport.resist_lv_1" required type="text" class="form-control "  /></td>
+                                            <td><input id="resist_lv_2" name="resist_lv_2" [(ngModel)]="testReport.resist_lv_2" required type="text" class="form-control"  /></td>
+                                            <td><input id="resist_lv_3" name="resist_lv_3" [(ngModel)]="testReport.resist_lv_3" required type="text" class="form-control"  /></td>
+                                            <td><input id="avg_resist_lv" name="avg_resist_lv" [(ngModel)]="testReport.avg_resist_lv" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;"  (keyup.enter)="calculateAvgResistLv()" /></td>
+                                            <td><input id="phase_resist_lv" name="phase_resist_lv" [(ngModel)]="testReport.phase_resist_lv" required type="text" class="form-control highlight-fail2"  style="background-color: #f8d7da;" (keyup.enter)="calculatePhaseResistLv2()" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -293,11 +293,11 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input id="time" name="time" [(ngModel)]="testReport.time" required type="text" class="form-control highlight-readonly" style="width: 120px;" readonly /></td>
-                                            <td><input id="temp_ir" name="temp_ir" [(ngModel)]="testReport.temp_ir" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="hv_e" name="hv_e" [(ngModel)]="testReport.hv_e" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="lv_e" name="lv_e" [(ngModel)]="testReport.lv_e" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="hv_lv" name="hv_lv" [(ngModel)]="testReport.hv_lv" required type="text" class="form-control" style="width: 120px;" /></td>
+                                            <td><input id="time" name="time" [(ngModel)]="testReport.time" required type="text" class="form-control highlight-readonly" style="background-color: #bef5d3;" readonly /></td>
+                                            <td><input id="temp_ir" name="temp_ir" [(ngModel)]="testReport.temp_ir" required type="text" class="form-control"  /></td>
+                                            <td><input id="hv_e" name="hv_e" [(ngModel)]="testReport.hv_e" required type="text" class="form-control"  /></td>
+                                            <td><input id="lv_e" name="lv_e" [(ngModel)]="testReport.lv_e" required type="text" class="form-control"  /></td>
+                                            <td><input id="hv_lv" name="hv_lv" [(ngModel)]="testReport.hv_lv" required type="text" class="form-control"  /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -318,12 +318,12 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input id="voltage_vrms" name="voltage_vrms" [(ngModel)]="testReport.voltage_vrms" required type="text" class="form-control" style="width: 80px;" /></td>
-                                            <td><input id="voltage_mean" name="voltage_mean" [(ngModel)]="testReport.voltage_mean" required type="text" class="form-control" style="width: 80px;" /></td>
-                                            <td><input id="freq_nl" name="freq_nl" [(ngModel)]="testReport.freq_nl" required type="text" class="form-control" style="width: 80px;" /></td>
-                                            <td><input id="current_nl" name="current_nl" [(ngModel)]="testReport.current_nl" required type="text" class="form-control" style="width: 80px;" /></td>
-                                            <td><input id="pm_nl" name="pm_nl" [(ngModel)]="testReport.pm_nl" required type="text" class="form-control" style="width: 80px;" /></td>
-                                            <td><input id="pc_nl" name="pc_nl" [(ngModel)]="testReport.pc_nl" required type="text" class="form-control highlight-fail2" style="width: 80px;" (keyup.enter)="calculatenoload_testPCW()" /></td>
+                                            <td><input id="voltage_vrms" name="voltage_vrms" [(ngModel)]="testReport.voltage_vrms" required type="text" class="form-control"  /></td>
+                                            <td><input id="voltage_mean" name="voltage_mean" [(ngModel)]="testReport.voltage_mean" required type="text" class="form-control"  /></td>
+                                            <td><input id="freq_nl" name="freq_nl" [(ngModel)]="testReport.freq_nl" required type="text" class="form-control"  /></td>
+                                            <td><input id="current_nl" name="current_nl" [(ngModel)]="testReport.current_nl" required type="text" class="form-control"  /></td>
+                                            <td><input id="pm_nl" name="pm_nl" [(ngModel)]="testReport.pm_nl" required type="text" class="form-control"  /></td>
+                                            <td><input id="pc_nl" name="pc_nl" [(ngModel)]="testReport.pc_nl" required type="text" class="form-control highlight-fail2"  style="background-color: #f8d7da;" (keyup.enter)="calculatenoload_testPCW()" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -347,23 +347,23 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">50%</th>
-                                            <td><input id="temp_50" name="temp_50" [(ngModel)]="testReport.temp_50" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="freq_50" name="freq_50" [(ngModel)]="testReport.freq_50" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="volt_50" name="volt_50" [(ngModel)]="testReport.volt_50" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="curr_50" name="curr_50" [(ngModel)]="testReport.curr_50" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="pm_50" name="pm_50" [(ngModel)]="testReport.pm_50" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="load_loss_50" name="load_loss_50" [(ngModel)]="testReport.load_loss_50" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculate_loadloss_test()" /></td>
-                                            <td><input id="percent_z_50" name="percent_z_50" [(ngModel)]="testReport.percent_z_50" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculate_loadloss_test()" /></td>
+                                            <td><input id="temp_50" name="temp_50" [(ngModel)]="testReport.temp_50" required type="text" class="form-control"  /></td>
+                                            <td><input id="freq_50" name="freq_50" [(ngModel)]="testReport.freq_50" required type="text" class="form-control"  /></td>
+                                            <td><input id="volt_50" name="volt_50" [(ngModel)]="testReport.volt_50" required type="text" class="form-control"  /></td>
+                                            <td><input id="curr_50" name="curr_50" [(ngModel)]="testReport.curr_50" required type="text" class="form-control"  /></td>
+                                            <td><input id="pm_50" name="pm_50" [(ngModel)]="testReport.pm_50" required type="text" class="form-control"  /></td>
+                                            <td><input id="load_loss_50" name="load_loss_50" [(ngModel)]="testReport.load_loss_50" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;" (keyup.enter)="calculate_loadloss_test()" /></td>
+                                            <td><input id="percent_z_50" name="percent_z_50" [(ngModel)]="testReport.percent_z_50" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;" (keyup.enter)="calculate_loadloss_test()" /></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">100%</th>
-                                            <td><input id="temp_100" name="temp_100" [(ngModel)]="testReport.temp_100" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="freq_100" name="freq_100" [(ngModel)]="testReport.freq_100" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="volt_100" name="volt_100" [(ngModel)]="testReport.volt_100" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="curr_100" name="curr_100" [(ngModel)]="testReport.curr_100" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="pm_100" name="pm_100" [(ngModel)]="testReport.pm_100" required type="text" class="form-control" style="width: 120px;" /></td>
-                                            <td><input id="load_loss_100" name="load_loss_100" [(ngModel)]="testReport.load_loss_100" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculate_loadloss_test()" /></td>
-                                            <td><input id="percent_z_100" name="percent_z_100" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control highlight-fail2" style="width: 120px;" (keyup.enter)="calculate_loadloss_test()" /></td>
+                                            <td><input id="temp_100" name="temp_100" [(ngModel)]="testReport.temp_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="freq_100" name="freq_100" [(ngModel)]="testReport.freq_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="volt_100" name="volt_100" [(ngModel)]="testReport.volt_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="curr_100" name="curr_100" [(ngModel)]="testReport.curr_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="pm_100" name="pm_100" [(ngModel)]="testReport.pm_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="load_loss_100" name="load_loss_100" [(ngModel)]="testReport.load_loss_100" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;" (keyup.enter)="calculate_loadloss_test()" /></td>
+                                            <td><input id="percent_z_100" name="percent_z_100" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control highlight-fail2"  style="background-color: #f8d7da;" (keyup.enter)="calculate_loadloss_test()" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -383,20 +383,20 @@
                                         <tr>
                                             <th>Impedance Voltage (%)</th>
                                             <td><strong>4.5 +/- 10%</strong></td>
-                                            <td><input id="obtained_1" name="obtained_1" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control" style="width: 250px;" /></td>
-                                            <td><input id="remark_1" name="remark_1" [(ngModel)]="testReport.remark_1" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" /></td>
+                                            <td><input id="obtained_1" name="obtained_1" [(ngModel)]="testReport.percent_z_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="remark_1" name="remark_1" [(ngModel)]="testReport.remark_1" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;"  (keyup.enter)="load_complied()" /></td>
                                         </tr>
                                         <tr>
                                             <th>Total loss at 50%(W)</th>
-                                            <td><input id="particular_validate_0_50" name="particular_validate_0_50" [(ngModel)]="testReport.particular_validate_0_50" required type="text" class="form-control" style="width: 250px;" /></td>
-                                            <td><input id="obtained_2" name="obtained_2" [(ngModel)]="testReport.obtained_2" required type="text" class="form-control" style="width: 250px;" /></td>
-                                            <td><input id="remark_2" name="remark_2" [(ngModel)]="testReport.remark_2" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" /></td>
+                                            <td><input id="particular_validate_0_50" name="particular_validate_0_50" [(ngModel)]="testReport.particular_validate_0_50" required type="text" class="form-control"  /></td>
+                                            <td><input id="obtained_2" name="obtained_2" [(ngModel)]="testReport.obtained_2" required type="text" class="form-control"  /></td>
+                                            <td><input id="remark_2" name="remark_2" [(ngModel)]="testReport.remark_2" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;" (keyup.enter)="load_complied()" /></td>
                                         </tr>
                                         <tr>
                                             <th>Total loss at 100%(W)</th>
-                                            <td><input id="particular_validate_0_100" name="particular_validate_0_100" [(ngModel)]="testReport.particular_validate_0_100" required type="text" class="form-control" style="width: 250px;" /></td>
-                                            <td><input id="obtained_3" name="obtained_3" [(ngModel)]="testReport.obtained_3" required type="text" class="form-control" style="width: 250px;" /></td>
-                                            <td><input id="remark_3" name="remark_3" [(ngModel)]="testReport.remark_3" required type="text" class="form-control highlight-fail2" style="width: 250px;" (keyup.enter)="load_complied()" /></td>
+                                            <td><input id="particular_validate_0_100" name="particular_validate_0_100" [(ngModel)]="testReport.particular_validate_0_100" required type="text" class="form-control"  /></td>
+                                            <td><input id="obtained_3" name="obtained_3" [(ngModel)]="testReport.obtained_3" required type="text" class="form-control"  /></td>
+                                            <td><input id="remark_3" name="remark_3" [(ngModel)]="testReport.remark_3" required type="text" class="form-control highlight-fail2" style="background-color: #f8d7da;" (keyup.enter)="load_complied()" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -414,7 +414,7 @@
                                         <tr>
                                             <td>
                                                 <p style="margin-bottom: 10px;">a) Applied 866 volts at 150 Hz on LV side, keeping HV side open for 40 seconds.</p>
-                                                <select id="remark_4" name="remark_4" [(ngModel)]="testReport.remark_4" required class="form-select" style="width:100%">
+                                                <select id="remark_4" name="remark_4" [(ngModel)]="testReport.remark_4" required class="form-select">
                                                     <option value="" disabled selected>Select Remarks</option>
                                                     <option value="Withstood">Withstood</option>
                                                     <option value="Not Withstood">Not Withstood</option>
@@ -447,11 +447,11 @@
                                         </tr>
                                         <tr>
                                             <td scope="row"><strong>Humidity (%):</strong></td>
-                                            <td><input type="text" id="humidity" name="humidity" [(ngModel)]="testReport.humidity" required class="form-control" style="width: 120px;" /></td>
+                                            <td><input type="text" id="humidity" name="humidity" [(ngModel)]="testReport.humidity" required class="form-control"  /></td>
                                         </tr>
                                         <tr>
                                             <td scope="row"><strong>Ambient Temp (°C):</strong></td>
-                                            <td><input type="text" id="ambient_temp" name="ambient_temp" [(ngModel)]="testReport.ambient_temp" required class="form-control" style="width: 120px;" /></td>
+                                            <td><input type="text" id="ambient_temp" name="ambient_temp" [(ngModel)]="testReport.ambient_temp" required class="form-control"  /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -478,7 +478,7 @@
                                     <tr>
                                         <th colspan="4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="confirm_submit" name="confirm_submit" [(ngModel)]="testReport.confirm_submit" required>
+                                                <input class="form-check-input" type="checkbox" id="confirm_submit" name="confirm_submit" [(ngModel)]="testReport.confirm_submit" required [checked]="false">
                                                 <label class="form-check-label" for="confirm_submit">
                                                     Yes I Agree for Change Test Report Data for Correction.
                                                 </label>
@@ -490,12 +490,11 @@
                             </table>
                             <div class="row mt-3">
                                 <div class="col">
-                                    <button type="button" class="btn btn-primary" style="margin-left: 15px; width: 250px;"  (click)="editreports(testReportForms)">Validate & Submit</button>
+                                    <button type="button" class="btn btn-primary" style="margin-left: 15px; width: 250px; margin-right: 15px;"  (click)="editreports(testReportForms)">Validate & Submit</button>
+                                    <button type="button" (click)="previousStep()" class="btn btn-danger">Previous</button>
                                 </div>
                             </div>
                         </div>
-                        <br>
-                        <button type="button" (click)="previousStep()" class="btn btn-danger">Previous</button>
                     </div>
                 </div>
             </div>

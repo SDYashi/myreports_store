@@ -13,7 +13,9 @@ interface UserProfile {
 })
 export class StoreEditReportsComponent implements OnInit {
   sampleCode: any = {};
-  testReport: any = {};
+  testReport: any = {
+     
+  };
   responseMessage: string = '';
   searchflag: boolean = false;
   step: number = 1;
