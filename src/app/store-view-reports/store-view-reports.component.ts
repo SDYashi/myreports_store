@@ -128,8 +128,9 @@ filterReports(): void {
     });
   }
 
-redirectforedit(sampleCode: string): void {
-   this.router.navigate(['store-home/store-edit-reports'],{queryParams:{sampleCode:sampleCode}});
+redirectforedit(samplecode: string): void {
+  this.router.navigate(['store-home/store-edit-reports'], { queryParams: { samplecode: samplecode } });
+
 }
 
 

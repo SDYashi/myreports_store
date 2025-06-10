@@ -73,12 +73,15 @@ export class StoreServicesService {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/edit_userprofile`, { user_profile_formdata});
   }
 
-  loadReportsforedit(samplecode: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_testreport?samplecode=${samplecode}`);
-  }
+ loadReportsforedit(samplecode: any): Observable<any> {
+  return this.http.get<any>(`${this.baseUrl}/ngbreports_api/v1/api/get_testreport_by_sample_code`, {
+    params: { samplecode }
+  });
+}
+
 
   updatetestreport(test_report_formdata: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/update_testreport`, { test_report_formdata});
+    return this.http.put<any>(`${this.baseUrl}/ngbreports_api/v1/api/edit_test_report`, { test_report_formdata});
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreServicesService } from '../MyServices/store-services.service';
+import { NgForm } from '@angular/forms';
 interface UserProfile {
      reviewer: string;
      tester: string;
@@ -11,7 +12,7 @@ interface UserProfile {
   templateUrl: './store-edit-reports.component.html',
 })
 export class StoreEditReportsComponent implements OnInit {
-  sampleCode: string = '';
+  sampleCode: any = {};
   testReport: any = {};
   responseMessage: string = '';
   searchflag: boolean = false;
@@ -22,17 +23,24 @@ export class StoreEditReportsComponent implements OnInit {
   customerList: any[] = [];
   tester_reviewer!: UserProfile;
   processing_msgs='';
-  designations: string[] = ['Tester', 'Supervisor', 'Manager'];
+
  
 
-  constructor(  private storeServices: StoreServicesService , private ActiveR:ActivatedRoute, private router:Router){
-     this.ActiveR.queryParams.subscribe(HttpParams=>{
-     this.updatereportsForm={...HttpParams};
-       
-     });
-     this.sampleCode=JSON.stringify(this.updatereportsForm);
-    //  alert(this.sampleCode);
-  }
+constructor(
+  private storeServices: StoreServicesService,
+  private ActiveR: ActivatedRoute,
+  private router: Router
+) {
+  this.ActiveR.queryParams.subscribe(params => {
+    this.updatereportsForm = { ...params };
+    this.sampleCode = params['samplecode'];
+    
+    if (this.sampleCode) {
+      this.fetchTestReport(this.sampleCode);
+    }
+  });
+}
+
   
 
   ngOnInit(): void {
@@ -93,34 +101,39 @@ export class StoreEditReportsComponent implements OnInit {
  
 
 
-  fetchTestReport(sampleCode: string): void {
+fetchTestReport(sampleCode: any): void {
     this.storeServices.loadReportsforedit(sampleCode).subscribe({
-      next: (data) => {
-        this.testReport = data;
-        // alert(this.testReport)
-      },
-      error: (error) => {
-        console.error('Fetch Error:', error);
-        this.responseMessage = error.error || 'Failed to load report.';
-        alert(this.responseMessage);
-      }
+        next: (data) => {
+            this.testReport = data;
+        },
+        error: (error) => {
+            console.error('Fetch Error:', error);
+            this.responseMessage = error.error || 'Failed to load report.';
+            alert(this.responseMessage);
+        }
     });
-  }
+}
 
-  editreports(formData: any): void {
-    this.storeServices.updatetestreport(formData).subscribe({
+
+editreports(formData:NgForm): void {
+     if (formData.valid) {
+    this.storeServices.updatetestreport(this.testReport).subscribe({
       next: (response) => {
         this.responseMessage = response.message;
         alert(this.responseMessage);
         this.searchflag = false;
+        this.router.navigate(['store-home/store-view-reports']);
       },
       error: (error) => {
-        console.error('Update Error:', error);
-        this.responseMessage = error.error || 'Failed to update report.';
+        this.responseMessage = error.error;
         alert(this.responseMessage);
         this.searchflag = false;
       }
     });
+  }
+  else {
+    alert('Please fill in the required fields.');
+  }
   }
 
   nextStep(): void {
