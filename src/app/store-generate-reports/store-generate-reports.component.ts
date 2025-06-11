@@ -191,13 +191,13 @@ processing_tags=false;
       const inputElements = document.querySelectorAll<HTMLInputElement>('#template_version, #template_sample_id, #ULR_No, #serial_no, #manufacturer, #job_rating, #reference_standard, #date_of_receipt, #date_of_testing, #date_of_issue, #customer_name_and_address, #sample_remarks1, #vector_group, #hv_kv, #lv_v, #hv, #lv, #value_1, #value_2, #value_3, #limit_1, #sample_remarks2, #avg_temp_hv, #resist_1, #resist_2, #resist_3, #avg_resist, #phase_resist_hv, #avg_temp_lv, #resist_lv_1, #resist_lv_2, #resist_lv_3, #avg_resist_lv, #phase_resist_lv, #time, #temp_ir, #hv_e, #lv_e, #hv_lv, #voltage_vrms, #voltage_mean, #freq_nl, #current_nl, #pm_nl, #pc_nl, #temp_50, #freq_50, #volt_50, #curr_50, #pm_50, #load_loss_50, #percent_z_50, #temp_100, #freq_100, #volt_100, #curr_100, #pm_100, #load_loss_100, #percent_z_100, #particular_validate_0_50, #particular_validate_0_100, #required_1, #obtained_1, #remark_1, #required_2, #obtained_2, #remark_2, #required_3, #obtained_3, #remark_3, #remark_4, #remark_5, #remark_6, #tester, #reviewer, #humidity, #ambient_temp, #tester_designation, #reviewer_designation');
       inputElements.forEach(element => {
         if (element.value.trim() === '') {
-          element.style.backgroundColor = 'red';
+          element.style.backgroundColor = 'yellow';
         }
         else {
           element.style.backgroundColor = 'white';
         }
       });
-      alert('Please fill in all required fields.');
+      // alert('Please fill in all required fields.');
     }
   }
   formreset() {
@@ -299,7 +299,7 @@ processing_tags=false;
         if ((element.id === 'value_1' && (value_1 < 43.78 || value_1 > 44.22)) ||
           (element.id === 'value_2' && (value_2 < 43.78 || value_2 > 44.22)) ||
           (element.id === 'value_3' && (value_3 < 43.78 || value_3 > 44.22))) {
-          element.style.backgroundColor = 'red';
+          element.style.backgroundColor = 'yellow';
         }
       });
     }
