@@ -364,7 +364,7 @@ processing_tags=false;
     const loadLoss50Num = Number(this.testReport.load_loss_50);
     const loadLoss100Num = Number(this.testReport.load_loss_100);
 
-    if (!isNaN(pcNlNum) && !isNaN(loadLoss50Num) && !isNaN(loadLoss100Num)) {
+    if (!isNaN(pcNlNum) && !isNaN(loadLoss100Num)) {
       this.testReport.obtained_2 = (pcNlNum + loadLoss50Num).toFixed(2);
       this.testReport.obtained_3 = (pcNlNum + loadLoss100Num).toFixed(2);
     }
