@@ -6,41 +6,54 @@ import { StoreServicesService } from '../MyServices/store-services.service';
   templateUrl: './uploadlab-qr.component.html',
   styleUrls: ['./uploadlab-qr.component.css']
 })
-
-export class UploadlabQrComponent { selectedFile: File | null = null;
-  responseMessage: string | null = null;
+export class UploadlabQrComponent {
+  selectedFile: File | null = null;
   imageUrl: string | null = null;
+  uploadSuccess = false;
+
   constructor(private storeServices: StoreServicesService) {}
 
-  handleFileInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.selectedFile = input.files[0];
-      console.log('File selected:', this.selectedFile.name);
-    } else {
-      this.selectedFile = null;
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+
+      // Optional preview
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageUrl = e.target.result;
+      };
+      reader.readAsDataURL(file);
+
+      console.log('Selected file:', file.name);
     }
   }
 
- onSubmit(): void {
-  if (this.selectedFile) {
+uploadImage(): void {
+    if (!this.selectedFile) {
+        alert('Please select a file first');
+        return;
+    }
+
     const formData = new FormData();
-    formData.append('file', this.selectedFile); // ✅ key is "file"
+    formData.append('image', this.selectedFile);
+
+    // Debug form data keys
+    formData.forEach((val, key) => {
+        console.log(`FormData key: ${key}`, val);
+    });
 
     this.storeServices.uploadqrimage(formData).subscribe({
-      next: (response) => {
-        this.responseMessage = response.msg;
-        this.imageUrl = response.image_url;
-        alert(this.responseMessage);
-      },
-      error: (error) => {
-        this.responseMessage = error.error?.msg || 'Upload failed';
-        alert(this.responseMessage);
-      }
+        next: (response) => {
+            this.uploadSuccess = true;
+            this.imageUrl = response.image_url || null; 
+            console.log('Upload success:', response);
+        },
+        error: (error) => {
+            this.uploadSuccess = false;
+            console.error('Upload failed:', error);
+        }
     });
-  } else {
-    alert('Please select a file before submitting.');
-  }
 }
 
 }

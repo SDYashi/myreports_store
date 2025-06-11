@@ -85,9 +85,10 @@ export class StoreServicesService {
   }
 
 
-  uploadqrimage(formData: FormData): Observable<any> {
+ uploadqrimage(formData: FormData): Observable<any> {
   return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_lab_qr`, formData);
-  }
+}
+
 
   uploadwzimage(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/ngbreports_api/v1/api/upload_wz_logo`,  formData);
