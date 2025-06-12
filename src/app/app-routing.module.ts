@@ -10,7 +10,6 @@ import { StoreAddJobRatingComponent } from './store-add-job-rating/store-add-job
 import { StoreEditUserProfileComponent } from './store-edit-user-profile/store-edit-user-profile.component';
 import { StoreAddRefStandaredsComponent } from './store-add-ref-standareds/store-add-ref-standareds.component';
 import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
-import { UploadlabWzlogoComponent } from './uploadlab-wzlogo/uploadlab-wzlogo.component';
 import { StoreChangepasswordComponent } from './store-changepassword/store-changepassword.component';
 import { StoreAddReviewerEmployeeComponent } from './store-add-reviewer-employee/store-add-reviewer-employee.component';
 import { AuthGuard } from './MyServices/auth.guard';
@@ -31,7 +30,6 @@ const routes: Routes = [
       { path: 'store-add-customer-name-addrs',component:StoreAddCustomerNameAddrsComponent},
       { path: 'store-add-job-rating',component:StoreAddJobRatingComponent},
       { path: 'store-upload-lab-qr',component:UploadlabQrComponent},
-      { path: 'store-upload-wz-logo',component:UploadlabWzlogoComponent},
       {path:'store-changepassword',component:StoreChangepasswordComponent},
       {path:'store-add-tester-employee',component:StoreAddReviewerEmployeeComponent},
      { path: 'store-home/store-edit-reports/:samplecode', component: StoreEditReportsComponent }
