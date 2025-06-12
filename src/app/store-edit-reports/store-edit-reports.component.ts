@@ -214,7 +214,8 @@ editreports(formData:NgForm): void {
     const voltagemeans = Number(this.testReport.voltage_mean);
     const pmNL = Number(this.testReport.pm_nl);
     if (!isNaN(voltagerms) && !isNaN(voltagemeans) && !isNaN(pmNL)) {
-      this.testReport.pc_nl = String((pmNL /(0.5+(0.5*(Math.sqrt((voltagerms/voltagemeans)))))).toFixed(2)); 
+      // this.testReport.pc_nl = String((pmNL /(0.5+(0.5*(Math.sqrt((voltagerms/voltagemeans)))))).toFixed(2)); 
+      this.testReport.pc_nl = String((pmNL /(0.5+(0.5*(Math.pow((voltagerms/voltagemeans),2))))).toFixed(2)); 
     }
   }
 
@@ -258,7 +259,7 @@ editreports(formData:NgForm): void {
     const Reference_Temp = 75;
     const Metal_Value_For_CuAl = 225;
     const Rated_Frequency = 50;
-
+    
     try {
       const jobRatingNum = Number(this.testReport.job_rating);
       const hvKV = Number(this.testReport.hv_kv);
@@ -278,10 +279,10 @@ editreports(formData:NgForm): void {
       const curr100 = Number(this.testReport.curr_100);
       const pm100 = Number(this.testReport.pm_100);
 
-      const Rated_Current_HV_50 = ((jobRatingNum) / (hvKV * 1.732)/2);
-      const Rated_Current_LV_50 = ((jobRatingNum) / (lvV * 1.732)/2);
-      const Rated_Current_HV_100 = jobRatingNum / (hvKV * 1.732);
-      const Rated_Current_LV_100 = jobRatingNum / (lvV * 1.732);
+      const Rated_Current_HV_50 = parseFloat(((jobRatingNum) / (hvKV * 1.732)/2).toFixed(2)); 
+      const Rated_Current_LV_50 = parseFloat(((jobRatingNum) / (lvV * 1.732)/2).toFixed(2)); 
+      const Rated_Current_HV_100 = parseFloat((jobRatingNum / (hvKV * 1.732)).toFixed(2)); 
+      const Rated_Current_LV_100 = parseFloat((jobRatingNum / (lvV * 1.732)).toFixed(2));
 
       const Cal_Avg_Resistance_LV_Ohm_50 = (avgResistLv / 1000) / 2;
       const Cal_Avg_Resistance_LV_Ohm_100 = (avgResistLv / 1000) / 2;
@@ -359,69 +360,69 @@ editreports(formData:NgForm): void {
       this.testReport.percent_z_50 = Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_50.toFixed(2);
       this.testReport.percent_z_100 = Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_100.toFixed(2);
 
-//       console.log({
-//   'Reference_Temp': Reference_Temp,
-//   'Metal_Value_For_CuAl': Metal_Value_For_CuAl,
-//   'Rated_Frequency': Rated_Frequency,
-//   'jobRatingNum': jobRatingNum,
-//   'hvKV': hvKV,
-//   'lvV': lvV,
-//   'avgResist': avgResist,
-//   'avgResistLv': avgResistLv,
-//   'avgTempHV': avgTempHV,
-//   'temp50': temp50,
-//   'freq50': freq50,
-//   'curr50': curr50,
-//   'pm50': pm50,
-//   'temp100': temp100,
-//   'freq100': freq100,
-//   'curr100': curr100,
-//   'pm100': pm100,
-//   'Rated_Current_HV_50': Rated_Current_HV_50,
-//   'Rated_Current_LV_50': Rated_Current_LV_50,
-//   'Rated_Current_HV_100': Rated_Current_HV_100,
-//   'Rated_Current_LV_100': Rated_Current_LV_100,
-//   'Cal_Avg_Resistance_LV_Ohm_50': Cal_Avg_Resistance_LV_Ohm_50,
-//   'Cal_Avg_Resistance_LV_Ohm_100': Cal_Avg_Resistance_LV_Ohm_100,
-//   'I2_R_hv_50': I2_R_hv_50,
-//   'I2_R_hv_100': I2_R_hv_100,
-//   'I2_R_lv_50': I2_R_lv_50,
-//   'I2_R_lv_100': I2_R_lv_100,
-//   'Total_Copper_Losses_At_Oil_Temp_50': Total_Copper_Losses_At_Oil_Temp_50,
-//   'Total_Copper_Losses_At_Oil_Temp_100': Total_Copper_Losses_At_Oil_Temp_100,
-//   'Total_Copper_Losses_at_Avg_Temp_50': Total_Copper_Losses_at_Avg_Temp_50,
-//   'Total_Copper_Losses_at_Avg_Temp_100': Total_Copper_Losses_at_Avg_Temp_100,
-//   'Corrected_Load_Loss_LLC_50': Corrected_Load_Loss_LLC_50,
-//   'Corrected_Load_Loss_LLC_100': Corrected_Load_Loss_LLC_100,
-//   'Stray_Loss_At_AvgTemp_50': Stray_Loss_At_AvgTemp_50,
-//   'Stray_Loss_At_AvgTemp_100': Stray_Loss_At_AvgTemp_100,
-//   'Total_Copper_Losses_At_Ref_Temp_50': Total_Copper_Losses_At_Ref_Temp_50,
-//   'Total_Copper_Losses_At_Ref_Temp_100': Total_Copper_Losses_At_Ref_Temp_100,
-//   'Stray_Loss_at_Rated_Frequency_75_50': Stray_Loss_at_Rated_Frequency_75_50,
-//   'Stray_Loss_at_Rated_Frequency_75_100': Stray_Loss_at_Rated_Frequency_75_100,
-//   'Stray_Loss_at_Test_Frequency_75_50': Stray_Loss_at_Test_Frequency_75_50,
-//   'Stray_Loss_at_Test_Frequency_75_100': Stray_Loss_at_Test_Frequency_75_100,
-//   'Load_Loss_at_Rated_Frequency_75_50': Load_Loss_at_Rated_Frequency_75_50,
-//   'Load_Loss_at_Rated_Frequency_75_100': Load_Loss_at_Rated_Frequency_75_100,
-//   'Load_Loss_at_Test_Frequency_75_50': Load_Loss_at_Test_Frequency_75_50,
-//   'Load_Loss_at_Test_Frequency_75_100': Load_Loss_at_Test_Frequency_75_100,
-//   'V_Meas_From_Load_Loss_Test_50': V_Meas_From_Load_Loss_Test_50,
-//   'V_Meas_From_Load_Loss_Test_100': V_Meas_From_Load_Loss_Test_100,
-//   'Corr_Volt_V_50': Corr_Volt_V_50,
-//   'Corr_Volt_V_100': Corr_Volt_V_100,
-//   'Impedance_Z_At_AvgTemp_C_50': Impedance_Z_At_AvgTemp_C_50,
-//   'Impedance_Z_At_AvgTemp_C_100': Impedance_Z_At_AvgTemp_C_100,
-//   'Resistance_CorR_At_AvgTemp_C_50': Resistance_CorR_At_AvgTemp_C_50,
-//   'Resistance_CorR_At_AvgTemp_C_100': Resistance_CorR_At_AvgTemp_C_100,
-//   'Reactance_CorR_At_RefTemp_C_50': Reactance_CorR_At_RefTemp_C_50,
-//   'Reactance_CorR_At_RefTemp_C_100': Reactance_CorR_At_RefTemp_C_100,
-//   'Resistance_R_At_RefTemp_C_50': Resistance_R_At_RefTemp_C_50,
-//   'Resistance_R_At_RefTemp_C_100': Resistance_R_At_RefTemp_C_100,
-//   'final_Impedance_Z_At_RefTemp_C_50': final_Impedance_Z_At_RefTemp_C_50,
-//   'final_Impedance_Z_At_RefTemp_C_100': final_Impedance_Z_At_RefTemp_C_100,
-//   'Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_50': Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_50,
-//   'Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_100': Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_100
-// });
+      console.log({
+  'Reference_Temp': Reference_Temp,
+  'Metal_Value_For_CuAl': Metal_Value_For_CuAl,
+  'Rated_Frequency': Rated_Frequency,
+  'jobRatingNum': jobRatingNum,
+  'hvKV': hvKV,
+  'lvV': lvV,
+  'avgResist': avgResist,
+  'avgResistLv': avgResistLv,
+  'avgTempHV': avgTempHV,
+  'temp50': temp50,
+  'freq50': freq50,
+  'curr50': curr50,
+  'pm50': pm50,
+  'temp100': temp100,
+  'freq100': freq100,
+  'curr100': curr100,
+  'pm100': pm100,
+  'Rated_Current_HV_50': Rated_Current_HV_50,
+  'Rated_Current_LV_50': Rated_Current_LV_50,
+  'Rated_Current_HV_100': Rated_Current_HV_100,
+  'Rated_Current_LV_100': Rated_Current_LV_100,
+  'Cal_Avg_Resistance_LV_Ohm_50': Cal_Avg_Resistance_LV_Ohm_50,
+  'Cal_Avg_Resistance_LV_Ohm_100': Cal_Avg_Resistance_LV_Ohm_100,
+  'I2_R_hv_50': I2_R_hv_50,
+  'I2_R_hv_100': I2_R_hv_100,
+  'I2_R_lv_50': I2_R_lv_50,
+  'I2_R_lv_100': I2_R_lv_100,
+  'Total_Copper_Losses_At_Oil_Temp_50': Total_Copper_Losses_At_Oil_Temp_50,
+  'Total_Copper_Losses_At_Oil_Temp_100': Total_Copper_Losses_At_Oil_Temp_100,
+  'Total_Copper_Losses_at_Avg_Temp_50': Total_Copper_Losses_at_Avg_Temp_50,
+  'Total_Copper_Losses_at_Avg_Temp_100': Total_Copper_Losses_at_Avg_Temp_100,
+  'Corrected_Load_Loss_LLC_50': Corrected_Load_Loss_LLC_50,
+  'Corrected_Load_Loss_LLC_100': Corrected_Load_Loss_LLC_100,
+  'Stray_Loss_At_AvgTemp_50': Stray_Loss_At_AvgTemp_50,
+  'Stray_Loss_At_AvgTemp_100': Stray_Loss_At_AvgTemp_100,
+  'Total_Copper_Losses_At_Ref_Temp_50': Total_Copper_Losses_At_Ref_Temp_50,
+  'Total_Copper_Losses_At_Ref_Temp_100': Total_Copper_Losses_At_Ref_Temp_100,
+  'Stray_Loss_at_Rated_Frequency_75_50': Stray_Loss_at_Rated_Frequency_75_50,
+  'Stray_Loss_at_Rated_Frequency_75_100': Stray_Loss_at_Rated_Frequency_75_100,
+  'Stray_Loss_at_Test_Frequency_75_50': Stray_Loss_at_Test_Frequency_75_50,
+  'Stray_Loss_at_Test_Frequency_75_100': Stray_Loss_at_Test_Frequency_75_100,
+  'Load_Loss_at_Rated_Frequency_75_50': Load_Loss_at_Rated_Frequency_75_50,
+  'Load_Loss_at_Rated_Frequency_75_100': Load_Loss_at_Rated_Frequency_75_100,
+  'Load_Loss_at_Test_Frequency_75_50': Load_Loss_at_Test_Frequency_75_50,
+  'Load_Loss_at_Test_Frequency_75_100': Load_Loss_at_Test_Frequency_75_100,
+  'V_Meas_From_Load_Loss_Test_50': V_Meas_From_Load_Loss_Test_50,
+  'V_Meas_From_Load_Loss_Test_100': V_Meas_From_Load_Loss_Test_100,
+  'Corr_Volt_V_50': Corr_Volt_V_50,
+  'Corr_Volt_V_100': Corr_Volt_V_100,
+  'Impedance_Z_At_AvgTemp_C_50': Impedance_Z_At_AvgTemp_C_50,
+  'Impedance_Z_At_AvgTemp_C_100': Impedance_Z_At_AvgTemp_C_100,
+  'Resistance_CorR_At_AvgTemp_C_50': Resistance_CorR_At_AvgTemp_C_50,
+  'Resistance_CorR_At_AvgTemp_C_100': Resistance_CorR_At_AvgTemp_C_100,
+  'Reactance_CorR_At_RefTemp_C_50': Reactance_CorR_At_RefTemp_C_50,
+  'Reactance_CorR_At_RefTemp_C_100': Reactance_CorR_At_RefTemp_C_100,
+  'Resistance_R_At_RefTemp_C_50': Resistance_R_At_RefTemp_C_50,
+  'Resistance_R_At_RefTemp_C_100': Resistance_R_At_RefTemp_C_100,
+  'final_Impedance_Z_At_RefTemp_C_50': final_Impedance_Z_At_RefTemp_C_50,
+  'final_Impedance_Z_At_RefTemp_C_100': final_Impedance_Z_At_RefTemp_C_100,
+  'Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_50': Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_50,
+  'Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_100': Impedance_ZAt_RefTemp_C_At_TestFreq_RefFreqHz_100
+});
 
 
     } catch (error) {
