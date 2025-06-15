@@ -1,7 +1,7 @@
 <div class="container-fluid mt-2">
   <div class="card shadow">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
-      <h5 class="mb-0"> Search Reports by Date </h5>
+      <h6 class="mb-0"> Search Reports by Date </h6>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
     <form #testReportForm="ngForm" (ngSubmit)="onSubmit(testReportForm)">
@@ -29,7 +29,7 @@
 <div class="container-fluid mt-1" *ngIf="filteredReports && filteredReports.length > 0">
   <div class="card shadow">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold;background-image: linear-gradient(to right, #011f06, #059c5d);">
-      <h5 class="mb-0"> Reports List by Date Range</h5>
+      <h6 class="mb-0"> Reports List by Date Range</h6>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
    <!-- Reports List -->
@@ -44,10 +44,10 @@
               <th>Date of Receipt</th>
               <th>Date of Testing</th>
               <th>Date of Issue</th>
-              <th>Customer</th>
-              <th>Download <br> for MPWZ</th>      
-              <th>Download <br> for NABL Lab</th>
-              <th> Edit</th>
+              <th>Customer Name&Address</th>
+              <th>Download <br> MPWZ</th>      
+              <th>Download <br>  NABLLab</th>
+              <th> Edit Report</th>
             </tr>
           </thead>
               <tbody>

@@ -1,21 +1,22 @@
 <div class="container-fluid mt-2">
   <div class="card shadow">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold; background-image: linear-gradient(to right, #011f06, #059c5d);">
-      <h5 class="mb-0">Upload Lab QR Code</h5>
+      <h6 class="mb-0">Upload NABL Lab QRCode for Certification</h6>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
       <form #UploadQRCodeform="ngForm">
        <input type="file" (change)="onFileSelected($event)" accept="image/*">
 
         <button type="button" (click)="uploadImage()" class="btn btn-success mt-2">Upload</button>
-        <br><br>
-        <p *ngIf="uploadSuccess" class="alert alert-success">Image uploaded successfully!</p>
+        
       </form>
-
       <div *ngIf="imageUrl" class="mt-3">
         <label>Uploaded Image Preview:</label><br>
         <img [src]="imageUrl" alt="Uploaded QR" class="img-thumbnail" width="200">
       </div>
     </div>
+      <br><br>  
+   <p *ngIf="uploadSuccess" class="alert alert-success">Image uploaded successfully!</p>
   </div>
 </div>
+ 

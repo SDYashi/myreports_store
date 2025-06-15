@@ -10,11 +10,22 @@ import { StoreServicesService } from '../MyServices/store-services.service';
 export class StoreAddCustomerNameAddrsComponent {
   customer_name: string = '';
   responseMessage: string = '';
+  customerList: any;
 
   constructor(private http: HttpClient, private storeServices: StoreServicesService) { }
 
   ngOnInit(): void {
-    // Any initialization logic can go here
+    this.getregisteredcustomer();
+  }
+    getregisteredcustomer(){
+    this.storeServices.getcustomername().subscribe({
+      next: (data) => {
+        this.customerList = data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   addCustomerName(): void {
@@ -23,6 +34,7 @@ export class StoreAddCustomerNameAddrsComponent {
         this.responseMessage = response.msg;
         alert(this.responseMessage);
         this.customer_name = ''; 
+         this.getregisteredcustomer();
       },
       error: (error) => {
         this.responseMessage = error.error;

@@ -1,7 +1,7 @@
 <div class="container-fluid mt-2">
   <div class="card shadow">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold; background-image: linear-gradient(to right, #011f06, #059c5d);">
-      <h5 class="mb-0">Add Customer Name</h5>
+      <h6 class="mb-0">Add Customer Name & Address</h6>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
           <form (ngSubmit)="addCustomerName()" #customerForm="ngForm" style="background-color: #f8f9fa; border-radius: 5px;">
@@ -12,7 +12,7 @@
             </div>
 
               </div>
-              <div class="col-2">
+              <div class="col-6">
               <div class="form-group">
               <button type="submit" class="btn btn-primary" [disabled]="!customerForm.valid">Add Customer Name</button>
             </div>                
@@ -23,3 +23,31 @@
     </div>
   </div>
 </div>
+<div class="container-fluid mt-2">
+  <div class="card shadow">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold; background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h6 class="mb-0">Registered Customer List</h6>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
+   <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Updated By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customerList;let i = index">
+        <td>{{i+1}}</td>
+        <td>{{customer.customer_name}}</td>
+        <td>{{customer.created_by}}</td>
+        <td>{{customer.updated_by}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
