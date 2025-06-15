@@ -10,6 +10,7 @@ import { StoreServicesService } from '../MyServices/store-services.service';
 export class StoreAddJobRatingComponent { 
   responseMessage: string = '';
   dtrcapacity:any = { dtr_capacity: '' } ;
+  dtrCapacities: any;
   constructor(private http: HttpClient, private storeServices: StoreServicesService) { }
   onSubmit(form: any): void {
     if (form.valid) {
@@ -18,6 +19,7 @@ export class StoreAddJobRatingComponent {
           this.responseMessage = response.msg;
           alert(this.responseMessage);
           this.dtrcapacity='';
+           this.getjobrating();
         },
         error: (error) => {
           this.responseMessage = error.error;
@@ -28,4 +30,20 @@ export class StoreAddJobRatingComponent {
       alert('Please fill in the required fields.');
     }
   }
+
+  ngOnInit(): void {
+    this.getjobrating();
+  }
+
+    getjobrating(){
+    this.storeServices.getjobrating().subscribe({
+      next: (data) => {
+        this.dtrCapacities = data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
 }

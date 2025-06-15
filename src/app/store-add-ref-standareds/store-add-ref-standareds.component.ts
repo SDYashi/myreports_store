@@ -11,9 +11,10 @@ export class StoreAddRefStandaredsComponent {
 
   ref_standard_formdata: string = '';
   responseMessage: string = '';
+  refStandards: any;
   constructor(private http: HttpClient, private storeServices: StoreServicesService) { }
-  ngOnInit(): void {
-    // Any initialization logic can go here
+    ngOnInit(): void {
+    this.getrefrestandardlist();
   }
   addRefStandard(): void {
     this.storeServices.addrefstandard(this.ref_standard_formdata).subscribe({
@@ -21,10 +22,23 @@ export class StoreAddRefStandaredsComponent {
         this.responseMessage = response.msg;
         alert(this.responseMessage);
         this.ref_standard_formdata = ''; 
+        this.getrefrestandardlist();
       },
       error: (error) => {
         this.responseMessage = error.error;
         console.error('Error occurred:', error); 
+      }
+    });
+  }
+
+
+    getrefrestandardlist(){
+    this.storeServices.getrefstandard().subscribe({
+      next: (data) => {
+        this.refStandards = data;
+      },
+      error: (err) => {
+        console.log(err);
       }
     });
   }

@@ -1,7 +1,7 @@
 <div class="container-fluid mt-2">
   <div class="card shadow">
     <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold; background-image: linear-gradient(to right, #011f06, #059c5d);">
-      <h5 class="mb-0">Add Reference Standard</h5>
+      <h6 class="mb-0">Add reference standard for testing items</h6>
     </div>
     <div class="card-body" style="background-color: whitesmoke;">
           <form (ngSubmit)="addRefStandard()" #refStandardForm="ngForm" style="background-color: #f8f9fa; border-radius: 5px;">
@@ -22,3 +22,31 @@
     </div>
   </div>
 </div>
+<div class="container-fluid mt-3">
+  <div class="card shadow">
+    <div class="card-header" style="background-color:#059c5d; color: white; font-weight: bold; background-image: linear-gradient(to right, #011f06, #059c5d);">
+      <h6 class="mb-0">Reference standards list</h6>
+    </div>
+    <div class="card-body" style="background-color: whitesmoke;">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Reference Standard</th>
+            <th>Created By</th>
+            <th>Updated By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let standard of refStandards; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ standard.ref_standard_formdata }}</td>
+            <td>{{ standard.created_by }}</td>
+            <td>{{ standard.updated_by }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
