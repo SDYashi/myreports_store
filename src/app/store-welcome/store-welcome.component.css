@@ -1,7 +1,7 @@
 
 
 .overlay {
-  background-color: rgba(198, 241, 203, 0.6);
+  background-color: rgba(249, 252, 249, 0.6);
   padding: 3rem;
   text-align: center;
   color: rgb(10, 10, 10);
@@ -29,7 +29,7 @@ h1 {
 }
 
 .card {
-  background-color: #beccbe;
+  background-color: #f2f5f2;
   padding: 1.5rem;
   border-radius: 0.5rem;
   width: 250px;

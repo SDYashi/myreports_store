@@ -11,13 +11,17 @@
               <input type="text" class="form-control" [(ngModel)]="dtrcapacity.dtr_capacity" name="dtr_capacity" placeholder="Enter Job Rating Capacity" required>
             </div>
               </div>
-              <div class="col-3">
+              <div class="col-6">
            <div class="form-group">
             <button type="submit" class="btn btn-primary" [disabled]="!dtrcapacityForm.valid">Add reference capacity</button>
            </div>                
               </div>
             </div>
           </form>
+            <div *ngIf="responseMessage" class="alert alert-info mt-2">
+              {{ responseMessage }}
+            </div>
+
     </div>
   </div>
 </div>

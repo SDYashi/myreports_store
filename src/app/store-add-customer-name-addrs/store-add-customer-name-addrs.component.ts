@@ -37,7 +37,7 @@ export class StoreAddCustomerNameAddrsComponent {
          this.getregisteredcustomer();
       },
       error: (error) => {
-        this.responseMessage = error.error;
+        this.responseMessage = error.error.msg;
         console.error('Error occurred:', error); 
       }
     });

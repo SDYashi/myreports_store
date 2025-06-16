@@ -7,11 +7,6 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./loading-spinner.component.css']
 })
 export class LoadingSpinnerComponent {
-  loading = false;
-
-  constructor(private loadingService: LoadingService) {
-    this.loadingService.loading$.subscribe(status => {
-      this.loading = status;
-    });
-  }
+  isLoading = this.loaderService.isLoading;
+  constructor(private loaderService: LoadingService) {}
 }

@@ -25,7 +25,11 @@ export class StoreAddRefStandaredsComponent {
         this.getrefrestandardlist();
       },
       error: (error) => {
-        this.responseMessage = error.error;
+        if (error.error.msg === 'Duplicate ref_standard value found') {
+          this.responseMessage = "Duplicate ref_standard value found";
+        } else {
+          this.responseMessage = error.error;
+        }
         console.error('Error occurred:', error); 
       }
     });

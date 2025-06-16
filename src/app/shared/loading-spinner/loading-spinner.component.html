@@ -1,3 +1,4 @@
-<div *ngIf="loading" class="overlay">
-  <img src="../../../assets/images/loader_image1.gif" alt="Loading..." class="spinner" />
+<!-- src/app/loader/loader.component.html -->
+<div class="loader-wrapper" *ngIf="isLoading | async">
+  <img src="../../../assets/images/bg/inprogress.gif" alt="Loading..." />
 </div>

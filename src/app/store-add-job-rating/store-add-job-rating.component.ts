@@ -21,9 +21,12 @@ export class StoreAddJobRatingComponent {
           this.dtrcapacity='';
            this.getjobrating();
         },
-        error: (error) => {
-          this.responseMessage = error.error;
-          alert(this.responseMessage);
+        error: (errors) => {
+          if (errors.error.msg === 'Duplicate value. DTR capacity already exists.') {
+            this.responseMessage = 'Duplicate value. DTR capacity already exists.';
+          } else {
+            this.responseMessage = errors.error.msg;
+          }
         }
       });
     } else {
