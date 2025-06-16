@@ -32,11 +32,11 @@ export class StoreEditUserProfileComponent implements OnInit {
    onSubmit(userProfileForm: any): void {
     this.storeServices.edituserprofile(userProfileForm.value).subscribe({
       next: (response) => {
-        this.responseMessage = response.message;
+        this.responseMessage = response.msg;
         alert(this.responseMessage);
       },
       error: (error) => {
-        this.responseMessage = error.error;
+        this.responseMessage = error.error.msg;
         alert(this.responseMessage);
       }
     });

@@ -7,7 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./store-home.component.css']
 })
 export class StoreHomeComponent {
+  username_profie: string='';
   constructor(private router: Router) { }
+  
+  ngOnInit(): void {
+  //  this.username_profie = this.getUserNameFromToken();
+  //  alert(this.username_profie);
+  }
+
 logout(){
   localStorage.clear();
   this.router.navigate(['/login']);
@@ -20,7 +27,18 @@ changepassword(){
   this.router.navigate(['store-home/store-changepassword']);
 }
 
-
+  getUserNameFromToken(): string {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      return '';
+    }
+    const tokenParts = token.split('.');
+    if (tokenParts.length !== 3) {
+      return '';
+    }
+    const payload = JSON.parse(atob(tokenParts[1]));
+    return payload.username;
+  }
 
 toggleSidebar(): void {
     const sidebar = document.getElementById('sidebar') as HTMLElement | null;

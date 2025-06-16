@@ -28,7 +28,7 @@ export class StoreChangepasswordComponent {
       },
       (error) => {
         this.message = null;
-        this.error = error.error.message;
+        this.message = error.error.msg;
       }
     );
     

@@ -30,7 +30,7 @@ export class StoreLoginComponent {
         },
         error: (error) => {
            this.loading = false;
-            this.respose_msg = error?.msg || 'Internal Server Error,          Please try again';
+            this.respose_msg = error.error.msg;
           // alert('Error: ' + this.respose_msg);
         }
       });      
