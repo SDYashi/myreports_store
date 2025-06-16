@@ -13,6 +13,7 @@ import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
 import { StoreChangepasswordComponent } from './store-changepassword/store-changepassword.component';
 import { StoreAddReviewerEmployeeComponent } from './store-add-reviewer-employee/store-add-reviewer-employee.component';
 import { AuthGuard } from './MyServices/auth.guard';
+import { StoreWelcomeComponent } from './store-welcome/store-welcome.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
     path: 'store-home',
     component: StoreHomeComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'store-generate-reports', pathMatch: 'full' },
+      { path: '', redirectTo: 'store-welcome', pathMatch: 'full' },
+      { path: 'store-welcome', component: StoreWelcomeComponent },
       { path: 'store-generate-reports', component: StoreGenerateReportsComponent },
       { path: 'store-view-reports', component: StoreViewReportsComponent },
       { path: 'store-edit-reports',component:StoreEditReportsComponent},
@@ -32,7 +34,6 @@ const routes: Routes = [
       { path: 'store-upload-lab-qr',component:UploadlabQrComponent},
       {path:'store-changepassword',component:StoreChangepasswordComponent},
       {path:'store-add-tester-employee',component:StoreAddReviewerEmployeeComponent},
-     { path: 'store-home/store-edit-reports/:samplecode', component: StoreEditReportsComponent }
 
 
 

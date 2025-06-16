@@ -21,6 +21,7 @@ import { UploadlabQrComponent } from './uploadlab-qr/uploadlab-qr.component';
 import { StoreChangepasswordComponent } from './store-changepassword/store-changepassword.component';
 import { StoreAddReviewerEmployeeComponent } from './store-add-reviewer-employee/store-add-reviewer-employee.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { StoreWelcomeComponent } from './store-welcome/store-welcome.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     UploadlabQrComponent,
     StoreChangepasswordComponent,
     StoreAddReviewerEmployeeComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    StoreWelcomeComponent
   ],
   imports: [
     BrowserModule,
