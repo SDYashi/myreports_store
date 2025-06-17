@@ -121,13 +121,13 @@ editreports(formData:NgForm): void {
      if (formData.valid) {
     this.storeServices.updatetestreport(this.testReport).subscribe({
       next: (response) => {
-        this.responseMessage = response.message;
+        this.responseMessage = response.msg;
         alert(this.responseMessage);
         this.searchflag = false;
         this.router.navigate(['store-home/store-view-reports']);
       },
       error: (error) => {
-        this.responseMessage = error.error;
+        this.responseMessage = error.error.msg;
         alert(this.responseMessage);
         this.searchflag = false;
       }
